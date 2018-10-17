@@ -1,7 +1,42 @@
 <html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+	body, html {
+		height: 100%;
+		margin: 0;
+	}
+
+	.bg {
+		/* The image used */
+		background-image: url("images/bg.png");
+
+		/* Full height */
+		height: 100%;
+
+		/* Center and scale the image nicely */
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
+</style>
+	<title>SpaceCzar</title>
+</head>
+
 <body>
-<div id="app">
-Test
-</div>
+  <div id="app" class = "bg">
+  
+  </div>
+<script src="https://unpkg.com/vue"></script>
+
+<script>
+	var app = new Vue({
+      el:"#app",
+      data: {
+       counter: 0, 
+       databaseUrl: 'https://bt3103-ctml.firebaseio.com/temp2.json',
+      }
+  })
+</script>
 </body>
 </html>
