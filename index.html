@@ -1,91 +1,127 @@
 <html>
+
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
-</script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
-</script>
-<style>
-	body, html {
-		height: 100%;
-		margin: 0;
-	}
-	/* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-  .row.content {
-		padding-top: 50px;
-		height: 100%; 
-	}
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
 
-	.caption{
-		width: 550px;
-		padding-left:30px;
-		font-size: 20px;
-	}
-	.loginbox{
-		padding:15px;
-		margin-top: 80px;
-		border-radius: 25px; 
-		 background: #D7EDF9; 
-		 width: 300px; 
-		 height: 300px;
-		 opacity: 0.9;
-		box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-	}
-	 .loginbox h1 { 
-		 text-align: left; 
-		 font-size: 16px; 
-		 font-family: arial;
+	</script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
+
+	</script>
+	<style>
+		body,
+		html {
+			height: 100%;
+			margin: 0;
 		}
-		.loginbox input[type=submit] { 
-			width: 100%; 
-			display: block; 
-			margin-bottom: 10px; 
-			position: relative; 
-		} 
-		.loginbox input[type=text], input[type=password] { 
+
+		/* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+		.row.content {
+			padding-top: 50px;
+			height: 100%;
+		}
+
+		.caption {
+			width: 550px;
+			padding-left: 30px;
+			font-size: 20px;
+		}
+
+		.loginbox {
+			padding: 15px;
+			margin-top: 80px;
+			border-radius: 25px;
+			background: #D7EDF9;
+			width: 300px;
+			height: 300px;
+			opacity: 0.9;
+			box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+		}
+
+		.loginbox h1 {
+			text-align: left;
+			font-size: 25px;
+			font-family: arial;
+		}
+
+		.loginbox input[type=submit] {
+			width: 100%;
+			display: block;
+			margin-bottom: 10px;
+			position: relative;
+		}
+
+		.loginbox input[type=text],
+		input[type=password] {
 			border-radius: 10px;
-			height: 44px; 
+			height: 44px;
 			font-size: 16px;
-			width: 100%; 
-			margin-bottom: 10px; 
-			-webkit-appearance: none; 
-			background: #fff; 
-			border: 1px solid #d9d9d9; 
-			border-top: 1px solid #c0c0c0; /* border-radius: 2px; */ 
+			width: 100%;
+			margin-bottom: 10px;
+			-webkit-appearance: none;
+			background: #fff;
+			border: 1px solid #d9d9d9;
+			border-top: 1px solid #c0c0c0;
+			/* border-radius: 2px; */
 			padding: 0 8px;
-			box-sizing: border-box; 
-			-moz-box-sizing: border-box; 
-			} 
-			.loginbox input[type=text]:hover, input[type=password]:hover{ 
-				 border-radius: 10px;
-				border: 1px solid #b9b9b9; 
-				border-top: 1px solid #a0a0a0; 
-				-moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1); 
-				-webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1); 
-				box-shadow: inset 0 1px 2px rgba(0,0,0,0.1); 
-			}
-	#app {
-		/* The image used */
-		background-image: url("images/bg.png");
+			box-sizing: border-box;
+			-moz-box-sizing: border-box;
+		}
 
-		/* Full height */
-		height: 100%;
+		.loginbox input[type=text]:hover,
+		input[type=password]:hover {
+			border-radius: 10px;
+			border: 1px solid #b9b9b9;
+			border-top: 1px solid #a0a0a0;
+			-moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+			-webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+			box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+		}
 
-		/* Center and scale the image nicely */
-		background-position: center;
-		background-repeat: no-repeat;
-		background-size: cover;
-	}
-</style>
+		.loginbox-submit {
+			/* border: 1px solid #3079ed; */
+			border: 0px;
+			color: #fff;
+			text-shadow: 0 1px rgba(0, 0, 0, 0.1);
+			background-color: #4d90fe;
+			padding: 17px 0px;
+			font-family: roboto;
+			font-size: 14px;
+			/* background-image: -webkit-gradient(linear, 0 0, 0 100%,
+			from(#4d90fe), to(#4787ed)); */
+		}
+
+		.loginbox-submit:hover {
+			/* border: 1px solid #2f5bb7; */
+			border: 0px;
+			text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+			background-color: #357ae8;
+			/* background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#4d90fe),
+			to(#357ae8)); */
+		}
+
+		#app {
+			/* The image used */
+			background-image: url("images/bg.png");
+
+			/* Full height */
+			height: 100%;
+
+			/* Center and scale the image nicely */
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: cover;
+		}
+	</style>
 	<title>SpaceCzar</title>
 </head>
 
 <body>
-  <div id="app">
+	<div id="app">
 		<div class="container-fluid text-center">
 			<div class="row content">
-				<div class = "col-sm-1"></div>
+				<div class="col-sm-1"></div>
 				<div class="col-sm-11 text-left">
 					<div class="row">
 						<div class="col-sm-7">
@@ -98,9 +134,9 @@
 							<div class="loginbox">
 								<h1>Sign In</h1><br>
 								<form>
-									<input v-model.trim="userName" type="text" placeholder="Username">
+									<input v-model.trim="userName" type="text" placeholder="User ID">
 									<input v-model.trim="userPassword" type = "password" placeholder = "Password">
-									<button @click="verifyUser(name, pw)" type = "submit" class="login loginmodal-submit">Login</button>
+									<button @click="verifyUser(name, pw)" type = "submit" class="loginbox-submit">Login</button>
 								</form>
 							</div>
 						</div>
