@@ -98,10 +98,7 @@
 								<form>
 									<input v-model.trim="userName" type="text" placeholder="Username">
 									<input v-model.trim="userPassword" type = "password" placeholder = "Password">
-									<button @click="verifyUser(name, pw)">Login</button>
-									<input type="text" name="user" placeholder="Username">
-									<input type="password" name="pass" placeholder="Password">
-									<input type="submit" name="login" class="login loginmodal-submit" value="Login">
+									<button @click="verifyUser(name, pw)" class="login loginmodal-submit">Login</button>
 								</form>
 							</div>
 						</div>
