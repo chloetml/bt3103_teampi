@@ -23,7 +23,7 @@
 		font-size: 20px;
 	}
 	.loginbox{
-		padding:10px;
+		padding:15px;
 		margin-top: 80px;
 		border-radius: 25px; 
 		 background: #D7EDF9; 
@@ -34,7 +34,7 @@
 	}
 	 .loginbox h1 { 
 		 text-align: left; 
-		 font-size: 2em; 
+		 font-size: 16px; 
 		 font-family: arial;
 		}
 		.loginbox input[type=submit] { 
@@ -44,6 +44,7 @@
 			position: relative; 
 		} 
 		.loginbox input[type=text], input[type=password] { 
+			border-radius: 10px;
 			height: 44px; 
 			font-size: 16px;
 			width: 100%; 
@@ -57,6 +58,7 @@
 			-moz-box-sizing: border-box; 
 			} 
 			.loginbox input[type=text]:hover, input[type=password]:hover{ 
+				 border-radius: 10px;
 				border: 1px solid #b9b9b9; 
 				border-top: 1px solid #a0a0a0; 
 				-moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1); 
@@ -98,7 +100,7 @@
 								<form>
 									<input v-model.trim="userName" type="text" placeholder="Username">
 									<input v-model.trim="userPassword" type = "password" placeholder = "Password">
-									<button @click="verifyUser(name, pw)" class="login loginmodal-submit">Login</button>
+									<button @click="verifyUser(name, pw)" type = "submit" class="login loginmodal-submit">Login</button>
 								</form>
 							</div>
 						</div>
