@@ -1,0 +1,44 @@
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <title>SpaceCzar</title>
+  <style>
+    body,
+    html {
+      height: 100%;
+      margin: 0;
+    }
+	  #app { 
+      background-color: #C0F2FD;
+    }
+  </style>
+</head>
+
+<body>
+	<div id="app">
+    <div class="container-fluid text-center">
+      <div class="row content">
+        <div class="col-sm-1"></div>
+      </div>
+    </div>
+	</div>
+	<script src="https://unpkg.com/vue">
+	</script>
+	
+	<script>
+		var app = new Vue({
+	      el:"#app",
+	      data: {
+	       counter: 0, 
+	       databaseUrl: 'https://bt3103-ctml.firebaseio.com/temp2.json',
+	      }
+	  })
+	
+	</script>
+</body>
+	
+</html>

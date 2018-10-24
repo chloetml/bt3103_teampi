@@ -3,12 +3,8 @@
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
-
-	</script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
-
-	</script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<style>
 		body,
 		html {
@@ -35,7 +31,7 @@
 			border-radius: 25px;
 			background: #D7EDF9;
 			width: 300px;
-			height: 300px;
+			height: 400px;
 			opacity: 0.9;
 			box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
 		}
@@ -135,10 +131,14 @@
 							<div class="loginbox">
 								<h1>Sign In</h1><br>
 								<form>
-									<input v-model.trim="userName" type="text" placeholder="User ID">
-									<input v-model.trim="userPassword" type = "password" placeholder = "Password">
-									<button @click="verifyUser(name, pw)" type = "submit" class="loginbox-submit">Login</button>
+									<input v-model.trim="userName" id = "userName" type="text" placeholder="User ID">
+									<input v-model.trim="userPassword" id = "userPassword" type = "password" placeholder = "Password">
+									<button @click="verifyUser(document.getElementById('userName').value, document.getElementById('userPassword').value)" type = "submit" class="loginbox-submit">Login</button>
 								</form>
+							</div>
+							<div class="alert alert-danger fade in" id = "error" style="display:none">
+								<a href="#" class="close" data-dismiss="alert">&times;</a>
+								<strong>Error!</strong> A problem has occurred logging in. Please try again.
 							</div>
 						</div>
 					</div>
@@ -152,9 +152,27 @@
 	var app = new Vue({
       el:"#app",
       data: {
-       counter: 0, 
-       databaseUrl: 'https://bt3103-ctml.firebaseio.com/temp2.json',
-      }
+      	user: [["e0191630", "pw123"], ["e0191631", "hi"]],
+       databaseUrl: 'https://bt3103-ctml.firebaseio.com/temp2.json'
+      },
+			 methods:{
+				isItemInArray: function(array, item) { 
+					 for (var i = 0; i < array.length; i++) { // This if statement depends on the format of your array 
+					 	if (array[i][0]==item[0] && array[i][1]==item[1]) { 
+							 return true; // Found it 
+							 } 
+						} return false; // Not found
+				 }
+				 verifyUser: function(id, pw){ 
+					 var isUser = isItemInArray(this.user, [id,pw]);
+					 // if userid is -1, means the user id is invalid
+					 if (isUser == false){
+							document.getElementById('error').style.display = "true";
+					 	}else{
+							// link to next page
+							<a href="home.html"></a> 
+						}
+			 }
   })
 </script>
 </body>
