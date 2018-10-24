@@ -31,7 +31,7 @@
 			border-radius: 25px;
 			background: #D7EDF9;
 			width: 300px;
-			height: 400px;
+			height: 300px;
 			opacity: 0.9;
 			box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
 		}
@@ -133,7 +133,7 @@
 								<form>
 									<input v-model.trim="userName" id = "userName" type="text" placeholder="User ID">
 									<input v-model.trim="userPassword" id = "userPassword" type = "password" placeholder = "Password">
-									<button @click="verifyUser(document.getElementById('userName').value, document.getElementById('userPassword').value)" type = "submit" class="loginbox-submit">Login</button>
+									<button @click="verifyUser(document.getElementById('userName').value, document.getElementById('userPassword').value)" type = "button" class="loginbox-submit">Login</button>
 								</form>
 							</div>
 							<div class="alert alert-danger fade in" id = "error" style="display:none">
@@ -167,7 +167,7 @@
 					 var isUser = isItemInArray(this.user, [id,pw]);
 					 // if userid is -1, means the user id is invalid
 					 if (isUser == false){
-							document.getElementById('error').style.display = "inline";
+							document.getElementById('error').style.display = "true";
 					 	}else{
 							// link to next page
 							window.location = home.html;
