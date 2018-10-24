@@ -131,8 +131,8 @@
 							<div class="loginbox">
 								<h1>Sign In</h1><br>
 								<form>
-									<input v-model.trim="userName" id = "userName" type="text" placeholder="User ID">
-									<input v-model.trim="userPassword" id = "userPassword" type = "password" placeholder = "Password">
+									<input id = "userName" type="text" placeholder="User ID">
+									<input id = "userPassword" type = "password" placeholder = "Password">
 									<button @click="verifyUser(document.getElementById('userName').value, document.getElementById('userPassword').value)" class="loginbox-submit">Login</button>
 								</form>
 							</div>
