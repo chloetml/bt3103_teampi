@@ -147,11 +147,7 @@
 		</div>
   </div>
 <script src="https://unpkg.com/vue"></script>
-<script>
-	function verifyUser(id, pw){ 
-		window.location.href = 'home.html';
-	}
-</script>
+
 <script>
 	var app = new Vue({
       el:"#app",
@@ -160,6 +156,7 @@
        //databaseUrl: 'https://bt3103-ctml.firebaseio.com/temp2.json'
       },
 			 methods:{
+				 /*
 				isItemInArray: function(array, item) { 
 					 for (var i = 0; i < array.length; i++) { // This if statement depends on the format of your array 
 					 	if (array[i][0]==item[0] && array[i][1]==item[1]) { 
@@ -167,9 +164,8 @@
 							 } 
 						} return false; // Not found
 				 },
-				 /*
+				 
 				 verifyUser: function(id, pw){ 
-					 window.location.href = '/home.html'
 					 
 					 var isUser = isItemInArray(this.user, [id,pw]);
 					 // if userid is -1, means the user id is invalid
