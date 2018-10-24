@@ -167,10 +167,10 @@
 					 var isUser = isItemInArray(this.user, [id,pw]);
 					 // if userid is -1, means the user id is invalid
 					 if (isUser == false){
-							document.getElementById('error').style.display = "true";
+							document.getElementById('error').style.display = "inline";
 					 	}else{
 							// link to next page
-							<a href="home.html"></a> 
+							window.location = home.html;
 						}
 			 }
   })
