@@ -17,6 +17,22 @@
 			 padding-left: 50px;
 			 height: 100%; 
 			}
+		.logout-btn{
+			 width: 100px; 
+			 display: block; 
+			 position: relative;
+			/* border: 1px solid #3079ed; */
+			border: 0px;
+			color: #fff;
+			text-shadow: 0 1px rgba(0, 0, 0, 0.1);
+			background-color: #4d90fe;
+			padding: 17px 0px;
+			font-family: arial;
+			font-size: 16px;
+			/* background-image: -webkit-gradient(linear, 0 0, 0 100%,
+			from(#4d90fe), to(#4787ed)); */
+		}
+		}
 	  #app { 
       background-color: #C0F2FD;
 	     height: 100%;
@@ -35,7 +51,9 @@
 					<img src="images/profile.png" alt="Logo" width="200px">
 				</div>
 				<div class="left col-md-4">
-					<h1 id = "name"> Maddison Low</h1>
+					<h1 id = "name">Maddison Low</h1><br>
+					<p id = "faculty">School of Computing</p><br>
+					<button onclick="window.location.href = '/bt3103_teampi/index.html'" type = "button" class="logout-btn">Logout</button>
 				</div>
 				<div class = "right col-md-6"></div>
       </div>
