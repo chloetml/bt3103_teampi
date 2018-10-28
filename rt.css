@@ -1,6 +1,6 @@
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 body {
-  font-family: "Poppins", sans-serif;
+  //font-family: "Poppins", sans-serif;
   background: #ffc107;
 }
 
@@ -23,9 +23,9 @@ a:focus {
 
 .navbar {
   padding: 15px 10px;
-  //background: #fff;
-  //border: none;
-  //border-radius: 0;
+  background: none;
+  border: none;
+  border-radius: 0;
   //margin-bottom: 40px;
   //box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
@@ -34,7 +34,7 @@ a:focus {
   box-shadow: none;
   outline: none !important;
   border: none;
-  background-color: none;
+  background-color: #c55a11;
 }
 
 .line {
@@ -103,12 +103,12 @@ a:focus {
 
 #sidebar .sidebar-header {
   padding: 20px;
-  background: #6d7fcc;
+  background: #a75826;
 }
 
 #sidebar ul.components {
   padding: 20px 0;
-  border-bottom: 1px solid #47748b;
+  border-bottom: 1px solid #a75826;
 }
 
 #sidebar ul p {
