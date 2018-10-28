@@ -206,8 +206,9 @@ a.logout {
 }
 .search-btn {
   width: 100px;
-  display: block;
+  /*display: block;
   position: relative;
+  */
   border-radius: 25px;
   /* border: 1px solid #3079ed; */
   border: 0px;
