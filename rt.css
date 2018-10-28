@@ -36,6 +36,10 @@ a:focus {
   border: none;
   background-color: #c55a11;
 }
+.navbar-btn:hover {
+  background: #fff;
+  color: #a75826;
+}
 
 .line {
   width: 100%;
