@@ -193,3 +193,6 @@ a.logout {
 .contain h1 {
   color: #002060;
 }
+
+.ddl1 img { float: left; } 
+.ddl1 select { float: left; padding-left:20px; width:40%;}
