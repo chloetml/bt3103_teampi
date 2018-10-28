@@ -195,10 +195,10 @@ a.logout {
 }
 
 .ddl1 img {
-  float: left;
+  display: inline-block;
 }
 .form-control {
-  float: left;
+  display: inline-block;
   padding-left: 20px;
-  width: 200px;
+  width: 100px;
 }
