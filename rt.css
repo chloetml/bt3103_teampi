@@ -34,7 +34,7 @@ a:focus {
   box-shadow: none;
   outline: none !important;
   border: none;
-  background-color: #c55a11 !important;
+  background-color: #c55a11;
 }
 .navbar-btn:hover {
   background-color: #a75826;
