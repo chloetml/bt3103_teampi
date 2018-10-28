@@ -16,8 +16,9 @@
   <style>
     .right h1{
 	    color: #C55A11;
-      padding-top: 28px;
+      padding-top: 30px;
       padding-bottom: 30px;
+      text-align:center;
     }
     .right p{
       font-size: 30px;
@@ -79,6 +80,30 @@
 		      <div class="right col-md-4">
             <h1>This is the current crowd around NUS</h1>
             <p>We would recommend <span id ="rec">School of Computing</span> due to its proximity and high vacancy rate.</p>
+			      <div class="contain row text-center">
+			        <form>
+			          <div class="ddl1 text-center">
+			            <img src="images/cal.png" alt="Logo" width="50px" height="50px">
+						      <select class="form-control" id="sel1">
+								    <option selected disabled>Choose desired region</option>
+								    <option value = "FASS">Arts and Social Sciences</option>
+								    <option value = "BIZ">Business</option>
+								    <option value = "COM">Computing</option>
+								    <option value = "DEN">Dentistry</option>
+						        <option value="SDE">Design and Environment</option>
+						        <option value="ENG">Engineering</option>
+				            <option value="GEN">General</option>
+						        <option value="MED">Medicine</option>
+						      	<option value="MUS">Music</option>
+						        <option value="SCI">Science</option>
+								  </select>
+			          </div>
+			          <br>
+			          <div class = "letsgo">
+					        <button onclick="window.location.href = '/bt3103_teampi/map2.html'" type = "button" class="search-btn text-center">Let's Go</button>
+			          </div>
+			        </form>
+			      </div>
 				  </div>
 	    </div>
     </div>
