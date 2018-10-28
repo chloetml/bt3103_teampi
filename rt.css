@@ -39,7 +39,7 @@ a:focus {
 .navbar-btn:hover {
   background-color: #a75826;
 }
-.navbar-btn:active {
+.navbar-btn:active:focus {
   background-color: #c55a11;
 }
 
