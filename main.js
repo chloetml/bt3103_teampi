@@ -15,7 +15,7 @@ var app = new Vue({
   },
   methods: {
     printData: function() {
-      console.log(hangouts);
+      console.log(this.hangouts);
     }
   }
 });
