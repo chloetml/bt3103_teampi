@@ -40,7 +40,7 @@ a:focus {
   background-color: #a75826;
 }
 .navbar-btn:active:focus {
-  background-color: #c55a11;
+  background-color: #c55a11 !important;
 }
 
 .line {
