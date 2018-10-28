@@ -3,32 +3,37 @@
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <title>SpaceCzar</title>
-  <style>
-    body,
-    html {
-      height: 100%;
-      margin: 0;
-    }
-		 .row.content { 
-			 padding-top: 50px; 
-			 padding-left: 50px;
-			 padding-right: 50px;
-			 height: 100%; 
-			}
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+	</script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
+	</script>
+	<title>SpaceCzar</title>
+	<style>
+		body,
+		html {
+			height: 100%;
+			margin: 0;
+		}
+
+		.row.content {
+			padding-top: 50px;
+			padding-left: 50px;
+			padding-right: 50px;
+			height: 100%;
+		}
+
 		.tab-content {
 			background-color: white;
 			border-radius: 10px;
-			padding:10px;
+			padding: 10px;
 			width: 50%;
 		}
-		.logout-btn{
+
+		.logout-btn {
 			margin-top: -10px;
-			 width: 100px; 
-			 display: block; 
-			 position: relative;
+			width: 100px;
+			display: block;
+			position: relative;
 			border-radius: 25px;
 			/* border: 1px solid #3079ed; */
 			border: 0px;
@@ -41,46 +46,62 @@
 			/* background-image: -webkit-gradient(linear, 0 0, 0 100%,
 			from(#4d90fe), to(#4787ed)); */
 		}
-		.nav{
+
+		.nav {
 			margin-top: 20px;
 			margin-bottom: 10px;
 		}
-		.tab1{ 
+
+		.tab1 {
 			margin-top: 10px;
 			margin-bottom: 10px;
-			overflow:auto; 
-		} 
-		.right{ 
-			background-color: #83D4ED;
-			border-radius: 10px; 
-			padding:10px;
-			//padding-bottom:50px;
-			width:50%;
-			height:95.5%;
+			overflow: auto;
 		}
-		.tab1 img { float: left; } 
-		.tab1 h3 { float: left; padding-left:20px;margin-top:8px;}
-		.features{
-			padding-left:50px;
+
+		.right {
+			background-color: #83D4ED;
+			border-radius: 10px;
+			padding: 10px;
+			//padding-bottom:50px;
+			width: 50%;
+			height: 95.5%;
+		}
+
+		.tab1 img {
+			float: left;
+		}
+
+		.tab1 h3 {
+			float: left;
+			padding-left: 20px;
+			margin-top: 8px;
+		}
+
+		.features {
+			padding-left: 50px;
 			padding-bottom: 20px;
 		}
-	  #app { 
-      background-color: #C0F2FD;
-	     height: 100%;
-    }
-		#name{
+
+		#app {
+			background-color: #C0F2FD;
+			height: 100%;
+		}
+
+		#name {
 			color: #1F4E79;
 		}
-		#faculty{
+
+		#faculty {
 			margin-top: -10px;
 			font-size: 20px;
 		}
-  </style>
+	</style>
 </head>
+
 <body>
 	<div id="app">
-    <div class="container-fluid text-left">
-      <div class="row content">
+		<div class="container-fluid text-left">
+			<div class="row content">
 				<div class="left col-md-6">
 					<div class="row">
 						<div class="col-md-4">
@@ -105,8 +126,7 @@
 											<img src="images/heart.png" alt="Logo" width="50px" height="50px">
 											<h3>Usual Hangouts</h3>
 										</div>
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-											aliqua.</p>
+										<pie-chart :data="hangouts"></pie-chart>
 									</div>
 									<div id="bookings" class="tab-pane fade">
 										<div class="tab1">
@@ -135,19 +155,14 @@
       </div>
     </div>
 	</div>
-	<script src="https://unpkg.com/vue"></script>
-	
-	<script>
-		var app = new Vue({
-	      el:"#app",
-	      data: {
-	       counter: 0, 
-	       databaseUrl: 'https://bt3103-ctml.firebaseio.com/temp2.json',
-	      }
-	  })
-	
-	</script>
 	
 </body>
 	
 </html>
+
+<script src="https://unpkg.com/vue"></script>
+<script src="https://gstatic.com/firebasejs/4.2.0/firebase.js"></script>
+<script src="https://unpkg.com/vuefire/dist/vuefire.js"></script>
+<script src="./main.js" type="module"></script>
+<script src="https://unpkg.com/chart.js@2.7.2/dist/Chart.bundle.js"></script>
+<script src="https://unpkg.com/vue-chartkick@0.4.0"></script>
