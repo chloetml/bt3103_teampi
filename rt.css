@@ -201,6 +201,22 @@ a.logout {
 .form-control {
   display: inline-block;
   text-align: center;
-  padding-left: 50px;
+  margin-left: 30px;
   width: 350px;
+}
+.search-btn {
+  width: 100px;
+  display: block;
+  position: relative;
+  border-radius: 25px;
+  /* border: 1px solid #3079ed; */
+  border: 0px;
+  color: #fff;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.1);
+  background-color: #384e64;
+  padding: 10px 0px;
+  font-family: arial;
+  font-size: 16px;
+  /* background-image: -webkit-gradient(linear, 0 0, 0 100%,
+			from(#4d90fe), to(#4787ed)); */
 }
