@@ -1,6 +1,6 @@
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 body {
-  //font-family: "Poppins", sans-serif;
+  /*font-family: "Poppins", sans-serif;*/
   background: #ffc107;
 }
 
@@ -26,8 +26,6 @@ a:focus {
   background: none;
   border: none;
   border-radius: 0;
-  //margin-bottom: 40px;
-  //box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .navbar-btn {
@@ -154,7 +152,6 @@ a[data-toggle="collapse"] {
 ul ul a {
   font-size: 0.9em !important;
   padding-left: 30px !important;
-  //background: #a75826;
 }
 
 ul.CTAs {
