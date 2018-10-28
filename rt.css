@@ -194,5 +194,11 @@ a.logout {
   color: #002060;
 }
 
-.ddl1 img { float: left; } 
-.ddl1 select { float: left; padding-left:20px; width:40%;}
+.ddl1 img {
+  float: left;
+}
+.form-control {
+  float: left;
+  padding-left: 20px;
+  width: 200px;
+}
