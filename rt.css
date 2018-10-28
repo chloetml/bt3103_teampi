@@ -37,8 +37,7 @@ a:focus {
   background-color: #c55a11;
 }
 .navbar-btn:hover {
-  background: #fff;
-  color: #a75826;
+  background-color: #a75826;
 }
 
 .line {
@@ -152,7 +151,7 @@ a[data-toggle="collapse"] {
 ul ul a {
   font-size: 0.9em !important;
   padding-left: 30px !important;
-  background: #6C55A11;
+  //background: #a75826;
 }
 
 ul.CTAs {
