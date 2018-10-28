@@ -196,9 +196,11 @@ a.logout {
 
 .ddl1 img {
   display: inline-block;
+  text-align: center;
 }
 .form-control {
   display: inline-block;
+  text-align: center;
   padding-left: 20px;
   width: 100px;
 }
