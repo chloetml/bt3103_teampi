@@ -101,6 +101,12 @@
 </head>
 
 <body>
+	<script src="https://unpkg.com/vue"></script>
+	<script src="https://gstatic.com/firebasejs/4.2.0/firebase.js"></script>
+	<script src="https://unpkg.com/vuefire/dist/vuefire.js"></script>
+	<script src="./main.js" type="module"></script>
+	<script src="https://unpkg.com/chart.js@2.7.2/dist/Chart.bundle.js"></script>
+	<script src="https://unpkg.com/vue-chartkick@0.4.0"></script>
 	<div id="app">
 		<div class="container-fluid text-left">
 			<div class="row content">
@@ -128,7 +134,7 @@
 											<img src="images/heart.png" alt="Logo" width="50px" height="50px">
 											<h3>Usual Hangouts</h3>
 										</div>
-									<button @click=printData()> click me </button>
+										<button @click=printData()> click me </button>
 										<pie-chart :data="hangouts"></pie-chart>
 									</div>
 									<div id="bookings" class="tab-pane fade">
@@ -163,9 +169,3 @@
 	
 </html>
 
-<script src="https://unpkg.com/vue"></script>
-<script src="https://gstatic.com/firebasejs/4.2.0/firebase.js"></script>
-<script src="https://unpkg.com/vuefire/dist/vuefire.js"></script>
-<script src="./main.js" type="module"></script>
-<script src="https://unpkg.com/chart.js@2.7.2/dist/Chart.bundle.js"></script>
-<script src="https://unpkg.com/vue-chartkick@0.4.0"></script>
