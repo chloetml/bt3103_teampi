@@ -39,6 +39,9 @@ a:focus {
 .navbar-btn:hover {
   background-color: #a75826;
 }
+.navbar-btn:active {
+  background-color: #c55a11;
+}
 
 .line {
   width: 100%;
