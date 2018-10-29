@@ -13,6 +13,13 @@ var app = new Vue({
   data: {
     hangouts: user.child("0").child("hangouts")
   },
+  firebase: {
+    charts: {
+      source: db.ref("charts"),
+      // optionally bind as an object
+      asObject: true
+    }
+  },
   methods: {
     printData: function() {
       console.log(this.hangouts);
