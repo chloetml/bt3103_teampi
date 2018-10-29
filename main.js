@@ -11,7 +11,7 @@ var user = db.ref("user");
 var app = new Vue({
   el: "app",
   data: {
-    hangouts: user.child("0").child("hangouts")
+    hangouts: [["Jan", 4], ["Feb", 2], ["Mar", 10], ["Apr", 5], ["May", 3]]
   },
   methods: {
     printData: function() {
