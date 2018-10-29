@@ -9,7 +9,7 @@ var forecastRef = db.ref("forecast");
 var user = db.ref("user");
 
 var app = new Vue({
-  el: "#app",
+  el: "hangout",
   data: {
     hangouts: user.child("0").child("hangouts")
   },
