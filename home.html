@@ -134,7 +134,7 @@
 											<img src="images/heart.png" alt="Logo" width="50px" height="50px">
 											<h3>Usual Hangouts</h3>
 										</div>
-										<pie-chart :data="hangouts"></pie-chart>
+										<pie-chart :data="hangs.child(0).hangouts"></pie-chart>
 									</div>
 									<div id="bookings" class="tab-pane fade">
 										<div class="tab1">
@@ -164,6 +164,7 @@
     </div>
 	</div>
 	<script>
+		/*
 		var app = new Vue({
 	    el: "#app",
 		 	data: { 
@@ -171,6 +172,23 @@
 				 databaseUrl: 'https://space-czar.firebaseio.com/'
 			 }
 		})
+		*/
+		 var db = firebase.initializeApp({ 
+			 databaseURL: 'https://space-czar.firebaseio.com/' })
+			 .database() 
+			var userRef = db.ref('user')
+			new Vue({ 
+				el: '#app',
+				data: { 
+					hangouts: [["Computing", 10], ["Engineering", 2], ["Science", 2]]
+				}, 
+				firebase: { 
+					hangs: { 
+						source: db.ref('user'),
+						// optionally bind as an object 
+						asObject: true
+				}}
+			})
 	</script>
 </body>
 	
