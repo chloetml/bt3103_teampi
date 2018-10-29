@@ -82,7 +82,11 @@
           </div>
 		      <div class="right col-md-4">
             <h1>This is the current crowd around NUS</h1>
-            <p>We would recommend: <br><br><span id ="rec" class="text-center">School of Computing</span></p>
+            <p>We would recommend: 
+			        <img src="images/question.png" alt="Logo" width="30px" height="30px" data-toggle="tooltip" title="Based on closest proximity and high vacancy rate">
+              <br><br>
+              <span id ="rec" class="text-center">School of Computing</span>
+            </p>
 			      <div class="contain row text-center">
 			        <form>
 			          <div class="ddl1 text-center">
@@ -122,6 +126,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
   <script type="text/javascript">
     $(document).ready(function () {
+	    $('[data-toggle="tooltip"]').tooltip();
       $("#sidebar").mCustomScrollbar({
         theme: "minimal"
       });
@@ -136,6 +141,7 @@
         $('.overlay').fadeIn();
         $('.collapse.in').toggleClass('in');
       });
+      
     });
     </script>
   </body>
