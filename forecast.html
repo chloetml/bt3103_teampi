@@ -29,10 +29,10 @@
         <li>
 		      <a href="/bt3103_teampi/home.html">Home</a>
         </li>
-        <li class="active">
+        <li>
 		      <a href="/bt3103_teampi/realtime.html">Real Time Mode</a>
         </li>
-        <li>
+        <li class="active">
           <a href="/bt3103_teampi/forecast.html">Forecast Mode</a>
         </li>
         <li>
@@ -58,24 +58,17 @@
         </div>
       </nav>
 	    <div class="contain row text-center">
-				<img src="images/hg.png" alt="Logo" width = "300px" height = "300px"><br>
-        <h1>Let us look around right now!</h1><br>
+				<img src="images/fc.png" alt="Logo" width = "200px" height = "200px"><br>
+        <h1>Let's look into the Future!</h1><br>
         <form>
           <div class="ddl1 text-center">
-            <img src="images/map.png" alt="Logo" width="50px" height="50px">
-			      <select class="form-control" id="sel1">
-					    <option selected disabled>Choose current location</option>
-					    <option value = "FASS">Arts and Social Sciences</option>
-					    <option value = "BIZ">Business</option>
-					    <option value = "COM">Computing</option>
-					    <option value = "DEN">Dentistry</option>
-			        <option value="SDE">Design and Environment</option>
-			        <option value="ENG">Engineering</option>
-	            <option value="GEN">General</option>
-			        <option value="MED">Medicine</option>
-			      	<option value="MUS">Music</option>
-			        <option value="SCI">Science</option>
-					  </select>
+            <img src="images/cal.png" alt="Logo" width="50px" height="50px">
+				    <div class='input-group date' id='datetimepicker1'>
+					    <input type='text' class="form-control" />
+				      <span class="input-group-addon">
+				        <span class="glyphicon glyphicon-calendar"></span>
+				      </span>
+				    </div>
           </div>
           <br>
 		      <div class="ddl1 text-center">
@@ -118,6 +111,10 @@
         $('#sidebar').addClass('active');
         $('.overlay').fadeIn();
         $('.collapse.in').toggleClass('in');
+      });
+
+	    $(function () { 
+        $('#datetimepicker3').datetimepicker({ format: 'LT' }); 
       });
     });
     </script>
