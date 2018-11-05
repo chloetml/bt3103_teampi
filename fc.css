@@ -199,6 +199,12 @@ h1 {
   text-align: center;
 }
 
+.fc1 {
+  width: 300px;
+  display: inline-block;
+  text-align: center;
+  margin-left: 30px;
+}
 #sel2 {
   display: inline-block;
   text-align: center;
@@ -211,6 +217,7 @@ h1 {
   margin-left: 30px;
   width: 350px;
 }
+
 .search-btn {
   width: 100px;
   /*display: block;
