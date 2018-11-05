@@ -205,7 +205,9 @@ h1 {
   margin: 0 20px 20px 20px;
   /*margin-left: 30px;*/
 }
-
+#dateicon {
+  width: 50px;
+}
 #sel2 {
   display: inline-block;
   text-align: center;
