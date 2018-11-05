@@ -199,6 +199,7 @@ h1 {
   text-align: center;
 }
 .input-group date,
+#datepicker,
 #sel2 {
   display: inline-block;
   text-align: center;
