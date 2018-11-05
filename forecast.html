@@ -64,7 +64,7 @@
         <form>
           <div class="ddl1 text-center">
             <img src="images/cal.png" alt="Logo" width="50px" height="50px">
-            <div id="datepicker" class="input-group date" data-date-format="dd-mm-yyyy">
+            <div id="datepicker" class="input-group date" data-date-format="dd-mm-yyyy" width="350px">
               <input class="form-control" type="text" readonly />
                 <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
             </div>
@@ -105,7 +105,6 @@
         autoclose: true, 
         startDate: '+1d',
         todayHighlight: true }).datepicker('update', new Date());
-	    $("#datepicker").datepicker("setDate", new Date());
     });
     $(document).ready(function () {
       $("#sidebar").mCustomScrollbar({
