@@ -191,14 +191,15 @@ a.logout {
 }
 
 .contain h1 {
-  color: #002060;
+  color: white;
 }
 
 .ddl1 img {
   display: inline-block;
   text-align: center;
 }
-.form-control {
+#datetimepicker1,
+#sel2 {
   display: inline-block;
   text-align: center;
   margin-left: 30px;
