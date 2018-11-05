@@ -13,7 +13,7 @@
 	<link rel="stylesheet" href="fc.css">
 	<!-- Scrollbar Custom CSS -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css"/>
 </head>
 
 <body>
@@ -70,6 +70,10 @@
 					      <span class="glyphicon glyphicon-th"></span>
 					    </div>
 					  </div>
+            <div id="datepicker" class="input-group date" data-date-format="dd-mm-yyyy">
+              <input class="form-control" type="text" readonly />
+                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+            </div>
           </div>
           <br>
 		      <div class="ddl1 text-center">
@@ -99,10 +103,15 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
   <script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
   <script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.4.0/lang/en-gb.js"></script>
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.0.0/js/bootstrap-datetimepicker.min.js"></script>
-  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
 
   <script type="text/javascript">
+    $(function () { 
+      $("#datepicker").datepicker({ 
+        autoclose: true, 
+        startDate: '+1d',
+        todayHighlight: true }).datepicker('update', new Date());
+    });
     $(document).ready(function () {
       $("#sidebar").mCustomScrollbar({
         theme: "minimal"
