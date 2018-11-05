@@ -205,15 +205,11 @@ h1 {
   margin-left: 30px;
   width: 350px;
 }
-.fc1 {
+#datepicker {
   display: inline-block;
   text-align: center;
   margin-left: 30px;
-  width: 300px;
-}
-.fcspan {
-  display: inline-block;
-  width: 50px;
+  width: 350px;
 }
 .search-btn {
   width: 100px;
