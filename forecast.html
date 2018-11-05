@@ -98,8 +98,12 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
   <script type="text/javascript">
     $(document).ready(function () {
-	    $('#datepicker1').datetimepicker({ 
-        format: 'mm/dd/yyyy', startDate: '+1d' }); 
+	    $(function () { 
+		    $('#datepicker1').datetimepicker({ 
+          format: 'mm/dd/yyyy', startDate: '+1d' 
+        });
+      });
+	    
       $("#sidebar").mCustomScrollbar({
         theme: "minimal"
       });
