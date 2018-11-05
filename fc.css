@@ -200,10 +200,14 @@ h1 {
 }
 
 .fc1 {
-  width: 300px;
+  width: 325px;
   display: inline-block;
   text-align: center;
   margin-left: 30px;
+}
+.fcspan {
+  display: inline-block;
+  width: 25px;
 }
 #sel2 {
   display: inline-block;
