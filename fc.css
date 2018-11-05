@@ -199,16 +199,11 @@ h1 {
   text-align: center;
 }
 
-.fc1 {
-  width: 325px;
-  display: inline-block;
-  text-align: center;
-  margin-left: 30px;
+#datepicker {
+  width: 180px;
+  margin: 0 20px 20px 20px;
 }
-.fcspan {
-  display: inline-block;
-  width: 50px;
-}
+
 #sel2 {
   display: inline-block;
   text-align: center;
