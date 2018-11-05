@@ -198,7 +198,7 @@ h1 {
   display: inline-block;
   text-align: center;
 }
-#dtp,
+.input-group date,
 #sel2 {
   display: inline-block;
   text-align: center;

@@ -63,12 +63,12 @@
         <form>
           <div class="ddl1 text-center">
             <img src="images/cal.png" alt="Logo" width="50px" height="50px">
-				    <div class="input-group date" id='datepicker1'>
-					    <input type='text' class="form-control" id="dtp"/>
-				      <span class="input-group-addon" id = "dtpspan">
-				        <span class="glyphicon glyphicon-calendar"></span>
-				      </span>
-				    </div>
+					  <div class="input-group date" data-provide="datepicker">
+						  <input type="text" class="form-control">
+					    <div class="input-group-addon">
+					      <span class="glyphicon glyphicon-th"></span>
+					    </div>
+					  </div>
           </div>
           <br>
 		      <div class="ddl1 text-center">
@@ -98,11 +98,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
   <script type="text/javascript">
     $(document).ready(function () {
-	    $(function () { 
-		    $('#datepicker1').datetimepicker({ 
-          format: 'mm/dd/yyyy', startDate: '+1d' 
-        });
-      });
+		  $('.datepicker').datepicker({ format: 'mm/dd/yyyy', startDate: '+1d' })
 	    
       $("#sidebar").mCustomScrollbar({
         theme: "minimal"
