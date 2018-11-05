@@ -191,7 +191,7 @@ a.logout {
 }
 
 .contain h1 {
-  color: white;
+  color: white !important;
 }
 
 .ddl1 img {
