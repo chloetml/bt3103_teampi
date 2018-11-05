@@ -200,7 +200,6 @@ h1 {
 }
 
 #datepicker {
-  display: inline-block;
   width: 350px;
   /*text-align: center;*/
   margin: 0 20px 20px 20px;
