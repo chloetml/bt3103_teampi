@@ -101,8 +101,6 @@
 
   <script type="text/javascript">
     $(document).ready(function () {
-		  $('.datepicker').datepicker({ format: 'mm/dd/yyyy', startDate: '+1d' })
-	    
       $("#sidebar").mCustomScrollbar({
         theme: "minimal"
       });
@@ -116,6 +114,9 @@
         $('#sidebar').addClass('active');
         $('.overlay').fadeIn();
         $('.collapse.in').toggleClass('in');
+      });
+	    $(function(){
+	      $('.datepicker').datepicker({ format: 'mm/dd/yyyy', startDate: '+1d' })
       });
     });
     </script>
