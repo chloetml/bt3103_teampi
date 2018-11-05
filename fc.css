@@ -200,8 +200,11 @@ h1 {
 }
 
 #datepicker {
-  width: 180px;
-  margin: 0 20px 20px 20px;
+  display: inline-block;
+  width: 350px;
+  text-align: center;
+  /*margin: 0 20px 20px 20px;*/
+  margin-left: 30px;
 }
 
 #sel2 {
