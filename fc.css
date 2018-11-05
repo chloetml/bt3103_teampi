@@ -190,8 +190,8 @@ a.logout {
   font-size: 20px;
 }
 
-.contain h1 {
-  color: white !important;
+h1 {
+  color: white;
 }
 
 .ddl1 img {
