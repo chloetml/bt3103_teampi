@@ -205,13 +205,13 @@ h1 {
   margin-left: 30px;
   width: 350px;
 }
-.form-control fc1 {
+.fc1 {
   display: inline-block;
   text-align: center;
   margin-left: 30px;
   width: 300px;
 }
-.input-group-addo fcspan {
+.fcspan {
   display: inline-block;
   width: 50px;
 }
