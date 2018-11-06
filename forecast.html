@@ -59,21 +59,25 @@
         </div>
       </nav>
 	    <div class="contain row text-center">
-				<img src="images/fc.png" alt="Logo" width = "250px" height = "250px"><br>
-        <h1 style="color:white;">Let's look into the Future!</h1><br>
+        <img src="images/fc.png" alt="Logo" width = "250px" height = "250px"><br>
+        <h1 style="color:white;">Let's look into the Future!
+            <img id="tooltip1" src="images/question.png" alt="Logo" width="30px" height="30px" data-toggle="tooltip" title="Select a future date and type of space you have in mind for us to analyse the estimated vacancy of spaces and crowd distribution"></h1>
+        <br>
         <form>
           <div class="ddl1 text-center">
-            <img src="images/cal.png" alt="Logo" width="50px" height="50px">
+            <img id = "calicon" src="images/cal.png" alt="Logo" width="40px" height="40px">
             <div id="datepicker" class="input-group date" data-date-format="dd-mm-yyyy">
-              <input class="form-control" type="text" readonly />
-                <span id="dateicon" class="input-group-addon">
-                  <i class="glyphicon glyphicon-calendar" ></i>
-                </span>
+               
+                    <input class="form-control dp" type="text" readonly />
+                    <span id="dateicon" class="input-group-addon">
+                        <i class="glyphicon glyphicon-calendar" ></i>
+                    </span>
+                
             </div>
           </div>
-          <br>
-		      <div class="ddl1 text-center">
-			      <img src="images/books.png" alt="Logo" width="50px" height="50px">
+          
+		      <div class="ddl2 text-center">
+			      <img src="images/books.png" alt="Logo" width="40px" height="40px">
 					  <select class="form-control" id="sel2">
 							<option selected disabled>Choose type of venue</option>
 						  <option value = "StudyRoom">Study Rooms</option>
@@ -81,9 +85,16 @@
 						</select>
 		      </div>
           <br>
-          <div class = "letsgo">
-		        <button onclick="window.location.href = '/bt3103_teampi/map.html'" type = "button" class="search-btn text-center">Let's Go</button>
+        <h1>Do you have in mind...</h1>
+        <br>
+          <div class = "location">
+		        <button onclick="window.location.href = '/bt3103_teampi/map.html'" type = "button" class="goto-btn text-center"><img src="images/map.png" alt="Logo" width="35px" height="35px"> A Location</button>
           </div>
+            <h2 id = "or">or</h2>
+            <div class = "time">
+		        <button onclick="window.location.href = '/bt3103_teampi/map.html'" type = "button" class="goto-btn text-center"><img src="images/clock.png" alt="Logo" width="35px" height="35px"> Time</button>
+          </div>
+        
         </form>
       </div>
     </div>
@@ -109,6 +120,7 @@
         todayHighlight: true }).datepicker('update', new Date());
     });
     $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
       $("#sidebar").mCustomScrollbar({
         theme: "minimal"
       });
