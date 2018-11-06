@@ -26,6 +26,7 @@ a:focus {
   background: none;
   border: none;
   border-radius: 0;
+    margin-bottom: -10px;
 }
 
 .navbar-btn {
@@ -190,24 +191,32 @@ a.logout {
   font-size: 20px;
 }
 
-h1 {
+h1,h2 {
   color: white;
 }
-
+.ddl1{
+    padding-bottom: 10px;
+}
 .ddl1 img {
   display: inline-block;
   text-align: center;
 }
-
-#datepicker {
-  width: 350px;
-  text-align: center;
+.ddl2 img {
   display: inline-block;
-  /*margin: 0 20px 20px 20px;*/
-  margin-left: 30px;
+  text-align: center;
 }
-#dateicon {
-  display: none;
+#datepicker{
+    display: inline-block;
+    text-align: center;
+    width:350px;
+    margin-left: 30px;
+}
+#datepicker span{
+    display: none;
+}
+
+#calicon{
+    margin-top: -25px;
 }
 #sel2 {
   display: inline-block;
@@ -215,24 +224,34 @@ h1 {
   margin-left: 30px;
   width: 350px;
 }
-
-.search-btn {
-  width: 100px;
+.goto-btn {
+  width: 200px;
   /*display: block;
   position: relative;
   */
   border-radius: 25px;
   /* border: 1px solid #3079ed; */
   border: 0px;
-  color: #fff;
+  color: #1F4E79;
   text-shadow: 0 1px rgba(0, 0, 0, 0.1);
-  background-color: #384e64;
+  background-color: #FFD966;
   padding: 10px 0px;
   font-family: arial;
   font-size: 16px;
   /* background-image: -webkit-gradient(linear, 0 0, 0 100%,
 			from(#4d90fe), to(#4787ed)); */
 }
-.letsgo {
+.location {
+    display: inline-block;
+  text-align: center;
+    padding-right: 20px;
+}
+.time {
+    display: inline-block;
+  text-align: center;
+    padding-left: 20px;
+}
+#or{
+    display: inline-block;
   text-align: center;
 }
