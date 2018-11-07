@@ -9,18 +9,20 @@ var forecastRef = db.ref("forecast");
 var user = db.ref("user");
 
 var app = new Vue({
-  el: "app",
+  el: "#app",
   data: {
+    counter: 0,
+    locations: ["Central Library", "Mac Commons", "Study Room 1"],
     hangouts: ""
   },
   methods: {
-    get: function() {
+    get: function () {
       var arr = [];
       user
         .child("0")
         .child("hangouts")
-        .once("value", function(openHangouts) {
-          openHangouts.forEach(function(openHangouts) {
+        .once("value", function (openHangouts) {
+          openHangouts.forEach(function (openHangouts) {
             var val = openHangouts.val();
             var temp = [openHangouts.key, openHangouts.val()];
             console.log(temp);
