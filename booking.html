@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<title>SpaceCzar</title>
+	<!-- Bootstrap CSS CDN -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<!-- Our Custom CSS -->
+	<link rel="stylesheet" href="bk.css">
+	<!-- Scrollbar Custom CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-timepicker/0.5.2/css/bootstrap-timepicker.css" rel="stylesheet" type="text/css"/>
+ </head>
+
+<body>
+	<div class="wrapper">
+		<!-- Sidebar Holder -->
+		<nav id="sidebar">
+			<div id="dismiss">
+				<i class="glyphicon glyphicon-arrow-left"></i>
+      </div>
+      <div class="sidebar-header">
+          <h3>Menu</h3>
+      </div>
+      <ul class="list-unstyled components">
+        <li>
+		      <a href="/bt3103_teampi/home.html">Home</a>
+        </li>
+        <li>
+		      <a href="/bt3103_teampi/realtime.html">Real Time Mode</a>
+        </li>
+        <li>
+          <a href="/bt3103_teampi/forecast.html">Forecast Mode</a>
+        </li>
+        <li class="active">
+          <a href="/bt3103_teampi/booking.html">Booking</a>
+        </li>
+      </ul>
+
+      <ul class="list-unstyled CTAs">
+        <li><a href="/bt3103_teampi/index.html" class="logout">Sign Out</a></li>
+      </ul>
+    </nav>
+
+    <!-- Page Content Holder -->
+    <div id="content">
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+              <i class="glyphicon glyphicon-align-left"></i>
+                <span id="btn-text">Menu</span>
+            </button>
+          </div>
+        </div>
+      </nav>
+	    <div class="contain row text-center">
+				<img src="images/bk.png" alt="Logo" width = "300px" height = "300px"><br>
+        <h1>Tell us more about your upcoming event</h1><br>
+        <form>
+          <div class="ddl1 text-center">
+            <img id = "calicon" src="images/cal.png" alt="Logo" width="40px" height="40px">
+            <div id="datepicker" class="input-group date" data-date-format="dd-mm-yyyy">
+               
+                    <input class="form-control dp" type="text" readonly />
+                    <span id="dateicon" class="input-group-addon">
+                        <i class="glyphicon glyphicon-calendar" ></i>
+                    </span>
+                
+            </div>
+          </div>
+		      <div class="ddl1 text-center">
+			      <img src="images/books.png" alt="Logo" width="40px" height="40px">
+					  <select class="form-control" id="sel2">
+							<option selected disabled>Choose type of venue</option>
+						  <option value = "StudyRoom">Study Rooms</option>
+              <option value="StudyRoom">Discussion Rooms</option>
+						</select>
+		      </div>
+            <div class="ddl1 text-center">
+                <img id="clock" src="images/clock.png" alt="Logo" width="40px" height="40px">
+                <div id="timepicker" class="input-group bootstrap-timepicker">
+                    <input id ="tp" type="text" class="form-control input-small">
+                    <span class="input-group-addon"><i id="ti" class="glyphicon glyphicon-time"></i></span>
+                </div>
+            </div>
+          <br>
+          <div class = "letsgo">
+		        <button onclick="window.location.href = '/bt3103_teampi/map.html'" type = "button" class="search-btn text-center">Let's Go</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  
+  <div class="overlay"></div>
+
+
+  <!-- jQuery CDN -->
+  <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+  <!-- Bootstrap Js CDN -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- jQuery Custom Scroller CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.4.0/lang/en-gb.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-timepicker/0.5.2/js/bootstrap-timepicker.js"></script>
+
+  <script type="text/javascript">
+    $(function () { 
+      $("#datepicker").datepicker({ 
+        autoclose: true, 
+        startDate: '+0d',
+        todayHighlight: true }).datepicker('update', new Date());
+    });
+    $(function (){
+       $('#tp').focus(function (){
+        $('#tp').timepicker('showWidget');
+       });
+    });
+    $(document).ready(function () {
+        
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#dismiss, .overlay').on('click', function () {
+        $('#sidebar').removeClass('active');
+          $('.overlay').fadeOut();
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar').addClass('active');
+        $('.overlay').fadeIn();
+        $('.collapse.in').toggleClass('in');
+      });
+    });
+    </script>
+  </body>
+</html>
