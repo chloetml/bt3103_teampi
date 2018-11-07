@@ -121,6 +121,7 @@
     $(function (){
        $('#tp').focus(function (){
         $('#tp').timepicker('showWidget');
+		    $('#tp').timepicker({ minuteStep: 60 });
        });
     });
     $(document).ready(function () {
