@@ -11,11 +11,25 @@ var user = db.ref("user");
 var app = new Vue({
   el: "app",
   data: {
-    hangouts: [["Jan", 4], ["Feb", 2], ["Mar", 10], ["Apr", 5], ["May", 3]]
+    hangouts: ""
   },
   methods: {
-    printData: function() {
-      console.log(this.hangouts);
+    get: function() {
+      var arr = [];
+      user
+        .child("0")
+        .child("hangouts")
+        .once("value", function(openHangouts) {
+          openHangouts.forEach(function(openHangouts) {
+            var val = openHangouts.val();
+            var temp = [openHangouts.key, openHangouts.val()];
+            console.log(temp);
+            arr.push([openHangouts.key, openHangouts.val()]);
+          });
+          console.log(arr);
+        });
+      this.hangouts = arr;
+      return arr;
     }
   }
 });
