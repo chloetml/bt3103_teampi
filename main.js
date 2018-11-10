@@ -14,8 +14,7 @@ var app = new Vue({
     counter: 0,
     locations: ["Central Library", "Mac Commons", "Study Room 1"],
     hangouts: "",
-    users: "",
-    currUser: "",
+    currUserRef: "",
     userName: "",
     userPassword: ""
   },
@@ -40,28 +39,19 @@ var app = new Vue({
     verifyUserNP: function() {
       var id = this.userName;
       var pw = this.userPassword;
-      var userArr = [];
+      //var userArr = [];
       user.once("value", function(userSnapshot) {
         userSnapshot.forEach(function(userSnapshot) {
           var userID = userSnapshot.child("id").val();
           var pass = userSnapshot.child("password").val();
-          var userIP = [userID, pass];
-          //console.log(userIP);
-          userArr.push(userIP);
+          if (userID === id && pass === pw) {
+            console.log(userSnapshot.val());
+            this.currUserRef = userSnapshot.val();
+            window.location.href = "/bt3103_teampi/home.html";
+          }
         });
         //console.log(userArr);
       });
-      this.users = userArr;
-      console.log(this.users.child("0"));
-      //console.log(this.users[0][0] === id);
-      //console.log(this.users[0][1] === pw);
-      for (var i = 0; i < this.users.length; i++) {
-        // This if statement depends on the format of your array
-        if (this.users[i][0] === id && this.users[i][1] === pw) {
-          this.currUser = id;
-          window.location.href = "/bt3103_teampi/home.html";
-        }
-      }
       alert("Wrong User ID or password. Please try again.");
     }
   }
