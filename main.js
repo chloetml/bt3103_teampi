@@ -52,8 +52,8 @@ var app = new Vue({
         //console.log(userArr);
       });
       this.users = userArr;
-      console.log(this.users[0][0]);
-      console.log(this.users[0][1]);
+      console.log(this.users[0][0] === id);
+      console.log(this.users[0][1] === pw);
       for (var i = 0; i < this.users.length; i++) {
         // This if statement depends on the format of your array
         if (this.users[i][0] === id && this.users[i][1] === pw) {
