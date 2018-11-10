@@ -49,15 +49,15 @@ var app = new Vue({
             contains = 1;
             console.log(userSnapshot.ref());
             console.log(contains);
-            if (contains === 1) {
-              window.location.href = "/bt3103_teampi/home.html";
-            }
             //this.currUserRef = userSnapshot.key;
-          } else {
-            alert("Wrong User ID or password. Please try again.");
           }
         });
         //console.log(userArr);
+        if (contains === 1) {
+          window.location.href = "/bt3103_teampi/home.html";
+        } else {
+          alert("Wrong User ID or password. Please try again.");
+        }
       });
     }
   }
