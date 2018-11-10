@@ -52,7 +52,7 @@ var app = new Vue({
         //console.log(userArr);
       });
       this.users = userArr;
-      console.log(this.users);
+      console.log(this.users.child("0"));
       //console.log(this.users[0][0] === id);
       //console.log(this.users[0][1] === pw);
       for (var i = 0; i < this.users.length; i++) {
