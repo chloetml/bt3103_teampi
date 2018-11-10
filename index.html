@@ -1,200 +1,222 @@
 <html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+      body,
+      html {
+        height: 100%;
+        margin: 0;
+      }
 
-<head>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+      img {
+        max-width: 100%;
+      }
 
-	</script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
+      /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+      .row.content {
+        padding-top: 50px;
+        height: 100%;
+      }
 
-	</script>
-	<style>
-		body,
-		html {
-			height: 100%;
-			margin: 0;
-		}
+      .caption {
+        width: 550px;
+        padding-left: 30px;
+        font-size: 20px;
+      }
 
-		img {
-			max-width: 100%;
-		}
+      .loginbox {
+        padding: 15px;
+        margin-top: 80px;
+        border-radius: 25px;
+        background: #d7edf9;
+        width: 300px;
+        height: 300px;
+        opacity: 0.9;
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+      }
 
-		/* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-		.row.content {
-			padding-top: 50px;
-			height: 100%;
-		}
+      .loginbox h1 {
+        text-align: center;
+        font-size: 30px;
+        font-family: arial;
+      }
 
-		.caption {
-			width: 550px;
-			padding-left: 30px;
-			font-size: 20px;
-		}
+      .loginbox input[type="text"],
+      input[type="password"] {
+        height: 44px;
+        font-size: 16px;
+        width: 100%;
+        margin-bottom: 10px;
+        -webkit-appearance: none;
+        background: #fff;
+        border: 1px solid #d9d9d9;
+        border-top: 1px solid #c0c0c0;
+        /* border-radius: 2px; */
+        padding: 0 8px;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+      }
 
-		.loginbox {
-			padding: 15px;
-			margin-top: 80px;
-			border-radius: 25px;
-			background: #D7EDF9;
-			width: 300px;
-			height: 300px;
-			opacity: 0.9;
-			box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-		}
+      .loginbox input[type="text"]:hover,
+      input[type="password"]:hover {
+        border: 1px solid #b9b9b9;
+        border-top: 1px solid #a0a0a0;
+        -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+        -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+      }
 
-		.loginbox h1 {
-			text-align: center;
-			font-size: 30px;
-			font-family: arial;
-		}
-
-
-		.loginbox input[type=text],
-		input[type=password] {
-			height: 44px;
-			font-size: 16px;
-			width: 100%;
-			margin-bottom: 10px;
-			-webkit-appearance: none;
-			background: #fff;
-			border: 1px solid #d9d9d9;
-			border-top: 1px solid #c0c0c0;
-			/* border-radius: 2px; */
-			padding: 0 8px;
-			box-sizing: border-box;
-			-moz-box-sizing: border-box;
-		}
-
-		.loginbox input[type=text]:hover,
-		input[type=password]:hover {
-			border: 1px solid #b9b9b9;
-			border-top: 1px solid #a0a0a0;
-			-moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-			-webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-			box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-		}
-
-		.loginbox-submit {
-			width: 100%;
-			display: block;
-			margin-bottom: 10px;
-			position: relative;
-			/* border: 1px solid #3079ed; */
-			border: 0px;
-			color: #fff;
-			text-shadow: 0 1px rgba(0, 0, 0, 0.1);
-			background-color: #4d90fe;
-			padding: 17px 0px;
-			font-family: arial;
-			font-size: 16px;
-			/* background-image: -webkit-gradient(linear, 0 0, 0 100%,
+      .loginbox-submit {
+        width: 100%;
+        display: block;
+        margin-bottom: 10px;
+        position: relative;
+        /* border: 1px solid #3079ed; */
+        border: 0px;
+        color: #fff;
+        text-shadow: 0 1px rgba(0, 0, 0, 0.1);
+        background-color: #4d90fe;
+        padding: 17px 0px;
+        font-family: arial;
+        font-size: 16px;
+        /* background-image: -webkit-gradient(linear, 0 0, 0 100%,
 			from(#4d90fe), to(#4787ed)); */
-		}
+      }
 
-		.loginbox-submit:hover {
-			width: 100%;
-			display: block;
-			margin-bottom: 10px;
-			position: relative;
-			/* border: 1px solid #2f5bb7; */
-			border: 0px;
-			text-shadow: 0 1px rgba(0, 0, 0, 0.3);
-			background-color: #357ae8;
-			/* background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#4d90fe),
+      .loginbox-submit:hover {
+        width: 100%;
+        display: block;
+        margin-bottom: 10px;
+        position: relative;
+        /* border: 1px solid #2f5bb7; */
+        border: 0px;
+        text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+        background-color: #357ae8;
+        /* background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#4d90fe),
 			to(#357ae8)); */
-		}
+      }
 
-		#app {
-			/* The image used */
-			background-image: url("images/bg.png");
+      #app {
+        /* The image used */
+        background-image: url("images/bg.png");
 
-			/* Full height */
-			height: 100%;
+        /* Full height */
+        height: 100%;
 
-			/* Center and scale the image nicely */
-			background-position: center;
-			background-repeat: no-repeat;
-			background-size: cover;
-		}
-	</style>
-	<title>SpaceCzar</title>
-</head>
+        /* Center and scale the image nicely */
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+    </style>
+    <title>SpaceCzar</title>
+  </head>
 
-<body>
-	<div id="app">
-		<div class="container-fluid text-center">
-			<div class="row content">
-				<div class="col-sm-1"></div>
-				<div class="col-sm-11 text-left">
-					<div class="row">
-						<div class="col-sm-7">
-							<img src="images/logo.png" alt="Logo" width="530px" height="30%">
-							<p class="caption">
-								All about spaces, faces and aces. Secure those aces without fretting for spaces. Light up faces with those aces.
-							</p>
-						</div>
-						<div class="col-sm-4">
-							<div class="loginbox">
-								<h1>Sign In</h1><br>
-								<form>
-									<input id = "userName" type="text" placeholder="User ID">
-									<input id = "userPassword" type = "password" placeholder = "Password">
-									<button onclick="window.location.href = '/bt3103_teampi/home.html'" type = "button" class="loginbox-submit">Login</button>
-								</form>
-							</div>
-							<div class="alert alert-danger fade in" id = "error" style="display:none">
-								<a href="#" class="close" data-dismiss="alert">&times;</a>
-								<strong>Error!</strong> A problem has occurred logging in. Please try again.
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-  </div>
-<!-- 
-<script src="https://unpkg.com/vue"></script>
+  <body>
+    <script src="https://unpkg.com/vue"></script>
+    <script src="https://gstatic.com/firebasejs/4.2.0/firebase.js"></script>
+    <script src="https://unpkg.com/vuefire/dist/vuefire.js"></script>
+    <script src="./main.js" type="module"></script>
+    <script src="https://unpkg.com/chart.js@2.7.2/dist/Chart.bundle.js"></script>
+    <script src="https://unpkg.com/vue-chartkick@0.4.0"></script>
+    <div id="app">
+      <div class="container-fluid text-center">
+        <div class="row content">
+          <div class="col-sm-1"></div>
+          <div class="col-sm-11 text-left">
+            <div class="row">
+              <div class="col-sm-7">
+                <img
+                  src="images/logo.png"
+                  alt="Logo"
+                  width="530px"
+                  height="30%"
+                />
+                <p class="caption">
+                  All about spaces, faces and aces. Secure those aces without
+                  fretting for spaces. Light up faces with those aces.
+                </p>
+              </div>
+              <div class="col-sm-4">
+                <div class="loginbox">
+                  <h1>Sign In</h1>
+                  <br />
+                  <form>
+                    <input id="userName" type="text" placeholder="User ID" />
+                    <input
+                      id="userPassword"
+                      type="password"
+                      placeholder="Password"
+                    />
+                    <button
+                      @click="verifyUserNP(document.getElementById('userName').value, document.getElementById('userPassword').value"
+                      type="button"
+                      class="loginbox-submit"
+                    >
+                      Login
+                    </button>
+                  </form>
+                </div>
+                <div
+                  class="alert alert-danger fade in"
+                  id="error"
+                  style="display:none"
+                >
+                  <a href="#" class="close" data-dismiss="alert">&times;</a>
+                  <strong>Error!</strong> A problem has occurred logging in.
+                  Please try again.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--
+      <script src="https://unpkg.com/vue"></script>
 
-<script>
-	
-	var app = new Vue({
-		/*
-      el:"#app",
-      data: {
-      	user: [["e0191630", "pw123"], ["e0191631", "hi"]],
-       //databaseUrl: 'https://bt3103-ctml.firebaseio.com/temp2.json'
-      },
-			 methods:{
-				
-				isItemInArray: function(array, item) { 
-					 for (var i = 0; i < array.length; i++) { // This if statement depends on the format of your array 
-					 	if (array[i][0]==item[0] && array[i][1]==item[1]) { 
-							 return true; // Found it 
-							 } 
-						} return false; // Not found
-				 },
-				 
-				 verifyUser: function(id, pw){ 
-					 
-					 var isUser = isItemInArray(this.user, [id,pw]);
-					 // if userid is -1, means the user id is invalid
-					 if (isUser == false){
-							document.getElementById('error').style.display = "true";
-					 	}else{
-							// link to next page
-							window.location = home.html;
-						}
-						
-			 		}
-			 } */
-  }) 
-</script>
--->
-</body>
+      <script>
+
+      	var app = new Vue({
+      		/*
+            el:"#app",
+            data: {
+            	user: [["e0191630", "pw123"], ["e0191631", "hi"]],
+             //databaseUrl: 'https://bt3103-ctml.firebaseio.com/temp2.json'
+            },
+      			 methods:{
+
+      				isItemInArray: function(array, item) {
+      					 for (var i = 0; i < array.length; i++) { // This if statement depends on the format of your array
+      					 	if (array[i][0]==item[0] && array[i][1]==item[1]) {
+      							 return true; // Found it
+      							 }
+      						} return false; // Not found
+      				 },
+
+      				 verifyUser: function(id, pw){
+
+      					 var isUser = isItemInArray(this.user, [id,pw]);
+      					 // if userid is -1, means the user id is invalid
+      					 if (isUser == false){
+      							document.getElementById('error').style.display = "true";
+      					 	}else{
+      							// link to next page
+      							window.location = home.html;
+      						}
+
+      			 		}
+      			 } */
+        })
+      </script>
+    -->
+  </body>
 </html>
 
-<script src="https://unpkg.com/vue"></script>
-<script src="https://gstatic.com/firebasejs/4.2.0/firebase.js"></script>
-<script src="https://unpkg.com/vuefire/dist/vuefire.js"></script>
-<script src="./main.js" type="module"></script>
+
