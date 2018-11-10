@@ -148,14 +148,18 @@
                   <h1>Sign In</h1>
                   <br />
                   <form>
-                    <input id="userName" type="text" placeholder="User ID" />
                     <input
-                      id="userPassword"
+                      v-model="userName"
+                      type="text"
+                      placeholder="User ID"
+                    />
+                    <input
+                      v-model="userPassword"
                       type="password"
                       placeholder="Password"
                     />
                     <button
-                      @click="verifyUserNP(document.getElementById('userName').value, document.getElementById('userPassword').value)"
+                      @click="verifyUserNP(userName, userPassword)"
                       type="button"
                       class="loginbox-submit"
                     >
@@ -218,5 +222,3 @@
     -->
   </body>
 </html>
-
-
