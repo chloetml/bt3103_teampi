@@ -40,6 +40,8 @@ var app = new Vue({
     verifyUserNP: function() {
       var id = this.userName;
       var pw = this.userPassword;
+      console.log(id);
+      console.log(pw);
       var userArr = [];
       user.once("value", function(userSnapshot) {
         userSnapshot.forEach(function(userSnapshot) {
@@ -54,8 +56,6 @@ var app = new Vue({
       this.users = userArr;
       for (var i = 0; i < this.users.length; i++) {
         // This if statement depends on the format of your array
-        console.log(id);
-        console.log(pw);
         if (this.users[i][0] === id && this.users[i][1] === pw) {
           this.currUser = id;
           window.location.href = "/bt3103_teampi/home.html";
