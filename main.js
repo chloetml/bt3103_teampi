@@ -47,12 +47,13 @@ var app = new Vue({
           var pass = userSnapshot.child("password").val();
           if (userID === id && pass === pw) {
             contains = 1;
-            console.log(userSnapshot.id);
+            console.log(userSnapshot.ref);
             //this.currUserRef = userSnapshot.key;
           }
         });
         //console.log(userArr);
       });
+      console.log(contains);
       if (contains === 1) {
         window.location.href = "/bt3103_teampi/home.html";
       } else {
