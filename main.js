@@ -37,6 +37,7 @@ var app = new Vue({
       return arr;
     },
     verifyUserNP: function() {
+      var contains = 0;
       var id = this.userName;
       var pw = this.userPassword;
       //var userArr = [];
@@ -45,14 +46,18 @@ var app = new Vue({
           var userID = userSnapshot.child("id").val();
           var pass = userSnapshot.child("password").val();
           if (userID === id && pass === pw) {
-            //console.log(userSnapshot.key);
+            contains = 1;
+            console.log(userSnapshot.id);
             //this.currUserRef = userSnapshot.key;
-            window.location.href = "/bt3103_teampi/home.html";
           }
         });
         //console.log(userArr);
       });
-      alert("Wrong User ID or password. Please try again.");
+      if (contains === 1) {
+        window.location.href = "/bt3103_teampi/home.html";
+      } else {
+        alert("Wrong User ID or password. Please try again.");
+      }
     }
   }
 });
