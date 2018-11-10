@@ -45,8 +45,8 @@ var app = new Vue({
           var userID = userSnapshot.child("id").val();
           var pass = userSnapshot.child("password").val();
           if (userID === id && pass === pw) {
-            console.log(userSnapshot.key);
-            this.currUserRef = userSnapshot.key;
+            //console.log(userSnapshot.key);
+            //this.currUserRef = userSnapshot.key;
             window.location.href = "/bt3103_teampi/home.html";
           }
         });
