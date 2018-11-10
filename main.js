@@ -46,7 +46,7 @@ var app = new Vue({
           var userID = userSnapshot.child("id").val();
           var pass = userSnapshot.child("password").val();
           if (userID === id && pass === pw) {
-            contains = 1;
+            this.contains = 1;
             console.log(userSnapshot.ref);
             //this.currUserRef = userSnapshot.key;
           }
