@@ -15,16 +15,17 @@ var app = new Vue({
     locations: ["Central Library", "Mac Commons", "Study Room 1"],
     hangouts: "",
     users: "",
-    currUser: ""
+    userName: "",
+    userPassword: ""
   },
   methods: {
-    get: function () {
+    get: function() {
       var arr = [];
       user
         .child("0")
         .child("hangouts")
-        .once("value", function (openHangouts) {
-          openHangouts.forEach(function (openHangouts) {
+        .once("value", function(openHangouts) {
+          openHangouts.forEach(function(openHangouts) {
             var val = openHangouts.val();
             var temp = [openHangouts.key, openHangouts.val()];
             console.log(temp);
@@ -35,7 +36,9 @@ var app = new Vue({
       this.hangouts = arr;
       return arr;
     },
-    verifyUserNP: function(id, pw) {
+    verifyUserNP: function() {
+      var id = this.userName;
+      var pw = this.userPassword;
       var userArr = [];
       user.once("value", function(userSnapshot) {
         userSnapshot.forEach(function(userSnapshot) {
