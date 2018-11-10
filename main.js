@@ -40,8 +40,6 @@ var app = new Vue({
     verifyUserNP: function() {
       var id = this.userName;
       var pw = this.userPassword;
-      console.log(id);
-      console.log(pw);
       var userArr = [];
       user.once("value", function(userSnapshot) {
         userSnapshot.forEach(function(userSnapshot) {
@@ -54,6 +52,8 @@ var app = new Vue({
         //console.log(userArr);
       });
       this.users = userArr;
+      console.log(this.users[0][0]);
+      console.log(this.users[0][1]);
       for (var i = 0; i < this.users.length; i++) {
         // This if statement depends on the format of your array
         if (this.users[i][0] === id && this.users[i][1] === pw) {
