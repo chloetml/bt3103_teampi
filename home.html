@@ -163,35 +163,7 @@
       </div>
     </div>
 	</div>
-	<!--
-	<script>
-		/*
-		var app = new Vue({
-	    el: "#app",
-		 	data: { 
-				 hangouts: [["Computing", 4], ["Engineering", 2], ["Science", 2]],
-				 databaseUrl: 'https://space-czar.firebaseio.com/'
-			 }
-		})
-		*/
-		 var db = firebase.initializeApp({ 
-			 databaseURL: 'https://space-czar.firebaseio.com/' })
-			 .database() 
-			var userRef = db.ref('user')
-			new Vue({ 
-				el: '#app',
-				data: { 
-					hangouts: [["Computing", 10], ["Engineering", 2], ["Science", 2]]
-				}, 
-				firebase: { 
-					hangs: { 
-						source: db.ref('user'),
-						// optionally bind as an object 
-						//asObject: true
-				}}
-			})
-	</script>
-	-->
+
 </body>
 	
 </html>
