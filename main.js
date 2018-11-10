@@ -15,6 +15,7 @@ var app = new Vue({
     locations: ["Central Library", "Mac Commons", "Study Room 1"],
     hangouts: "",
     users: "",
+    currUser: "",
     userName: "",
     userPassword: ""
   },
@@ -45,14 +46,16 @@ var app = new Vue({
           var userID = userSnapshot.child("id").val();
           var pass = userSnapshot.child("password").val();
           var userIP = [userID, pass];
-          console.log(userIP);
+          //console.log(userIP);
           userArr.push(userIP);
         });
-        console.log(userArr);
+        //console.log(userArr);
       });
       this.users = userArr;
       for (var i = 0; i < this.users.length; i++) {
         // This if statement depends on the format of your array
+        console.log(id);
+        console.log(pw);
         if (this.users[i][0] === id && this.users[i][1] === pw) {
           this.currUser = id;
           window.location.href = "/bt3103_teampi/home.html";
