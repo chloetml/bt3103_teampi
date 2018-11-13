@@ -85,6 +85,7 @@ var app = new Vue({
       var pw = this.userPassword;
       var name;
       var fac;
+      var currRef;
       //var userArr = [];
       user.once("value", function(userSnapshot) {
         userSnapshot.forEach(function(userSnapshot) {
@@ -95,24 +96,22 @@ var app = new Vue({
             contains = 1;
             //console.log(userSnapshot.ref());
             console.log(contains);
-            ref.currUserRef = userSnapshot.key;
+            currRef = userSnapshot.key;
             name = userSnapshot.child("name").val();
             fac = userSnapshot.child("faculty").val();
           }
         });
-        console.log(name);
-        console.log(fac);
-        ref.studName = name;
-        ref.faculty = ref.evalFac(fac);
-        console.log(ref.studName);
-        console.log(ref.faculty);
-        //console.log(userArr);
-        if (contains === 1) {
-          window.location.href = "/bt3103_teampi/home.html";
-        } else {
-          alert("Wrong User ID or password. Please try again.");
-        }
+        //console.log(name);
+        //console.log(fac);
       });
+      this.studName = name;
+      this.faculty = this.evalFac(fac);
+      this.currUserRef = currRef;
+      if (contains === 1) {
+        window.location.href = "/bt3103_teampi/home.html";
+      } else {
+        alert("Wrong User ID or password. Please try again.");
+      }
     }
   }
 });
