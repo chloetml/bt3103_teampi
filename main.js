@@ -79,6 +79,7 @@ var app = new Vue({
     },
 
     verifyUserNP: function() {
+      var ref = this;
       var contains = 0;
       var id = this.userName;
       var pw = this.userPassword;
@@ -94,15 +95,15 @@ var app = new Vue({
             contains = 1;
             //console.log(userSnapshot.ref());
             console.log(contains);
-            this.currUserRef = userSnapshot.key;
+            ref.currUserRef = userSnapshot.key;
             name = userSnapshot.child("name").val();
             fac = userSnapshot.child("faculty").val();
           }
         });
         console.log(name);
         console.log(fac);
-        this.studName = name;
-        this.fac = this.evalFac(fac);
+        ref.studName = name;
+        ref.fac = ref.evalFac(fac);
         //console.log(userArr);
         if (contains === 1) {
           window.location.href = "/bt3103_teampi/home.html";
