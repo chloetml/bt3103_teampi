@@ -103,13 +103,15 @@ var app = new Vue({
             console.log(fac);
             //console.log(ref.studName);
             ref.studName = name;
+            console.log(ref.studName);
             ref.faculty = ref.evalFac(fac);
             ref.currUserRef = currRef;
           }
         });
 
         if (contains === 1) {
-          window.location.href = "/bt3103_teampi/home.html";
+          alert("Success");
+          //window.location.href = "/bt3103_teampi/home.html";
         } else {
           alert("Wrong User ID or password. Please try again.");
         }
