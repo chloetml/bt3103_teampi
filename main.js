@@ -99,13 +99,14 @@ var app = new Vue({
             currRef = userSnapshot.key;
             name = userSnapshot.child("name").val();
             fac = userSnapshot.child("faculty").val();
+            console.log(name);
+            console.log(fac);
+            this.studName = name;
+            this.faculty = this.evalFac(fac);
+            this.currUserRef = currRef;
           }
         });
-        //console.log(name);
-        //console.log(fac);
-        this.studName = name;
-        this.faculty = this.evalFac(fac);
-        this.currUserRef = currRef;
+
         if (contains === 1) {
           window.location.href = "/bt3103_teampi/home.html";
         } else {
