@@ -77,15 +77,13 @@ var app = new Vue({
       }
       return text;
     },
-    /*
-      array(['BIZ', 'FoE', 'FASS', 'FoS', 'SDE', 'SCALE', 'NUS', 'SMA', 'MDP',
-          'NUSMed', 'ISS', 'RMI', 'FoL', 'SoC', 'SPP', 'NGS', 'FoD', 'SPH',
-          'MUS', 'YNC', 'DUKE MS', 'TLIAP', 'TDSI'], dtype=object)
-    */
+
     verifyUserNP: function() {
       var contains = 0;
       var id = this.userName;
       var pw = this.userPassword;
+      var name;
+      var fac;
       //var userArr = [];
       user.once("value", function(userSnapshot) {
         userSnapshot.forEach(function(userSnapshot) {
@@ -97,8 +95,10 @@ var app = new Vue({
             //console.log(userSnapshot.ref());
             console.log(contains);
             //this.currUserRef = userSnapshot.key;
-            this.studName = userSnapshot.child("name").val();
-            this.faculty = this.evalFac(userSnapshot.child("faculty").val());
+            name = userSnapshot.child("name").val();
+            fac = this.evalFac(userSnapshot.child("faculty").val());
+            this.studName = name;
+            this.faculty = fac;
           }
         });
         //console.log(userArr);
