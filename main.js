@@ -94,15 +94,15 @@ var app = new Vue({
             contains = 1;
             //console.log(userSnapshot.ref());
             console.log(contains);
-            //this.currUserRef = userSnapshot.key;
+            this.currUserRef = userSnapshot.key;
             name = userSnapshot.child("name").val();
             fac = userSnapshot.child("faculty").val();
           }
         });
         console.log(name);
         console.log(fac);
-        //this.studName = name;
-        //this.fac = this.evalFac(fac);
+        this.studName = name;
+        this.fac = this.evalFac(fac);
         //console.log(userArr);
         if (contains === 1) {
           window.location.href = "/bt3103_teampi/home.html";
