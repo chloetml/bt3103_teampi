@@ -14,11 +14,11 @@ var app = new Vue({
     counter: 0,
     locations: ["Central Library", "Mac Commons", "Study Room 1"],
     hangouts: "",
-    currUserRef: "",
+    currUserRef: "ref here",
     userName: "",
     userPassword: "",
-    studName: "",
-    faculty: ""
+    studName: "name here",
+    faculty: "faculty here"
   },
   methods: {
     get: function() {
@@ -101,9 +101,10 @@ var app = new Vue({
             fac = userSnapshot.child("faculty").val();
             console.log(name);
             console.log(fac);
-            this.studName = name;
-            this.faculty = this.evalFac(fac);
-            this.currUserRef = currRef;
+            console.log(ref.studName);
+            //this.studName = name;
+            //this.faculty = this.evalFac(fac);
+            //this.currUserRef = currRef;
           }
         });
 
