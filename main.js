@@ -96,7 +96,7 @@ var app = new Vue({
             console.log(contains);
             //this.currUserRef = userSnapshot.key;
             name = userSnapshot.child("name").val();
-            fac = this.evalFac(userSnapshot.child("faculty").val());
+            fac = evalFac(userSnapshot.child("faculty").val());
             this.studName = name;
             this.faculty = fac;
           }
