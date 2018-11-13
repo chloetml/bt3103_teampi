@@ -99,8 +99,10 @@ var app = new Vue({
             fac = userSnapshot.child("faculty").val();
           }
         });
-        this.studName = name;
-        this.fac = this.evalFac(fac);
+        console.log(name);
+        console.log(fac);
+        //this.studName = name;
+        //this.fac = this.evalFac(fac);
         //console.log(userArr);
         if (contains === 1) {
           window.location.href = "/bt3103_teampi/home.html";
