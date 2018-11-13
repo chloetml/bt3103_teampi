@@ -17,8 +17,8 @@ var app = new Vue({
     currUserRef: "",
     userName: "",
     userPassword: "",
-    studName: "name",
-    faculty: "faculty"
+    studName: "",
+    faculty: ""
   },
   methods: {
     get: function() {
@@ -38,7 +38,8 @@ var app = new Vue({
       this.hangouts = arr;
       return arr;
     },
-    evalFac: function(fac) { // function to evaluate faculty value
+    evalFac: function(fac) {
+      // function to evaluate faculty value
       var text = "";
       switch (fac) {
         case "BIZ":
@@ -96,8 +97,8 @@ var app = new Vue({
             //console.log(userSnapshot.ref());
             console.log(contains);
             //this.currUserRef = userSnapshot.key;
-          this.studName = userSnapshot.child("name").val();
-          this.faculty = this.evalFac(userSnapshot.child("faculty").val());
+            this.studName = userSnapshot.child("name").val();
+            this.faculty = this.evalFac(userSnapshot.child("faculty").val());
           }
         });
         //console.log(userArr);
