@@ -101,10 +101,10 @@ var app = new Vue({
             fac = userSnapshot.child("faculty").val();
             console.log(name);
             console.log(fac);
-            console.log(ref.studName);
-            //this.studName = name;
-            //this.faculty = this.evalFac(fac);
-            //this.currUserRef = currRef;
+            //console.log(ref.studName);
+            ref.studName = name;
+            ref.faculty = ref.evalFac(fac);
+            ref.currUserRef = currRef;
           }
         });
 
