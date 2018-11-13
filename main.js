@@ -111,7 +111,14 @@ var app = new Vue({
 
         if (contains === 1) {
           alert("Success");
-          //window.location.href = "/bt3103_teampi/home.html";
+          window.location.href =
+            "/bt3103_teampi/home.html?name=" +
+            name +
+            "&fac=" +
+            fac +
+            "&cr=" +
+            currRef +
+            "";
         } else {
           alert("Wrong User ID or password. Please try again.");
         }
