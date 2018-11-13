@@ -103,7 +103,9 @@ var app = new Vue({
         console.log(name);
         console.log(fac);
         ref.studName = name;
-        ref.fac = ref.evalFac(fac);
+        ref.faculty = ref.evalFac(fac);
+        console.log(ref.studName);
+        console.log(ref.faculty);
         //console.log(userArr);
         if (contains === 1) {
           window.location.href = "/bt3103_teampi/home.html";
