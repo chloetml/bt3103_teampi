@@ -63,9 +63,9 @@ var app = new Vue({
             console.log(name);
             console.log(fac);
             //console.log(ref.studName);
-            ref.studName = name;
+            //ref.studName = name;
             //console.log(ref.studName);
-            ref.faculty = ref.evalFac(fac);
+            //ref.faculty = ref.evalFac(fac);
             ref.currUserRef = currRef;
           }
         });
