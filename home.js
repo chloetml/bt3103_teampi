@@ -24,18 +24,15 @@ var app = new Vue({
     var url_string = window.location.href;
     var url = new URL(url_string);
     var cr = url.searchParams.get("currRef");
+    var name, fac;
     console.log(cr);
     this.currUserRef = cr;
-    this.studName = user
-      .child(cr)
-      .child("name")
-      .val();
-    this.faculty = this.evalFac(
-      user
-        .child(cr)
-        .child("faculty")
-        .val()
-    );
+    user.child(cr).once("value", function(userSnapshot) {
+      name = userSnapshot.child("name").val();
+      fac = userSnapshot.child("faculty").val();
+    });
+    this.studName = name;
+    this.faculty = this.evalFac(fac);
   },
   methods: {
     get: function() {
