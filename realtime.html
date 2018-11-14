@@ -138,25 +138,24 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 
     <script src="./realtime.js" type="module"></script>
-    <!--
-      <script>
-        $(document).ready(function() {
-          $("#sidebar").mCustomScrollbar({
-            theme: "minimal"
-          });
 
-          $("#dismiss, .overlay").on("click", function() {
-            $("#sidebar").removeClass("active");
-            $(".overlay").fadeOut();
-          });
-
-          $("#sidebarCollapse").on("click", function() {
-            $("#sidebar").addClass("active");
-            $(".overlay").fadeIn();
-            $(".collapse.in").toggleClass("in");
-          });
+    <script>
+      $(document).ready(function() {
+        $("#sidebar").mCustomScrollbar({
+          theme: "minimal"
         });
-      </script>
-    -->
+
+        $("#dismiss, .overlay").on("click", function() {
+          $("#sidebar").removeClass("active");
+          $(".overlay").fadeOut();
+        });
+
+        $("#sidebarCollapse").on("click", function() {
+          $("#sidebar").addClass("active");
+          $(".overlay").fadeIn();
+          $(".collapse.in").toggleClass("in");
+        });
+      });
+    </script>
   </body>
 </html>

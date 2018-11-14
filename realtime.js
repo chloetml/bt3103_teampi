@@ -48,10 +48,10 @@ var app = new Vue({
       var currRef = this.currUserRef;
       var currentLoc = this.currLoc;
       var venueType = this.venueType;
+      console.log(venueType);
       if (venueType === "" || currentLoc === "") {
         alert("Please select an input.");
       } else {
-        console.log(venueType);
         if (venueType === "Study Rooms") {
           window.location.href =
             "/bt3103_teampi/mapSR.html?currentLoc=" +
