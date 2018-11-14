@@ -18,7 +18,8 @@ var app = new Vue({
     date: "",
     venueType: "",
     time: "",
-    bookings: "" // places that are available to show on html so user can choose which location they want
+    bookings: "", // places that are available to show on html so user can choose which location they want
+    regionLoc: ""
   },
   mounted: function() {
     var ref = this;
@@ -262,6 +263,41 @@ var app = new Vue({
             .child(bdate)
             .update({ [btime]: region + " " + bloc + " " + temp['free'] });
         });
+    },
+    // takes in the location and returns the region loc is in
+    getRegionfromLoc: function (location) {
+      //return new Promise(function(resolve, reject){
+      var location = "Central Library";
+      var self = this;
+      //var final;
+      realtimeRef.once("value", function (snapshot) {
+        var obj = snapshot.val();
+        var reg = Object.keys(obj);
+        //console.log(reg);
+        var theOne;
+        reg.forEach(function (reg) {
+          var obj = snapshot.child(reg).val();
+          //console.log(obj);
+          //var loc = Object.keys(obj);
+          //console.log(obj.hasOwnProperty(location));
+          if (obj.hasOwnProperty(location)) {
+            //console.log("THIS IS THE ONE "+region);
+            theOne = reg;
+            //self.region = region;
+            //console.log(this.region);
+            //return region;
+          }
+        });
+        //console.log(theOne);
+        self.regionLoc = theOne;
+        //final = theOne
+        //console.log(final);
+        //console.log(self.region);
+        return theOne;
+      });
+      //console.log(final.key);
+      //})
+
     },
   }
 });
