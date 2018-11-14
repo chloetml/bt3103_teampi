@@ -27,7 +27,11 @@ var app = new Vue({
     console.log(cr);
     this.currUserRef = cr;
     $("#datepicker")
-      .datepicker()
+      .datepicker({
+        autoclose: true,
+        startDate: "+0d",
+        todayHighlight: true
+      })
       .on("changeDate", () => {
         this.date = $("#datepicker").val();
       });
