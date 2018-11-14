@@ -30,6 +30,8 @@ var app = new Vue({
     user.child(cr).once("value", function(userSnapshot) {
       name = userSnapshot.child("name").val();
       fac = userSnapshot.child("faculty").val();
+      console.log(name);
+      console.log(fac);
     });
     this.studName = name;
     this.faculty = this.evalFac(fac);
