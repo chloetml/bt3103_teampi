@@ -8,6 +8,7 @@ var realtimeRef = db.ref("realtime");
 var forecastRef = db.ref("forecast");
 var bookingsRef = db.ref("bookings");
 var user = db.ref("user");
+var $ = require("jquery");
 
 var app = new Vue({
   el: "#app",
@@ -32,6 +33,7 @@ var app = new Vue({
         startDate: "+0d",
         todayHighlight: true
       })
+      .datepicker("update", new Date())
       .on("changeDate", () => {
         this.date = $("#datepicker").val();
       });
