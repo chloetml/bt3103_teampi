@@ -21,6 +21,7 @@ var app = new Vue({
     faculty: "faculty here"
   },
   mounted: function() {
+    var ref = this;
     var url_string = window.location.href;
     var url = new URL(url_string);
     var cr = url.searchParams.get("currRef");
@@ -32,9 +33,9 @@ var app = new Vue({
       fac = userSnapshot.child("faculty").val();
       console.log(name);
       console.log(fac);
+      ref.studName = name;
+      ref.faculty = ref.evalFac(fac);
     });
-    this.studName = name;
-    this.faculty = this.evalFac(fac);
   },
   methods: {
     get: function() {
