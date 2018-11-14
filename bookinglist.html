@@ -33,6 +33,14 @@
         color: #ffc107;
         font-weight: bold;
       }
+      .list-group {
+        padding-left: 100px;
+        padding-right: 100px;
+      }
+      #bk {
+        color: red;
+        font-weight: bold;
+      }
     </style>
   </head>
 
@@ -86,9 +94,17 @@
               <span id="hl">discussion rooms</span> available.
             </h1>
             <br />
-			    <div class="list-group">
-            <div v-for="booking in bookings" class="list-group-item list-group-item-action">{{ booking }}</li>
-          </div>
+            <div class="list-group">
+              <div
+                v-for="booking in bookings"
+                class="list-group-item list-group-item-action"
+              >
+                <h2>{{booking[location]}}:</h2>
+                <p>
+                  <span id="bk">{{booking[available]}}</span> rooms available
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
