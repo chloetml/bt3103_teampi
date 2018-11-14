@@ -27,10 +27,6 @@ var app = new Vue({
     var cr = url.searchParams.get("currRef");
     console.log(cr);
     this.currUserRef = cr;
-    $("#datepicker").on("change", function() {
-      var selected = $(this).val();
-      alert(selected);
-    });
   },
   methods: {
     goRT: function() {
@@ -55,9 +51,10 @@ var app = new Vue({
     goSearch: function() {
       var currRef = this.currUserRef;
 
-      var date = this.date;
+      var date = $("#datepicker").datepicker("getDate");
       var time = this.time;
       var venueType = this.venueType;
+      console.log(date);
       console.log(venueType);
       if (venueType === "") {
         alert("Please select a type of venue.");
