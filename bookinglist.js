@@ -25,8 +25,14 @@ var app = new Vue({
     var url_string = window.location.href;
     var url = new URL(url_string);
     var cr = url.searchParams.get("currRef");
+    var time = url.searchParams.get("time");
+    var date = url.searchParams.get("date");
     console.log(cr);
     this.currUserRef = cr;
+    this.date = date;
+    this.time = time;
+    this.bookingsAvail(date, time); //call the function to update bookings node
+    console.log(this.bookings);
   },
   methods: {
     goRT: function() {
@@ -127,9 +133,9 @@ var app = new Vue({
       //var userDate = "13112018";
       //var userTime = "1400";
       var arr = [];
-      bookingsRef.once("value", function (openBookings) {
+      bookingsRef.once("value", function(openBookings) {
         // gets the region
-        openBookings.forEach(function (openBookings) {
+        openBookings.forEach(function(openBookings) {
           console.log(openBookings.val()); //Object {Central Library: Object}
           var obj = openBookings.val();
           var key = Object.keys(obj);
@@ -144,7 +150,7 @@ var app = new Vue({
           var roomKey = Object.keys(rooms);
           //console.log(roomKey); //["DR1", "DR2"]
           // loop through each discussion room
-          roomKey.forEach(function (room) {
+          roomKey.forEach(function(room) {
             var currDate = openBookings
               .child(key)
               .child(room)
@@ -152,7 +158,7 @@ var app = new Vue({
             var storedDate = Object.keys(currDate);
             //console.log(storedDate); //["15112018"]
             // loop through each date
-            storedDate.forEach(function (day) {
+            storedDate.forEach(function(day) {
               var currTime = openBookings
                 .child(key)
                 .child(room)
@@ -173,7 +179,7 @@ var app = new Vue({
                   location = loc;
                 } */
                 // to use if each hour is stored, those without bookings are stored as ""
-                currTimeKey.forEach(function (time) {
+                currTimeKey.forEach(function(time) {
                   if (time == userTime) {
                     var value = openBookings
                       .child(key)
@@ -186,14 +192,14 @@ var app = new Vue({
                     if (value == "") {
                       tempCount += 1;
                       location = key;
-                      console.log("the key: " + key)
+                      console.log("the key: " + key);
                     }
                   }
                 });
               }
             });
           });
-          if (location != '') {
+          if (location != "") {
             temp.location = location[0];
             temp.available = tempCount;
             arr.push(temp);
@@ -202,7 +208,7 @@ var app = new Vue({
       });
       //});
       this.bookings = arr;
-    },
+    }
   }
 });
 

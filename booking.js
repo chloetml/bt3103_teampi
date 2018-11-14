@@ -78,20 +78,16 @@ var app = new Vue({
       var d = date.getDate(); //1 to 31
       var m = date.getMonth() + 1; //1 to 12
       var y = date.getFullYear();
-      console.log(d);
-      console.log(m);
-      console.log(y);
-      if (0 < d < 10) {
+      if (d < 10) {
         dS = "0" + d;
-        console.log(dS);
       } else if (d > 9) {
-        dS = d;
+        dS = "" + d;
         console.log(dS);
       }
       if (0 < m < 10) {
         mS = "0" + m;
       } else if (m > 9) {
-        mS = m;
+        mS = "" + m;
       }
       formattedDate = dS + mS + y;
       return formattedDate;
@@ -114,16 +110,14 @@ var app = new Vue({
         if (venueType === "DiscRoom") {
           console.log(stringDate);
           console.log(time);
-          /*
           window.location.href =
-            "/bt3103_teampi/mapDR.html?date=" +
-            date +
+            "/bt3103_teampi/bookinglist.html?date=" +
+            stringDate +
             "&currRef=" +
             currRef +
             "&time=" +
             time +
             "";
-            */
         }
       }
     }
