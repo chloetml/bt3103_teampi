@@ -8,7 +8,7 @@ var realtimeRef = db.ref("realtime");
 var forecastRef = db.ref("forecast");
 var bookingsRef = db.ref("bookings");
 var user = db.ref("user");
-var $ = require("jquery");
+//var $ = require("jquery");
 
 var app = new Vue({
   el: "#app",
@@ -27,16 +27,10 @@ var app = new Vue({
     var cr = url.searchParams.get("currRef");
     console.log(cr);
     this.currUserRef = cr;
-    $("#datepicker")
-      .datepicker({
-        autoclose: true,
-        startDate: "+0d",
-        todayHighlight: true
-      })
-      .datepicker("update", new Date())
-      .on("changeDate", () => {
-        this.date = $("#datepicker").val();
-      });
+    $("#datepicker").on("change", function() {
+      var selected = $(this).val();
+      alert(selected);
+    });
   },
   methods: {
     goRT: function() {
@@ -60,6 +54,7 @@ var app = new Vue({
     },
     goSearch: function() {
       var currRef = this.currUserRef;
+
       var date = this.date;
       var time = this.time;
       var venueType = this.venueType;
