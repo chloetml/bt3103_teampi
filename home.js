@@ -25,6 +25,17 @@ var app = new Vue({
     var url = new URL(url_string);
     var cr = url.searchParams.get("currRef");
     console.log(cr);
+    this.currUserRef = cr;
+    this.studName = user
+      .child(cr)
+      .child("name")
+      .val();
+    this.faculty = this.evalFac(
+      user
+        .child(cr)
+        .child("faculty")
+        .val()
+    );
   },
   methods: {
     get: function() {
@@ -43,6 +54,45 @@ var app = new Vue({
         });
       this.hangouts = arr;
       return arr;
+    },
+    evalFac: function(fac) {
+      // function to evaluate faculty value
+      var text = "";
+      switch (fac) {
+        case "BIZ":
+          text = "School of Business";
+          break;
+        case "FoE":
+          text = "Faculty of Engineering";
+          break;
+        case "FASS":
+          text = "Faculty of Arts & Social Sciences";
+          break;
+        case "FoS":
+          text = "Faculty of Science";
+          break;
+        case "SDE":
+          text = "School of Design & Environment";
+          break;
+        case "NUSMed":
+          text = "School of Medicine";
+          break;
+        case "SoC":
+          text = "School of Computing";
+          break;
+        case "SPP":
+          text = "School of Public Policy";
+          break;
+        case "FoD":
+          text = "Faculty of Dentistry";
+          break;
+        case "MUS":
+          text = "Yong Siew Toh Conservatory of Music";
+          break;
+        default:
+          text = "Faculty";
+      }
+      return text;
     }
   }
 });
