@@ -57,6 +57,7 @@ var app = new Vue({
         //morning time: 9AM -11AM
         if (hour === 9) {
           h = "0" + hour;
+          time = h + "00";
         } else {
           // hour can be 10 or 11
           time = hour + "00";

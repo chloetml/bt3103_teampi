@@ -198,6 +198,8 @@
               $("#tp").timepicker("setTime", "9:00 AM");
             } else if (mer == "PM" && m > 600) {
               $("#tp").timepicker("setTime", "10:00 PM");
+            } else if (mer == "PM" && m == 720) {
+              $("#tp").timepicker("setTime", "12:00 PM");
             }
           });
       });
