@@ -23,11 +23,7 @@ var app = new Vue({
   mounted: function() {
     var url_string = window.location.href;
     var url = new URL(url_string);
-    var name = url.searchParams.get("name");
-    var fac = url.searchParams.get("fac");
-    var cr = url.searchParams.get("cr");
-    console.log(name);
-    console.log(fac);
+    var cr = url.searchParams.get("currRef");
     console.log(cr);
   },
   methods: {
