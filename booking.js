@@ -51,12 +51,12 @@ var app = new Vue({
     formatTime: function(hour, merid) {
       //formatting time to 24h format
       var hNum;
-      var h = "0";
-      var time = "";
+      var h;
+      var time;
       if (merid === "AM") {
         //morning time: 9AM -11AM
         if (hour === 9) {
-          h = h + hour;
+          h = "0" + hour;
         } else {
           // hour can be 10 or 11
           time = hour + "00";
@@ -80,12 +80,12 @@ var app = new Vue({
       if (0 < d < 10) {
         dS = "0" + d;
       } else if (d > 9) {
-        dS = "" + d;
+        dS = d;
       }
       if (0 < m < 10) {
         mS = "0" + m;
       } else if (m > 9) {
-        mS = "" + m;
+        mS = m;
       }
       formattedDate = dS + mS + y;
       return formattedDate;
