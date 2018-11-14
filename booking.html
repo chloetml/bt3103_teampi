@@ -31,6 +31,7 @@
   </head>
 
   <body>
+    <script src="moment.js"></script>
     <script src="https://unpkg.com/vue"></script>
     <script src="https://gstatic.com/firebasejs/4.2.0/firebase.js"></script>
     <script src="https://unpkg.com/vuefire/dist/vuefire.js"></script>
@@ -184,12 +185,23 @@
         $("#tp").focus(function() {
           $("#tp").timepicker("showWidget");
         });
-        $("#tp").timepicker({
-          minTime: '9:00am'
-          maxTime: '10:00pm'
-          minuteStep: 60
-        });
+        $("#tp")
+          .timepicker({
+            minuteStep: 60
+          })
+          .on("changeTime.timepicker", function(e) {
+            var h = e.time.hours;
+            var m = e.time.minutes;
+            var mer = e.time.meridian; //convert hours into minutes
+            m += h * 60; //9:00 = 9h*60m + 0m = 540 min; 10:00 = 10h*60m = 600m
+            if (mer == "AM" && m < 540) {
+              $("#tp").timepicker("setTime", "9:00 AM");
+            } else if (mer == "PM" && m > 600) {
+              $("#tp").timepicker("setTime", "10:00 PM");
+            }
+          });
       });
+
       $(document).ready(function() {
         $("#sidebar").mCustomScrollbar({
           theme: "minimal"

@@ -50,17 +50,20 @@ var app = new Vue({
     },
     goSearch: function() {
       var currRef = this.currUserRef;
-
       var date = $("#datepicker").datepicker("getDate");
-      var time = this.time;
+      var hours = $("#tp").data("timepicker").hour;
+      console.log(hours);
+      var meridian = $("#tp").data("timepicker").meridian;
       var venueType = this.venueType;
       console.log(date);
       console.log(venueType);
+      var m = moment(date);
+      var stringDate = m.format("DDMMYYYY");
       if (venueType === "") {
         alert("Please select a type of venue.");
       } else {
         if (venueType === "DiscRoom") {
-          console.log(date);
+          console.log(stringDate);
           console.log(time);
           /*
           window.location.href =
