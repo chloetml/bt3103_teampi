@@ -208,7 +208,61 @@ var app = new Vue({
       });
       //});
       this.bookings = arr;
-    }
+    },
+    // to be used when user makes a booking
+    // takes in the user, date, time, location of booking
+    makeBooking: function (bdate, btime, bloc) {
+      var bdate = "15112018";
+      var btime = "1400";
+      var bloc = "Central Library";
+      var bregion = this.regionLoc; // gets region from getRegionfromLoc function
+      var self = this;
+      //console.log(this.regionLoc);
+      var availRoom = [];
+      var temp = {};
+      // retrieve available room from bloc
+      bookingsRef
+        .child(bregion)
+        .child(bloc)
+        .once("value", function (snapshot) {
+          var obj = snapshot.val();
+          var rooms = Object.keys(obj);
+          rooms.forEach(function (something) {
+            var user = snapshot
+              .child(something)
+              .child(bdate)
+              .child(btime)
+              .val();
+            //console.log(something); // returns the loc node
+            // post to bookings node if room is free at that time
+            if (user === "") {
+              //availRoom.push(something);
+              temp.free = something;
+              //console.log(availRoom);
+              bookingsRef
+                .child(bregion)
+                .child(bloc)
+                .child(something)
+                .child(bdate)
+                .update({
+                  [btime]: "" // get userID and put here
+                  //this.userName
+                });
+            }
+          });
+          availRoom.push(temp);
+          self.myBookings = availRoom; //{ "free": "DR1" }
+          //console.log(self.myBookings); // [Object]
+          // get region for booking
+          var region = self.getRegionCode(bregion);
+          // post to user node
+          userRef
+            .child("0")
+            .child("bookings")
+            .child(bdate)
+            .update({ [btime]: region + " " + bloc + " " + temp['free'] });
+        });
+    },
   }
 });
 
