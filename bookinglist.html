@@ -86,9 +86,8 @@
               <span id="hl">discussion rooms</span> available.
             </h1>
             <br />
-            <ul>
-              <li v-for="booking in bookings">{{ booking }}</li>
-            </ul>
+            <div v-for="booking in bookings" class="list-group-item list-group-item-action">{{ booking }}</li>
+            
           </div>
         </div>
       </div>
