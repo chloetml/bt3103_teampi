@@ -26,6 +26,11 @@ var app = new Vue({
     var cr = url.searchParams.get("currRef");
     console.log(cr);
     this.currUserRef = cr;
+    $("#datepicker")
+      .datepicker()
+      .on("changeDate", () => {
+        this.date = $("#datepicker").val();
+      });
   },
   methods: {
     goRT: function() {
