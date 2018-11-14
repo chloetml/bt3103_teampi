@@ -113,6 +113,17 @@ var app = new Vue({
       }
       return text;
     },
+    // increments number of hangouts in region by 1
+    addHangouts(region) {
+      //var region = "General";
+      user.child('0').child('hangouts').once('value', function (hosnapshot) {
+        var x = hosnapshot.child(region).val();
+        console.log(x);
+        x++;
+        console.log(x);
+        user.child('0').child('hangouts').update({ [region]: x });
+      });
+    },
     // retrieve user's bookings data and store it as dictionary for display on html
     displayBookings() {
       const self = this;
