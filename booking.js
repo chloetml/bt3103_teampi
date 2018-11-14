@@ -84,7 +84,7 @@ var app = new Vue({
         dS = "" + d;
         console.log(dS);
       }
-      if (0 < m < 10) {
+      if (m < 10) {
         mS = "0" + m;
       } else if (m > 9) {
         mS = "" + m;
