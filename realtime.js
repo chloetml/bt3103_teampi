@@ -50,21 +50,22 @@ var app = new Vue({
       var venueType = this.venueType;
       if (venueType === "" || currentLoc === "") {
         alert("Please select an input.");
-      }
-      if (venueType === "Study Rooms") {
-        window.location.href =
-          "/bt3103_teampi/mapSR.html?currentLoc=" +
-          currentLoc +
-          "&currRef=" +
-          currRef +
-          "";
-      } else if (venueType === "Discussion Rooms") {
-        window.location.href =
-          "/bt3103_teampi/mapDR.html?currentLoc=" +
-          currentLoc +
-          "&currRef=" +
-          currRef +
-          "";
+      } else {
+        if (venueType === "Study Rooms") {
+          window.location.href =
+            "/bt3103_teampi/mapSR.html?currentLoc=" +
+            currentLoc +
+            "&currRef=" +
+            currRef +
+            "";
+        } else if (venueType === "Discussion Rooms") {
+          window.location.href =
+            "/bt3103_teampi/mapDR.html?currentLoc=" +
+            currentLoc +
+            "&currRef=" +
+            currRef +
+            "";
+        }
       }
     }
   }

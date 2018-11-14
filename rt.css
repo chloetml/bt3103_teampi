@@ -169,6 +169,9 @@ ul.CTAs a {
 a.logout {
   background: #fff;
   color: #a75826;
+  padding: 10px;
+  font-size: 1.1em;
+  display: block;
 }
 
 /* ---------------------------------------------------

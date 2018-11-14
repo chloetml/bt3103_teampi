@@ -26,7 +26,7 @@ a:focus {
   background: none;
   border: none;
   border-radius: 0;
-    margin-bottom: -10px;
+  margin-bottom: -10px;
 }
 
 .navbar-btn {
@@ -121,13 +121,13 @@ a:focus {
   padding: 10px;
 }
 
-#sidebar ul li a {
+#sidebar ul li {
   padding: 10px;
   font-size: 1.1em;
   display: block;
 }
 
-#sidebar ul li a:hover {
+#sidebar ul li :hover {
   color: #1d344f;
   background: #fff;
 }
@@ -170,6 +170,9 @@ ul.CTAs a {
 a.logout {
   background: #fff;
   color: #1d344f;
+  padding: 10px;
+  font-size: 1.1em;
+  display: block;
 }
 
 /* ---------------------------------------------------
@@ -191,11 +194,12 @@ a.logout {
   font-size: 20px;
 }
 
-h1,h2 {
+h1,
+h2 {
   color: white;
 }
-.ddl1{
-    padding-bottom: 10px;
+.ddl1 {
+  padding-bottom: 10px;
 }
 .ddl1 img {
   display: inline-block;
@@ -205,18 +209,18 @@ h1,h2 {
   display: inline-block;
   text-align: center;
 }
-#datepicker{
-    display: inline-block;
-    text-align: center;
-    width:350px;
-    margin-left: 30px;
+#datepicker {
+  display: inline-block;
+  text-align: center;
+  width: 350px;
+  margin-left: 30px;
 }
-#datepicker span{
-    display: none;
+#datepicker span {
+  display: none;
 }
 
-#calicon{
-    margin-top: -25px;
+#calicon {
+  margin-top: -25px;
 }
 #sel2 {
   display: inline-block;
@@ -232,9 +236,9 @@ h1,h2 {
   border-radius: 25px;
   /* border: 1px solid #3079ed; */
   border: 0px;
-  color: #1F4E79;
+  color: #1f4e79;
   text-shadow: 0 1px rgba(0, 0, 0, 0.1);
-  background-color: #FFD966;
+  background-color: #ffd966;
   padding: 10px 0px;
   font-family: arial;
   font-size: 16px;
@@ -242,16 +246,16 @@ h1,h2 {
 			from(#4d90fe), to(#4787ed)); */
 }
 .location {
-    display: inline-block;
+  display: inline-block;
   text-align: center;
-    padding-right: 20px;
+  padding-right: 20px;
 }
 .time {
-    display: inline-block;
+  display: inline-block;
   text-align: center;
-    padding-left: 20px;
+  padding-left: 20px;
 }
-#or{
-    display: inline-block;
+#or {
+  display: inline-block;
   text-align: center;
 }
