@@ -111,7 +111,7 @@
           <div class="left col-md-6">
             <div class="row">
               <div class="col-md-4">
-                <img src="images/profile.png" alt="Logo" width="200px" />
+                <img src="images/user.png" alt="Logo" width="200px" />
               </div>
               <div class="col-md-8">
                 <h1 id="name">{{studName}}</h1>
@@ -171,64 +171,35 @@
           </div>
           <div class="right col-md-6">
             <div class="features row">
-              <a href="/bt3103_teampi/realtime.html"
-                ><img
-                  src="images/rt.png"
-                  alt="Logo"
-                  width="500px"
-                  height="200px"
-              /></a>
+              <img
+                src="images/rt.png"
+                alt="Logo"
+                width="500px"
+                height="200px"
+                onclick="goRT()"
+              />
             </div>
             <div class="features row">
-              <a href="/bt3103_teampi/forecast.html"
-                ><img
-                  src="images/forecast.png"
-                  alt="Logo"
-                  width="500px"
-                  height="200px"
-              /></a>
+              <img
+                src="images/forecast.png"
+                alt="Logo"
+                width="500px"
+                height="200px"
+                onclick="goFC()"
+              />
             </div>
             <div class="features row">
-              <a href="/bt3103_teampi/booking.html"
-                ><img
-                  src="images/booking.png"
-                  alt="Logo"
-                  width="500px"
-                  height="200px"
-              /></a>
+              <img
+                src="images/booking.png"
+                alt="Logo"
+                width="500px"
+                height="200px"
+                onclick="goBK()"
+              />
             </div>
           </div>
         </div>
       </div>
     </div>
-    <!--
-      <script>
-      	/*
-      	var app = new Vue({
-          el: "#app",
-      	 	data: {
-      			 hangouts: [["Computing", 4], ["Engineering", 2], ["Science", 2]],
-      			 databaseUrl: 'https://space-czar.firebaseio.com/'
-      		 }
-      	})
-      	*/
-      	 var db = firebase.initializeApp({
-      		 databaseURL: 'https://space-czar.firebaseio.com/' })
-      		 .database()
-      		var userRef = db.ref('user')
-      		new Vue({
-      			el: '#app',
-      			data: {
-      				hangouts: [["Computing", 10], ["Engineering", 2], ["Science", 2]]
-      			},
-      			firebase: {
-      				hangs: {
-      					source: db.ref('user'),
-      					// optionally bind as an object
-      					//asObject: true
-      			}}
-      		})
-      </script>
-    -->
   </body>
 </html>

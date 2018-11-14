@@ -21,24 +21,6 @@ var app = new Vue({
     faculty: "faculty here"
   },
   methods: {
-    get: function() {
-      var arr = [];
-      user
-        .child("0")
-        .child("hangouts")
-        .once("value", function(openHangouts) {
-          openHangouts.forEach(function(openHangouts) {
-            var val = openHangouts.val();
-            var temp = [openHangouts.key, openHangouts.val()];
-            console.log(temp);
-            arr.push([openHangouts.key, openHangouts.val()]);
-          });
-          console.log(arr);
-        });
-      this.hangouts = arr;
-      return arr;
-    },
-
     verifyUserNP: function() {
       var ref = this;
       var contains = 0;
