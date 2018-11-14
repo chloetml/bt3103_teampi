@@ -184,7 +184,11 @@
         $("#tp").focus(function() {
           $("#tp").timepicker("showWidget");
         });
-        $("#tp").timepicker({ minuteStep: 60 });
+        $("#tp").timepicker({
+          minTime: '9:00am'
+          maxTime: '10:00pm'
+          minuteStep: 60
+        });
       });
       $(document).ready(function() {
         $("#sidebar").mCustomScrollbar({
