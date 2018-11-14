@@ -20,7 +20,7 @@ var app = new Vue({
     userPassword: "",
     studName: "name here",
     faculty: "faculty here",
-    myBookings: "
+    myBookings: ""
   },
   mounted: function() {
     var ref = this;
@@ -116,13 +116,19 @@ var app = new Vue({
     // increments number of hangouts in region by 1
     addHangouts(region) {
       //var region = "General";
-      user.child('0').child('hangouts').once('value', function (hosnapshot) {
-        var x = hosnapshot.child(region).val();
-        console.log(x);
-        x++;
-        console.log(x);
-        user.child('0').child('hangouts').update({ [region]: x });
-      });
+      user
+        .child("0")
+        .child("hangouts")
+        .once("value", function(hosnapshot) {
+          var x = hosnapshot.child(region).val();
+          console.log(x);
+          x++;
+          console.log(x);
+          user
+            .child("0")
+            .child("hangouts")
+            .update({ [region]: x });
+        });
     },
     // retrieve user's bookings data and store it as dictionary for display on html
     displayBookings() {
@@ -132,12 +138,17 @@ var app = new Vue({
       user
         .child(this.currUserRef)
         .child("bookings")
-        .once("value", function (openBookings) {
-          openBookings.forEach(function (openBookings) {
+        .once("value", function(openBookings) {
+          openBookings.forEach(function(openBookings) {
             // openBookings is the date
             var date = openBookings.key;
             //console.log(date); //16112018
-            var formatted = date.slice(2, 4) + "/" + date.slice(0, 2) + "/" + date.slice(4, 8);
+            var formatted =
+              date.slice(2, 4) +
+              "/" +
+              date.slice(0, 2) +
+              "/" +
+              date.slice(4, 8);
             var formatted = new Date(formatted);
             var now = new Date();
             now.setHours(0, 0, 0, 0);
@@ -147,7 +158,7 @@ var app = new Vue({
               var loc = [];
               var obj = openBookings.val();
               var keys = Object.keys(obj);
-              keys.forEach(function (time) {
+              keys.forEach(function(time) {
                 var place = openBookings.child(time).val();
                 var region = place.slice(0, 3);
                 loc.push(region);
@@ -159,15 +170,15 @@ var app = new Vue({
               //console.log(obj); //Object {1300-1400: "COM1 DR4"}
               var keys = Object.keys(obj);
               //console.log(keys) // array of timings
-              keys.forEach(function (time) {
+              keys.forEach(function(time) {
                 //console.log(time); // 1300-1400
-                var temp = {}
+                var temp = {};
                 var place = openBookings.child(time).val();
                 //console.log(place); // location of booking
                 temp.date = date;
                 temp.time = time;
                 temp.location = place;
-                arr.push(temp)
+                arr.push(temp);
               });
             }
           });
@@ -176,19 +187,23 @@ var app = new Vue({
           var passedKeys = Object.keys(passed);
           //console.log("yo: "+passedKeys);
 
-          passedKeys.forEach(function (pastDate) {
-            var code = passed[pastDate]
+          passedKeys.forEach(function(pastDate) {
+            var code = passed[pastDate];
             //console.log(passed[pastDate]);
-            code.forEach(function (regCode) {
+            code.forEach(function(regCode) {
               var reg = self.getRegionfromBooking(regCode);
               self.addHangouts(reg); // add to hangouts
             });
             // remove from bookings node
-            user.child(this.currUserRef).child('bookings').child(pastDate).remove();
+            user
+              .child(this.currUserRef)
+              .child("bookings")
+              .child(pastDate)
+              .remove();
           });
         });
       this.myBookings = arr;
       return arr;
-    },
+    }
   }
 });
