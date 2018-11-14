@@ -51,6 +51,7 @@ var app = new Vue({
       if (venueType === "" || currentLoc === "") {
         alert("Please select an input.");
       } else {
+        console.log(venueType);
         if (venueType === "Study Rooms") {
           window.location.href =
             "/bt3103_teampi/mapSR.html?currentLoc=" +
