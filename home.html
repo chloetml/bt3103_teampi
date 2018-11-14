@@ -95,6 +95,9 @@
         margin-top: -10px;
         font-size: 20px;
       }
+      .clickable {
+        cursor: pointer;
+      }
     </style>
   </head>
 
@@ -171,7 +174,7 @@
           </div>
           <div class="right col-md-6">
             <div class="features row">
-              <div @click="goRT">
+              <div class="clickable" @click="goRT">
                 <img
                   src="images/rt.png"
                   alt="Logo"
@@ -181,7 +184,7 @@
               </div>
             </div>
             <div class="features row">
-              <div @click="goFC">
+              <div class="clickable" @click="goFC">
                 <img
                   src="images/forecast.png"
                   alt="Logo"
@@ -191,7 +194,7 @@
               </div>
             </div>
             <div class="features row">
-              <div @click="goBK">
+              <div class="clickable" @click="goBK">
                 <img
                   src="images/booking.png"
                   alt="Logo"
