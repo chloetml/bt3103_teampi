@@ -38,10 +38,26 @@ var app = new Vue({
     });
   },
   methods: {
+    goRT: function() {
+      var currRef = this.currUserRef;
+      window.location.href =
+        "/bt3103_teampi/realtime.html?currRef=" + currRef + "";
+    },
+    goFC: function() {
+      var currRef = this.currUserRef;
+      window.location.href =
+        "/bt3103_teampi/forecast.html?currRef=" + currRef + "";
+    },
+    goBK: function() {
+      var currRef = this.currUserRef;
+      window.location.href =
+        "/bt3103_teampi/booking.html?currRef=" + currRef + "";
+    },
     get: function() {
+      var currRef = this.currUserRef;
       var arr = [];
       user
-        .child("0")
+        .child(currRef)
         .child("hangouts")
         .once("value", function(openHangouts) {
           openHangouts.forEach(function(openHangouts) {

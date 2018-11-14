@@ -13,15 +13,50 @@
 	<link rel="stylesheet" href="rt.css">
 	<!-- Scrollbar Custom CSS -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+	<style>
+		.right h1 {
+			color: #C55A11;
+			padding-top: 150px;
+			padding-bottom: 30px;
+			text-align: center;
+		}
+
+		.right p {
+			font-size: 30px;
+			padding-bottom: 60px;
+			text-align: center;
+		}
+
+		#rec {
+			color: #1F4E79;
+			font-weight: bold;
+			text-align: center;
+		}
+
+		#hl {
+			color: #843C0C;
+			font-weight: bold;
+		}
+	</style>
 </head>
 
 <body>
-<script src="https://unpkg.com/vue"></script>
-<script src="https://gstatic.com/firebasejs/4.2.0/firebase.js"></script>
-<script src="https://unpkg.com/vuefire/dist/vuefire.js"></script>
-<script src="./realtime.js" type="module"></script>
-<script src="https://unpkg.com/chart.js@2.7.2/dist/Chart.bundle.js"></script>
-<script src="https://unpkg.com/vue-chartkick@0.4.0"></script>
+	<script src="https://unpkg.com/vue">
+
+	</script>
+	<script src="https://gstatic.com/firebasejs/4.2.0/firebase.js">
+
+	</script>
+	<script src="https://unpkg.com/vuefire/dist/vuefire.js">
+
+	</script>
+	<script src="./map.js" type="module"></script>
+	<script src="https://unpkg.com/chart.js@2.7.2/dist/Chart.bundle.js">
+
+	</script>
+	<script src="https://unpkg.com/vue-chartkick@0.4.0">
+
+	</script>
 	<div class="wrapper">
 		<!-- Sidebar Holder -->
 		<nav id="sidebar">
@@ -33,10 +68,10 @@
       </div>
       <ul class="list-unstyled components">
         <li onclick="goHome()">
-		      Home
+          Home
         </li>
         <li class="active" onclick="goRT()">
-		      Real Time Mode
+          Real Time Mode
         </li>
         <li onclick="goFC()">
           Forecast Mode
@@ -63,41 +98,20 @@
           </div>
         </div>
       </nav>
-	    <div class="contain row text-center">
-				<img src="images/hg.png" alt="Logo" width = "300px" height = "300px"><br>
-        <h1>Let us look around right now!</h1><br>
-        <form>
-          <div class="ddl1 text-center">
-            <img src="images/map.png" alt="Logo" width="50px" height="50px">
-			      <select class="form-control" id="sel1" v-model="currLoc">
-					    <option selected disabled value="">Choose current location</option>
-					    <option value = "FASS">Arts and Social Sciences</option>
-					    <option value = "BIZ">Business</option>
-					    <option value = "COM">Computing</option>
-					    <option value = "DEN">Dentistry</option>
-			        <option value="SDE">Design and Environment</option>
-			        <option value="ENG">Engineering</option>
-	            <option value="GEN">General</option>
-			        <option value="MED">Medicine</option>
-			      	<option value="MUS">Music</option>
-			        <option value="SCI">Science</option>
-					  </select>
+	    <div class="containter-fluid">
+				<div class="row content">
+		      <div class="left col-md-8">
+				    <iframe height="600px" width="100%" style="border:none;" src="https://view-awesome-table.com/-LNTTcfrUsgAoCZJSGZw/view"></iframe>
           </div>
-          <br>
-		      <div class="ddl1 text-center">
-			      <img src="images/books.png" alt="Logo" width="50px" height="50px">
-					  <select class="form-control" id="sel2" v-model="venueType">
-							<option selected disabled value="">Choose type of venue</option>
-						  <option value = "StudyRoom">Study Rooms</option>
-              <option value="StudyRoom">Discussion Rooms</option>
-						</select>
-		      </div>
-          <br>
-          <div class = "letsgo">
-		        <button @click="goSearch" type = "button" class="search-btn text-center">Let's Go</button>
-          </div>
-        </form>
-      </div>
+		      <div class="right col-md-4">
+            <h1>This is the current crowd of <span id="hl">Discussion Rooms</span> around NUS</h1>
+            <p>We would recommend: 
+			        <img src="images/question.png" alt="Logo" width="30px" height="30px" data-toggle="tooltip" title="Based on closest proximity and high vacancy rate">
+              <br><br>
+              <span id ="rec" class="text-center">School of Computing</span>
+            </p>
+				  </div>
+	    </div>
     </div>
   
   <div class="overlay"></div>
@@ -111,6 +125,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
   <script type="text/javascript">
     $(document).ready(function () {
+	    $('[data-toggle="tooltip"]').tooltip();
       $("#sidebar").mCustomScrollbar({
         theme: "minimal"
       });
@@ -125,6 +140,7 @@
         $('.overlay').fadeIn();
         $('.collapse.in').toggleClass('in');
       });
+      
     });
     </script>
   </body>

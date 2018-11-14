@@ -13,27 +13,44 @@
 	<link rel="stylesheet" href="rt.css">
 	<!-- Scrollbar Custom CSS -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
-  <style>
-    .right h1{
-	    color: #C55A11;
-      padding-top: 30px;
-      padding-bottom: 30px;
-      text-align:center;
+	<style>
+		.right h1 {
+			color: #C55A11;
+			padding-top: 150px;
+			padding-bottom: 30px;
+			text-align: center;
+		}
+
+		.right p {
+			font-size: 30px;
+			padding-bottom: 60px;
+			text-align: center;
+		}
+
+		#rec {
+			color: #1F4E79;
+			font-weight: bold;
+			text-align: center;
+		}
+    #hl {
+      color: #843C0C;
+      font-weight: bold;
     }
-    .right p{
-      font-size: 30px;
-      padding-bottom: 60px;
-	    text-align:center;
-    }
-    #rec{
-      color: #1F4E79;
-      font-weight:bold;
-      text-align:center;
-    }
-  </style>
+	</style>
 </head>
 
 <body>
+<script src="https://unpkg.com/vue">
+</script>
+<script src="https://gstatic.com/firebasejs/4.2.0/firebase.js">
+</script>
+<script src="https://unpkg.com/vuefire/dist/vuefire.js">
+</script>
+<script src="./map.js" type="module"></script>
+<script src="https://unpkg.com/chart.js@2.7.2/dist/Chart.bundle.js">
+</script>
+<script src="https://unpkg.com/vue-chartkick@0.4.0">
+</script>
 	<div class="wrapper">
 		<!-- Sidebar Holder -->
 		<nav id="sidebar">
@@ -44,17 +61,17 @@
           <h3>Menu</h3>
       </div>
       <ul class="list-unstyled components">
-        <li>
-		      <a href="/bt3103_teampi/home.html">Home</a>
+        <li onclick="goHome()">
+          Home
         </li>
-        <li class="active">
-		      <a href="/bt3103_teampi/realtime.html">Real Time Mode</a>
+        <li class="active" onclick="goRT()">
+          Real Time Mode
         </li>
-        <li>
-          <a href="/bt3103_teampi/forecast.html">Forecast Mode</a>
+        <li onclick="goFC()">
+          Forecast Mode
         </li>
-        <li>
-          <a href="/bt3103_teampi/booking.html">Booking</a>
+        <li onclick="goBK()">
+          Booking
         </li>
       </ul>
 
@@ -78,39 +95,15 @@
 	    <div class="containter-fluid">
 				<div class="row content">
 		      <div class="left col-md-8">
-			      <iframe height="600px" width="100%" style="border:none;" src="https://view-awesome-table.com/-LNTTcfrUsgAoCZJSGZw/view"></iframe>
+				    <iframe height="600px" width="100%" style="border:none;" src="https://view-awesome-table.com/-LNTTcfrUsgAoCZJSGZw/view"></iframe>
           </div>
 		      <div class="right col-md-4">
-            <h1>This is the current crowd around NUS</h1>
+            <h1>This is the current crowd of <span id="hl">Study Rooms</span> around NUS</h1>
             <p>We would recommend: 
 			        <img src="images/question.png" alt="Logo" width="30px" height="30px" data-toggle="tooltip" title="Based on closest proximity and high vacancy rate">
               <br><br>
               <span id ="rec" class="text-center">School of Computing</span>
             </p>
-			      <div class="contain row text-center">
-			        <form>
-			          <div class="ddl1 text-center">
-			            <img src="images/map.png" alt="Logo" width="50px" height="50px">
-						      <select class="form-control" id="sel1">
-								    <option selected disabled>Choose desired region</option>
-								    <option value = "FASS">Arts and Social Sciences</option>
-								    <option value = "BIZ">Business</option>
-								    <option value = "COM">Computing</option>
-								    <option value = "DEN">Dentistry</option>
-						        <option value="SDE">Design and Environment</option>
-						        <option value="ENG">Engineering</option>
-				            <option value="GEN">General</option>
-						        <option value="MED">Medicine</option>
-						      	<option value="MUS">Music</option>
-						        <option value="SCI">Science</option>
-								  </select>
-			          </div>
-			          <br>
-			          <div class = "letsgo">
-					        <button onclick="window.location.href = '/bt3103_teampi/map2.html'" type = "button" class="search-btn text-center">Let's Go</button>
-			          </div>
-			        </form>
-			      </div>
 				  </div>
 	    </div>
     </div>
