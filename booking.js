@@ -76,7 +76,7 @@ var app = new Vue({
       var formattedDate, dS, mS;
       var d = date.getDate(); //1 to 31
       var m = date.getMonth() + 1; //1 to 12
-      var y = d.getFullYear();
+      var y = date.getFullYear();
       if (0 < d < 10) {
         dS = "0" + d;
       } else if (d > 9) {
