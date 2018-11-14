@@ -59,10 +59,10 @@
           <div id="dismiss"><i class="glyphicon glyphicon-arrow-left"></i></div>
           <div class="sidebar-header"><h3>Menu</h3></div>
           <ul class="list-unstyled components">
-            <li onclick="goHome">Home</li>
-            <li class="active" onclick="goRT">Real Time Mode</li>
-            <li onclick="goFC">Forecast Mode</li>
-            <li onclick="goBK">Booking</li>
+            <li class="clickable" @click="goHome">Home</li>
+            <li class="clickable active" @click="goRT">Real Time Mode</li>
+            <li class="clickable" @click="goFC">Forecast Mode</li>
+            <li class="clickable" @click="goBK">Booking</li>
           </ul>
 
           <ul class="list-unstyled CTAs">

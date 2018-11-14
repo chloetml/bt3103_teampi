@@ -131,7 +131,7 @@ a:focus {
   background: #fff;
 }
 
-#sidebar ul li.active > a,
+#sidebar ul li.active,
 a[aria-expanded="true"] {
   color: #fff;
   background: #2e3f1f;
@@ -253,4 +253,7 @@ a.logout {
 }
 .letsgo {
   text-align: center;
+}
+.clickable {
+  cursor: pointer;
 }

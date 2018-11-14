@@ -132,7 +132,7 @@ a:focus {
   background: #fff;
 }
 
-#sidebar ul li.active > a,
+#sidebar ul li.active,
 a[aria-expanded="true"] {
   color: #fff;
   background: #1d344f;
@@ -258,4 +258,7 @@ h2 {
 #or {
   display: inline-block;
   text-align: center;
+}
+.clickable {
+  cursor: pointer;
 }

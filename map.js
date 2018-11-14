@@ -20,8 +20,14 @@ var app = new Vue({
     var url_string = window.location.href;
     var url = new URL(url_string);
     var cr = url.searchParams.get("currRef");
+    var cl = url.searchParams.get("currentLoc");
+    var vt = url.searchParams.get("venueType");
     console.log(cr);
+    console.log(cl);
+    console.log(vt);
     this.currUserRef = cr;
+    this.currLoc = cl;
+    this.venueType = vt;
   },
   methods: {
     goRT: function() {

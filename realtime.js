@@ -58,6 +58,8 @@ var app = new Vue({
             currentLoc +
             "&currRef=" +
             currRef +
+            "&venueType=" +
+            venueType +
             "";
         } else if (venueType === "DiscRoom") {
           window.location.href =
@@ -65,6 +67,8 @@ var app = new Vue({
             currentLoc +
             "&currRef=" +
             currRef +
+            "&venueType=" +
+            venueType +
             "";
         }
       }
