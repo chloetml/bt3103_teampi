@@ -216,12 +216,12 @@ var app = new Vue({
 
       for (var location in locations) {
         var temp = await this.discAvail(region, location, time);
-        avail.push({ [location]: temp });
+        avail.push([location, temp]);
       }
-      
-      availLoc = Object.keys(avail);
-      this.allDiscAvailable = availLoc;
-      console.log(this.allDiscAvailable);
+
+      //availLoc = Object.keys(avail);
+      this.allDiscAvailable = avail;
+      console.log(this.allDiscAvailable[0]);
       return availLoc;
     }
   }
