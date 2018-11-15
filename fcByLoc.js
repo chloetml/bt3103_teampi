@@ -57,6 +57,7 @@ var app = new Vue({
         regions.push(region);
       }
       this.allregions = regions;
+      console.log(allregions);
       return regions;
     },
     
