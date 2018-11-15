@@ -23,6 +23,7 @@ var app = new Vue({
     var cr = url.searchParams.get("currRef");
     console.log(cr);
     this.currUserRef = cr;
+    this.get_regions();
   },
   methods: {
     goRT: function() {
