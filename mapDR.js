@@ -166,7 +166,7 @@ var app = new Vue({
       var finalNum;
       var discRooms = [];
       var available = [];
-      await rtDiscRef
+      await realtimeRef
         .child(region)
         .child(location)
         .once("value", function(snap) {
@@ -174,13 +174,13 @@ var app = new Vue({
           //location = Object.keys(obj);
         });
       for (var disc in discRooms) {
-        await rtDiscRef
+        await realtimeRef
           .child(region)
           .child(location)
           .child(disc)
           .child(time)
           .once("value", function(snap) {
-            if (snap.val() == "") {
+            if (snap.val() === "") {
               available.push(disc);
               console.log(available);
             }
@@ -196,7 +196,7 @@ var app = new Vue({
       var locations;
       var avail = [];
 
-      await rtDiscRef.child(region).once("value", function(snap) {
+      await realtimeRef.child(region).once("value", function(snap) {
         locations = snap.val();
       });
 
