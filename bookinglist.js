@@ -197,7 +197,7 @@ var app = new Vue({
           // get region for booking
           var region = self.getRegionCode(bregion);
           // post to user node
-          userRef
+          user
             .child("0")
             .child("bookings")
             .child(bdate)
