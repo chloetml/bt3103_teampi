@@ -284,6 +284,7 @@ var app = new Vue({
     book: function(booking) {
       var currRef = this.currUserRef;
       var loc = booking["location"];
+      console.log(loc);
       var time = this.time;
       var date = this.date;
       this.makeBooking(date, time, loc);
