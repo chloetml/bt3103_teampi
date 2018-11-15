@@ -114,7 +114,9 @@
                     title="Based on closest proximity and high vacancy rate"
                   />
                   <br /><br />
-                  <span id="rec" class="text-center">Loading..</span>
+                  <span id="rec" class="text-center">
+                    <li v-for="a in allDiscAvailable">{{a}}</li>
+                  </span>
                 </p>
               </div>
             </div>
