@@ -60,7 +60,7 @@
             <img id = "calicon" src="images/cal.png" alt="Logo" width="40px" height="40px">
             <div id="datepicker" class="input-group date" data-date-format="dd-mm-yyyy">
                
-                    <input class="form-control dp" type="text" readonly />
+                    <input class="form-control dp" type="text" v-model="date" readonly />
                     <span id="dateicon" class="input-group-addon">
                         <i class="glyphicon glyphicon-calendar" ></i>
                     </span>
@@ -70,21 +70,21 @@
           
 		      <div class="ddl2 text-center">
 			      <img src="images/books.png" alt="Logo" width="40px" height="40px">
-					  <select class="form-control" id="sel2">
-							<option selected disabled>Choose type of venue</option>
+					  <select class="form-control" id="sel2" v-model="venueType">
+							<option selected disabled value="">Choose type of venue</option>
 						  <option value = "StudyRoom">Study Rooms</option>
-              <option value="StudyRoom">Discussion Rooms</option>
+              <option value="DiscRoom">Discussion Rooms</option>
 						</select>
 		      </div>
           <br>
         <h1>Do you have in mind...</h1>
         <br>
           <div class = "location">
-		        <button onclick="window.location.href = '/bt3103_teampi/map.html'" type = "button" class="goto-btn text-center"><img src="images/map.png" alt="Logo" width="35px" height="35px"> A Location</button>
+		        <button @click="byLoc" type = "button" class="goto-btn text-center"><img src="images/map.png" alt="Logo" width="35px" height="35px"> A Location</button>
           </div>
             <h2 id = "or">or</h2>
             <div class = "time">
-		        <button onclick="window.location.href = '/bt3103_teampi/map.html'" type = "button" class="goto-btn text-center"><img src="images/clock.png" alt="Logo" width="35px" height="35px"> Time</button>
+		        <button @click="byTime" type = "button" class="goto-btn text-center"><img src="images/clock.png" alt="Logo" width="35px" height="35px"> Time</button>
           </div>
         
         </form>
