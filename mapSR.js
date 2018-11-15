@@ -15,10 +15,10 @@ var app = new Vue({
     currLoc: "",
     venueType: "",
     vacancy: 0,
-    rec: 0, 
+    rec: 0,
     rec_vacancy: 0,
     discAvailable: [],
-    allDiscAvailable: [],
+    allDiscAvailable: []
   },
   mounted: function() {
     var ref = this;
@@ -33,6 +33,7 @@ var app = new Vue({
     this.currUserRef = cr;
     this.currLoc = cl;
     this.venueType = vt;
+    this.recommendStudy();
   },
   methods: {
     goRT: function() {
@@ -54,7 +55,7 @@ var app = new Vue({
       var currRef = this.currUserRef;
       window.location.href = "/bt3103_teampi/home.html?currRef=" + currRef + "";
     },
-    
+
     //vacant: finds the number of vacant seats in realtime for a given region and location
     vacant: async function(region, location) {
       var temp = 0;
@@ -63,7 +64,7 @@ var app = new Vue({
         .child(location)
         .child("study rooms")
         .child("total")
-        .once("value", function (snap) {
+        .once("value", function(snap) {
           temp = snap.val();
           //console.log(temp);
           //console.log(snap.val());
@@ -74,7 +75,7 @@ var app = new Vue({
         .child(location)
         .child("study rooms")
         .child("in use")
-        .once("value", function (snap) {
+        .once("value", function(snap) {
           temp = temp - snap.val();
           //console.log(snap.val());
           console.log(temp);
@@ -84,14 +85,12 @@ var app = new Vue({
       this.vacancy = temp;
       return temp;
     },
-    
+
     // recommend study rooms
     //Finds the place with the greatest number of vacant slots in a given region
-    recommend: async function(region) {
+    recommendStudy: async function(region) {
       var locations = [];
-      await realtimeRef
-      .child(region)
-      .once("value", function(snap) {
+      await realtimeRef.child(region).once("value", function(snap) {
         //console.log(snap.val());
         locations = snap.val();
       });
@@ -106,7 +105,7 @@ var app = new Vue({
           max = num;
           most = [];
           most.push(location);
-         }
+        }
         //else if (num == max){
         //most.push(location);
         //}
@@ -116,10 +115,10 @@ var app = new Vue({
       this.rec = most;
       this.rec_vacancy = max;
     },
-    
+
     // takes in a region name
     // find the next nearest region that has discussion rooms available
-    nearestDiscRegion(currRegion){
+    nearestDiscRegion(currRegion) {
       var text = "";
       switch (currRegion) {
         case "Arts and Social Sciences":
@@ -158,20 +157,20 @@ var app = new Vue({
       //console.log(text);
       return text;
     },
-    
+
     // takes in a region name, currTime
     // find the number of disc room available
     // assumes each region only has one location
-    discAvail: async function(region, location, time){
+    discAvail: async function(region, location, time) {
       //var region = "Computing";
       //var time = "1400";
       var finalNum;
       var discRooms = [];
       var available = [];
       await rtDiscRef
-       .child(region)
-       .child(location)
-       .once('value', function(snap){
+        .child(region)
+        .child(location)
+        .once("value", function(snap) {
           discRooms = snap.val();
           //location = Object.keys(obj);
         });
@@ -181,36 +180,34 @@ var app = new Vue({
           .child(location)
           .child(disc)
           .child(time)
-          .once('value', function(snap){
-            if (snap.val()==""){
+          .once("value", function(snap) {
+            if (snap.val() == "") {
               available.push(disc);
               console.log(available);
             }
-          })
+          });
       }
       this.discAvailable = available;
       return available;
     },
-    
+
     // recommendation algo for discussion rooms
-    recomDisc: async function(region, time){
+    recomDisc: async function(region, time) {
       region = await this.nearestDiscRegion(region);
       var locations;
       var avail = [];
 
-      await rtDiscRef
-      .child(region)
-      .once("value", function(snap){
+      await rtDiscRef.child(region).once("value", function(snap) {
         locations = snap.val();
-      })
+      });
 
-      for (var location in locations){
+      for (var location in locations) {
         var temp = await this.discAvail(region, location, time);
-        avail.push({[location]: temp});
+        avail.push({ [location]: temp });
       }
       this.allDiscAvailable = avail;
-      console.log(this.allDiscAvailable)
+      console.log(this.allDiscAvailable);
       return avail;
-    },
+    }
   }
 });
