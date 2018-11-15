@@ -93,6 +93,7 @@ var app = new Vue({
       await realtimeRef.child(region).once("value", function(snap) {
         //console.log(snap.val());
         locations = snap.val();
+        console.log(locations);
       });
       var max = 0;
       var most = [];
