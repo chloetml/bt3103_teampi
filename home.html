@@ -164,7 +164,19 @@
                         />
                         <h3>My Bookings</h3>
                       </div>
-                      <p>Table of bookings will be here</p>
+                      <div class="list-group">
+                        <div
+                          v-for="booking in myBookings"
+                          class="list-group-item list-group-item-action"
+                        >
+                          <p>Date: {{booking["date"]}}</p>
+                          <p>Time: <span id="bk">{{booking["time"]}}</span></p>
+                          <p>
+                            Locarion:
+                            <span id="bk">{{booking["location"]}}</span>
+                          </p>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>

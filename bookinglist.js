@@ -155,6 +155,7 @@ var app = new Vue({
       //var btime = "1400";
       //var bloc = "Central Library";
       var bregion = this.getRegionfromLoc(bloc);
+      console.log(bregion); //test
       this.regionLoc = bregion; // gets region from getRegionfromLoc function
       var self = this;
       //console.log(this.regionLoc);
