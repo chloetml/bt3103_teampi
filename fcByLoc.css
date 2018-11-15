@@ -196,32 +196,52 @@ a.logout {
   border-radius: 25px;
 }
 
+#calicon {
+  margin-top: -7px;
+}
+
 /* ---------------------------------------------------
     BOOKINGS PART STYLE
 ----------------------------------------------------- */
 
 #hl {
-        color: #ffc107;
-        font-weight: bold;
-      } 
-      .list-group {
-        padding-left: 100px;
-        padding-right: 100px;
-      } 
-      #bk {
-        color: red;
-        font-weight: bold;
-        font-size: 22px;
-      }
-      p {
-        font-size: 20px;
-      }
-      .clickable {
-        cursor: pointer;
-      }
-      .clickable:hover {
-        background-color: #d6d6d6;
-      }
+  color: #ffc107;
+  font-weight: bold;
+} 
+
+#name{
+  font-size: 50px;
+  padding: 25px;
+}
+
+#mapicon {
+  margin-top: -25px;
+}
+
+.list-group {
+  padding-left: 100px;
+  padding-right: 100px;
+} 
+
+/*
+#bk {
+  color: red;
+  font-weight: bold;
+  font-size: 22px;
+} */
+
+p {
+  font-size: 20px;
+}
+
+.clickable {
+  cursor: pointer;
+  background-color: #D8EDF9;
+}
+
+.clickable:hover {
+  background-color: #d6d6d6;
+}
 
 /* ---------------------------------------------------
     CONTAINER STYLE
@@ -272,9 +292,7 @@ h2 {
   display: none;
 }
 
-#calicon {
-  margin-top: -7px;
-}
+
 #sel2 {
   display: inline-block;
   text-align: center;
