@@ -240,14 +240,14 @@ var app = new Vue({
           var obj = snapshot.val();
           var rooms = Object.keys(obj);
           rooms.forEach(function (something) {
-            var user = snapshot
+            var user0 = snapshot
               .child(something)
               .child(bdate)
               .child(btime)
               .val();
             //console.log(something); // returns the loc node
             // post to bookings node if room is free at that time
-            if (user === "") {
+            if (user0 === "") {
               //availRoom.push(something);
               temp.free = something;
               //console.log(availRoom);
@@ -268,8 +268,8 @@ var app = new Vue({
           // get region for booking
           var region = self.getRegionCode(bregion);
           // post to user node
-          userRef
-            .child("0")
+          user
+            .child(this.currUserRef)
             .child("bookings")
             .child(bdate)
             .update({ [btime]: region + " " + bloc + " " + temp['free'] });
