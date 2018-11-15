@@ -207,8 +207,11 @@ var app = new Vue({
     },
     // cancel bookings
     // will take in date, time, place (region + loc + room)
-    cancelBooking(bdate, btime, bplace) {
+    cancelBooking(booking) {
       //var bplace = "COM COM1 DR2";
+      var bdate = booking["date"];
+      var btime = booking["time"];
+      var bplace = booking["location"];
       var result = confirm("Are you sure you want to cancel this booking?");
       if (result) {
         //Logic to delete the item
@@ -239,6 +242,50 @@ var app = new Vue({
       var df;
       df = date.slice(0, 2) + "/" + date.slice(2, 4) + "/" + date.slice(4, 8);
       return df;
+    },
+    // takes in the location code and returns the location name
+    // eg: takes in GEN and returns General
+    getRegionfromBooking(location) {
+      //var location = "GEN";
+      var text = "";
+      switch (location) {
+        case "ASS":
+          text = "Arts and Social Sciences";
+          break;
+        case "BIZ":
+          text = "Business";
+          break;
+        case "COM":
+          text = "Computing";
+          break;
+        case "DEN":
+          text = "Dentistry";
+          break;
+        case "SDE":
+          text = "Design and Environment";
+          break;
+        case "ENG":
+          text = "Engineering";
+          break;
+        case "GEN":
+          text = "General";
+          break;
+        case "MED":
+          text = "Medicine";
+          break;
+        case "MUS":
+          text = "Music";
+          break;
+        case "SCI":
+          text = "Science";
+          break;
+        //default:
+        //  text = "Faculty";
+      }
+      //this.regionBook = text;
+      //console.log(this.regionBook);
+      //console.log(text);
+      return text;
     }
   }
 });
