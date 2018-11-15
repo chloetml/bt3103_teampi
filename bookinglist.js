@@ -159,14 +159,14 @@ var app = new Vue({
         var reg = Object.keys(obj);
         //console.log(reg);
         var theOne;
-        reg.forEach(function(reg) {
-          var obj = snapshot.child(reg).val();
+        reg.forEach(function(regSnap) {
+          var obj2 = snapshot.child(regSnap).val();
           //console.log(obj);
           //var loc = Object.keys(obj);
           //console.log(obj.hasOwnProperty(location));
-          if (obj.hasOwnProperty(location)) {
+          if (obj2.hasOwnProperty(location)) {
             //console.log("THIS IS THE ONE "+region);
-            theOne = reg;
+            theOne = regSnap;
             //self.region = region;
             //console.log(this.region);
             //return region;
