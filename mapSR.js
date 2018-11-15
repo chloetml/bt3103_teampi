@@ -33,6 +33,7 @@ var app = new Vue({
     this.currUserRef = cr;
     this.currLoc = cl;
     this.venueType = vt;
+    this.recommendStudy();
   },
   methods: {
     goRT: function() {
