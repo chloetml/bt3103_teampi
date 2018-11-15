@@ -131,76 +131,87 @@ var app = new Vue({
     // adds number of available disc rooms for booking to this.bookings
     // used for showing how many rooms each location is avail to book
     bookingsAvail(userDate, userTime) {
-      //var userDate = "13112018";
-      //var userTime = "1400";
+      //var userDate = "16112018";
+      //var userTime = "1000";
       var arr = [];
-      bookingsRef.once("value", function(openBookings) {
+      bookingsRef.once("value", function (openBookings) {
         // gets the region
-        openBookings.forEach(function(openBookings) {
-          console.log(openBookings.val()); //Object {Central Library: Object}
+        openBookings.forEach(function (openBookings) {
+          //console.log(openBookings.val()); //Object {Central Library: Object}
           var obj = openBookings.val();
           var key = Object.keys(obj);
-          console.log("location key " + key); //["Central Library"]
+          //console.log("location key " + key); //["Central Library"]
           // loop through each location
-          var location = "";
+          var location = key;
           var tempCount = 0; // store the # of rooms available for each loc
           var temp = {};
           //key.forEach(function (loc) {
           //console.log(openBookings.child(loc).val()); //Object {DR1: Object, DR2: Object}
           var rooms = openBookings.child(key).val();
           var roomKey = Object.keys(rooms);
-          //console.log(roomKey); //["DR1", "DR2"]
+          //console.log("roomKey " + roomKey); //["DR1", "DR2"]
+          //console.log("length: " + roomKey.length);
           // loop through each discussion room
-          roomKey.forEach(function(room) {
+          roomKey.forEach(function (room) {
             var currDate = openBookings
               .child(key)
               .child(room)
               .val();
             var storedDate = Object.keys(currDate);
             //console.log(storedDate); //["15112018"]
-            // loop through each date
-            storedDate.forEach(function(day) {
-              var currTime = openBookings
-                .child(key)
-                .child(room)
-                .child(day)
-                .val();
-              var currTimeKey = Object.keys(currTime);
-              //console.log(currTimeKey); //["1500", "1600"]
-              //console.log(day); //15112018
-              //console.log(typeof day); // string
-              if (day == userDate) {
-                // if user wants this date, loop through the diff times of this date
-                // check that for the time the user wants, the number of rooms available
-                /*
-                if (!(userTime in currTimeKey)) {
-                  // if that time is free
-                  // store the data!
-                  tempCount += 1;
-                  location = loc;
-                } */
-                // to use if each hour is stored, those without bookings are stored as ""
-                currTimeKey.forEach(function(time) {
-                  if (time == userTime) {
-                    var value = openBookings
-                      .child(key)
-                      .child(room)
-                      .child(userDate)
-                      .child(userTime)
-                      .val();
-                    //console.log(value); // "" or nusnetID
-                    // time is free -> store data!
-                    if (value == "") {
-                      tempCount += 1;
-                      location = key;
-                      console.log("the key: " + key);
+            // if date node does not exist
+            if (!(storedDate.includes(userDate))) {
+              tempCount = roomKey.length;
+            }
+            else {
+              // loop through each date
+              storedDate.forEach(function (day) {
+                //console.log(day);
+                var currTime = openBookings
+                  .child(key)
+                  .child(room)
+                  .child(day)
+                  .val();
+                var currTimeKey = Object.keys(currTime);
+                //console.log(currTimeKey); //["1500", "1600"]
+                //console.log(day); //15112018
+                //console.log(typeof day); // string
+                // if current time does not exist as a node
+                //if (!(userTime in currTimeKey)){}
+                if (day == userDate) {
+                  // if user wants this date, loop through the diff times of this date
+                  // check that for the time the user wants, the number of rooms available
+                  /*
+                  if (!(userTime in currTimeKey)) {
+                    // if that time is free
+                    // store the data!
+                    tempCount += 1;
+                    location = loc;
+                  } */
+                  // to use if each hour is stored, those without bookings are stored as ""
+                  currTimeKey.forEach(function (time) {
+                    if (time == userTime) {
+                      var value = openBookings
+                        .child(key)
+                        .child(room)
+                        .child(userDate)
+                        .child(userTime)
+                        .val();
+                      //console.log(value); // "" or nusnetID
+                      // time is free -> store data!
+                      if (value == "") {
+                        tempCount += 1;
+                        //location = key;
+                        //console.log("the key: " + key)
+                      } //console.log("the key: " + key + ", count: " + tempCount);
                     }
-                  }
-                });
-              }
-            });
+                  });
+                }
+              });
+            }
           });
-          if (location != "") {
+          //console.log(location);
+          if (tempCount != 0) {
             temp.location = location[0];
             temp.available = tempCount;
             arr.push(temp);
@@ -229,14 +240,14 @@ var app = new Vue({
           var obj = snapshot.val();
           var rooms = Object.keys(obj);
           rooms.forEach(function (something) {
-            var user = snapshot
+            var user0 = snapshot
               .child(something)
               .child(bdate)
               .child(btime)
               .val();
             //console.log(something); // returns the loc node
             // post to bookings node if room is free at that time
-            if (user === "") {
+            if (user0 === "") {
               //availRoom.push(something);
               temp.free = something;
               //console.log(availRoom);
@@ -257,8 +268,8 @@ var app = new Vue({
           // get region for booking
           var region = self.getRegionCode(bregion);
           // post to user node
-          userRef
-            .child("0")
+          user
+            .child(this.currUserRef)
             .child("bookings")
             .child(bdate)
             .update({ [btime]: region + " " + bloc + " " + temp['free'] });
