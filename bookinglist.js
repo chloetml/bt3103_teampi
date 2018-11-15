@@ -158,6 +158,7 @@ var app = new Vue({
       await self.getRegionfromLoc(bloc);
       var bregion = this.regionLoc; // gets region from getRegionfromLoc function
       console.log(bregion);
+      console.log(this.regionLoc);
       var availRoom = [];
       var temp = {};
       // retrieve available room from bloc
