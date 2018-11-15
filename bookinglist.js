@@ -162,7 +162,7 @@ var app = new Vue({
       var availRoom = [];
       var temp = {};
       // retrieve available room from bloc
-      await bookingsRef
+      bookingsRef
         .child(bregion)
         .child(bloc)
         .once("value", function(snapshot) {
