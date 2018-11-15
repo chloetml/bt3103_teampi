@@ -110,39 +110,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-timepicker/0.5.2/js/bootstrap-timepicker.js"></script>
 
     <script type="text/javascript">
-      $(function() {
-        $("#datepicker")
-          .datepicker({
-            autoclose: true,
-            startDate: "+0d",
-            todayHighlight: true
-          })
-          .datepicker("update", new Date());
-      });
-
-      $(function() {
-        $("#tp").focus(function() {
-          $("#tp").timepicker("showWidget");
-        });
-        $("#tp")
-          .timepicker({
-            minuteStep: 60
-          })
-          .on("changeTime.timepicker", function(e) {
-            var h = e.time.hours;
-            var m = e.time.minutes;
-            var mer = e.time.meridian; //convert hours into minutes
-            m += h * 60; //9:00 = 9h*60m + 0m = 540 min; 10:00 = 10h*60m = 600m
-            if (mer == "AM" && m < 540) {
-              $("#tp").timepicker("setTime", "9:00 AM");
-            } else if (mer == "PM" && m > 600) {
-              $("#tp").timepicker("setTime", "10:00 PM");
-            } else if (mer == "PM" && m == 720) {
-              $("#tp").timepicker("setTime", "12:00 PM");
-            }
-          });
-      });
-
       $(document).ready(function() {
         $("#sidebar").mCustomScrollbar({
           theme: "minimal"
