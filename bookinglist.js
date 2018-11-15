@@ -150,19 +150,20 @@ var app = new Vue({
     },
     // to be used when user makes a booking
     // takes in the user, date, time, location of booking
-    makeBooking: async function(bdate, btime, bloc) {
+    makeBooking: function(bdate, btime, bloc) {
       //ar bdate = "15112018";
       //var btime = "1400";
       //var bloc = "Central Library";
       var self = this;
-      await self.getRegionfromLoc(bloc);
-      var bregion = this.regionLoc; // gets region from getRegionfromLoc function
+      //await self.getRegionfromLoc(bloc);
+      var bregion = self.getRegionfromLoc(bloc);
+      //var bregion = this.regionLoc; // gets region from getRegionfromLoc function
       console.log(bregion);
       console.log(this.regionLoc);
       var availRoom = [];
       var temp = {};
       // retrieve available room from bloc
-      await bookingsRef
+      bookingsRef
         .child(bregion)
         .child(bloc)
         .once("value", function(snapshot) {
@@ -237,9 +238,9 @@ var app = new Vue({
       });
       //console.log(final.key);
       //})
-    },// takes in the location name and returns the location code
+    }, // takes in the location name and returns the location code
     // eg: takes in General and returns GEN
-    getRegionCode(region) {
+    getRegionCode: function(region) {
       //var region = "General";
       var text = "";
       switch (region) {
@@ -283,6 +284,7 @@ var app = new Vue({
     book: function(booking) {
       var currRef = this.currUserRef;
       var loc = booking["location"];
+      console.log(loc);
       var time = this.time;
       var date = this.date;
       this.makeBooking(date, time, loc);
