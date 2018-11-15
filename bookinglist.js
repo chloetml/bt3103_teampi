@@ -172,7 +172,7 @@ var app = new Vue({
             //return region;
           }
         });
-        //console.log(theOne);
+        console.log(theOne);
         self.regionLoc = theOne;
         //final = theOne
         //console.log(final);
