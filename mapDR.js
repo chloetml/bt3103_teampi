@@ -220,8 +220,8 @@ var app = new Vue({
       }
 
       //availLoc = Object.keys(avail);
-      this.allDiscAvailable = avail;
-      console.log(this.allDiscAvailable[0]);
+      this.allDiscAvailable = avail[0];
+      console.log(this.allDiscAvailable);
       return availLoc;
     }
   }
