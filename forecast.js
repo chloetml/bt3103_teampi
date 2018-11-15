@@ -97,7 +97,7 @@ var app = new Vue({
         alert("Please select a type of venue.");
       } else {
         window.location.href =
-          "/bt3103_teampi/bookinglist.html?date=" +
+          "/bt3103_teampi/fcByTime.html?date=" +
           stringDate +
           "&currRef=" +
           currRef +
