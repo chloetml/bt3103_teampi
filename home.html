@@ -104,6 +104,7 @@
       #hl {
         font-weight: bold;
       }
+	    button { background-image:url('images/dagger.png'); }
     </style>
   </head>
 
@@ -175,15 +176,29 @@
                           v-for="booking in myBookings"
                           class="list-group-item list-group-item-action"
                         >
-                          <p>
-                            <span id="hl">Date:</span>
-                            {{formatDate(booking["date"])}}
-                          </p>
-                          <p><span id="hl">Time:</span> {{booking["time"]}}</p>
-                          <p>
-                            <span id="hl">Location:</span>
-                            {{booking["location"].slice(4)}}
-                          </p>
+                          <div class="row">
+                            <div class="col-md-8">
+                                <p>
+                                  <span id="hl">Date:</span>
+                                  {{formatDate(booking["date"])}}
+                                </p>
+                                <p><span id="hl">Time:</span> {{booking["time"]}}</p>
+                                <p>
+                                  <span id="hl">Location:</span>
+                                  {{booking["location"].slice(4)}}
+                                </p>
+                            </div>
+                            <div class="col-md-4">
+                              <div class="clickable" @click="cancelBooking(booking["date"],booking["time"],booking["location"]">
+                                <img
+                                src="images/delete.png"
+                                alt="Logo"
+                                width="50px"
+                                height="50px"
+                              />
+                              </div>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
