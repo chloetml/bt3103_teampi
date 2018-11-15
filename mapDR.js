@@ -208,6 +208,7 @@ var app = new Vue({
       region = await this.nearestDiscRegion(region);
       var locations;
       var avail = [];
+      var availLoc = [];
 
       await realtimeRef.child(region).once("value", function(snap) {
         locations = snap.val();
@@ -217,9 +218,11 @@ var app = new Vue({
         var temp = await this.discAvail(region, location, time);
         avail.push({ [location]: temp });
       }
-      this.allDiscAvailable = avail;
+      
+      availLoc = Object.keys(avail);
+      this.allDiscAvailable = availLoc;
       console.log(this.allDiscAvailable);
-      return avail;
+      return availLoc;
     }
   }
 });
