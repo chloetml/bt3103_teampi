@@ -1,133 +1,214 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>SpaceCzar</title>
+    <!-- Bootstrap CSS CDN -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="fc.css" />
+    <!-- Scrollbar Custom CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
 
-	<title>SpaceCzar</title>
-	<!-- Bootstrap CSS CDN -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<!-- Our Custom CSS -->
-	<link rel="stylesheet" href="fc.css">
-	<!-- Scrollbar Custom CSS -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css"/>
-</head>
+  <body>
+    <script src="moment.js"></script>
+    <script src="https://unpkg.com/vue"></script>
+    <script src="https://gstatic.com/firebasejs/4.2.0/firebase.js"></script>
+    <script src="https://unpkg.com/vuefire/dist/vuefire.js"></script>
+    <script src="./forecast.js" type="module"></script>
+    <script src="https://unpkg.com/chart.js@2.7.2/dist/Chart.bundle.js"></script>
+    <script src="https://unpkg.com/vue-chartkick@0.4.0"></script>
+    <div id="app">
+      <div class="wrapper">
+        <!-- Sidebar Holder -->
+        <nav id="sidebar">
+          <div id="dismiss"><i class="glyphicon glyphicon-arrow-left"></i></div>
+          <div class="sidebar-header"><h3>Menu</h3></div>
+          <ul class="list-unstyled components">
+            <li class="clickable" @click="goHome">Home</li>
+            <li class="clickable" @click="goRT">Real Time Mode</li>
+            <li class="clickable active" @click="goFC">Forecast Mode</li>
+            <li class="clickable" @click="goBK">Booking</li>
+          </ul>
 
-<body>
-	<div class="wrapper">
-		<!-- Sidebar Holder -->
-		<nav id="sidebar">
-			<div id="dismiss">
-				<i class="glyphicon glyphicon-arrow-left"></i>
-      </div>
-      <div class="sidebar-header">
-          <h3>Menu</h3>
-      </div>
-      <ul class="list-unstyled components">
-        <li class="clickable" @click="goHome">Home</li>
-        <li class="clickable" @click="goRT">Real Time Mode</li>
-        <li class="clickable active" @click="goFC">Forecast Mode</li>
-        <li class="clickable" @click="goBK">Booking</li>
-      </ul>
+          <ul class="list-unstyled CTAs">
+            <li>
+              <a href="/bt3103_teampi/index.html" class="logout">Sign Out</a>
+            </li>
+          </ul>
+        </nav>
 
-      <ul class="list-unstyled CTAs">
-        <li><a href="/bt3103_teampi/index.html" class="logout">Sign Out</a></li>
-      </ul>
-    </nav>
+        <!-- Page Content Holder -->
+        <div id="content">
+          <nav class="navbar navbar-default">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <button
+                  type="button"
+                  id="sidebarCollapse"
+                  class="btn btn-info navbar-btn"
+                >
+                  <i class="glyphicon glyphicon-align-left"></i>
+                  <span id="btn-text">Menu</span>
+                </button>
+              </div>
+            </div>
+          </nav>
+          <div class="contain row text-center">
+            <img
+              src="images/fc.png"
+              alt="Logo"
+              width="250px"
+              height="250px"
+            /><br />
+            <h1 style="color:white;">
+              Let's look into the Future!
+              <img
+                id="tooltip1"
+                src="images/question.png"
+                alt="Logo"
+                width="30px"
+                height="30px"
+                data-toggle="tooltip"
+                title="Select a future date and type of space you have in mind for us to analyse the estimated vacancy of spaces and crowd distribution"
+              />
+            </h1>
 
-    <!-- Page Content Holder -->
-    <div id="content">
-      <nav class="navbar navbar-default">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
-              <i class="glyphicon glyphicon-align-left"></i>
-                <span id="btn-text">Menu</span>
-            </button>
+            <br />
+            <form>
+              <div class="ddl1 text-center">
+                <img
+                  id="calicon"
+                  src="images/cal.png"
+                  alt="Logo"
+                  width="40px"
+                  height="40px"
+                />
+                <div
+                  id="datepicker"
+                  class="input-group date"
+                  data-date-format="dd-mm-yyyy"
+                >
+                  <input
+                    class="form-control dp"
+                    type="text"
+                    v-model="date"
+                    readonly
+                  />
+                  <span id="dateicon" class="input-group-addon">
+                    <i class="glyphicon glyphicon-calendar"></i>
+                  </span>
+                </div>
+              </div>
+
+              <div class="ddl2 text-center">
+                <img
+                  src="images/books.png"
+                  alt="Logo"
+                  width="40px"
+                  height="40px"
+                />
+                <select class="form-control" id="sel2" v-model="venueType">
+                  <option selected disabled value=""
+                    >Choose type of venue</option
+                  >
+                  <option value="StudyRoom">Study Rooms</option>
+                  <option value="DiscRoom">Discussion Rooms</option>
+                </select>
+              </div>
+              <br />
+              <h1>Do you have in mind...</h1>
+              <br />
+              <div class="location">
+                <button
+                  @click="byLoc"
+                  type="button"
+                  class="goto-btn text-center"
+                >
+                  <img
+                    src="images/map.png"
+                    alt="Logo"
+                    width="35px"
+                    height="35px"
+                  />
+                  A Location
+                </button>
+              </div>
+              <h2 id="or">or</h2>
+              <div class="time">
+                <button
+                  @click="byTime"
+                  type="button"
+                  class="goto-btn text-center"
+                >
+                  <img
+                    src="images/clock.png"
+                    alt="Logo"
+                    width="35px"
+                    height="35px"
+                  />
+                  Time
+                </button>
+              </div>
+            </form>
           </div>
         </div>
-      </nav>
-	    <div class="contain row text-center">
-        <img src="images/fc.png" alt="Logo" width = "250px" height = "250px"><br>
-        <h1 style="color:white;">Let's look into the Future!
-            <img id="tooltip1" src="images/question.png" alt="Logo" width="30px" height="30px" data-toggle="tooltip" title="Select a future date and type of space you have in mind for us to analyse the estimated vacancy of spaces and crowd distribution"></h1>
-        <br>
-        <form>
-          <div class="ddl1 text-center">
-            <img id = "calicon" src="images/cal.png" alt="Logo" width="40px" height="40px">
-            <div id="datepicker" class="input-group date" data-date-format="dd-mm-yyyy">
-               
-                    <input class="form-control dp" type="text" readonly />
-                    <span id="dateicon" class="input-group-addon">
-                        <i class="glyphicon glyphicon-calendar" ></i>
-                    </span>
-                
-            </div>
-          </div>
-          
-		      <div class="ddl2 text-center">
-			      <img src="images/books.png" alt="Logo" width="40px" height="40px">
-					  <select class="form-control" id="sel2">
-							<option selected disabled>Choose type of venue</option>
-						  <option value = "StudyRoom">Study Rooms</option>
-              <option value="StudyRoom">Discussion Rooms</option>
-						</select>
-		      </div>
-          <br>
-        <h1>Do you have in mind...</h1>
-        <br>
-          <div class = "location">
-		        <button onclick="window.location.href = '/bt3103_teampi/map.html'" type = "button" class="goto-btn text-center"><img src="images/map.png" alt="Logo" width="35px" height="35px"> A Location</button>
-          </div>
-            <h2 id = "or">or</h2>
-            <div class = "time">
-		        <button onclick="window.location.href = '/bt3103_teampi/map.html'" type = "button" class="goto-btn text-center"><img src="images/clock.png" alt="Logo" width="35px" height="35px"> Time</button>
-          </div>
-        
-        </form>
       </div>
     </div>
-  
-  <div class="overlay"></div>
+    <div class="overlay"></div>
 
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <!-- Bootstrap Js CDN -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- jQuery Custom Scroller CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.4.0/lang/en-gb.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
 
-  <!-- jQuery CDN -->
-  <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-  <!-- Bootstrap Js CDN -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <!-- jQuery Custom Scroller CDN -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.4.0/lang/en-gb.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
-
-  <script type="text/javascript">
-    $(function () { 
-      $("#datepicker").datepicker({ 
-        autoclose: true, 
-        startDate: '+1d',
-        todayHighlight: true }).datepicker('update', new Date());
-    });
-    $(document).ready(function () {
+    <script type="text/javascript">
+      $(function() {
+        $("#datepicker")
+          .datepicker({
+            autoclose: true,
+            startDate: "+1d",
+            todayHighlight: true
+          })
+          .datepicker("update", new Date());
+      });
+      $(document).ready(function() {
         $('[data-toggle="tooltip"]').tooltip();
-      $("#sidebar").mCustomScrollbar({
-        theme: "minimal"
-      });
+        $("#sidebar").mCustomScrollbar({
+          theme: "minimal"
+        });
 
-      $('#dismiss, .overlay').on('click', function () {
-        $('#sidebar').removeClass('active');
-          $('.overlay').fadeOut();
-      });
+        $("#dismiss, .overlay").on("click", function() {
+          $("#sidebar").removeClass("active");
+          $(".overlay").fadeOut();
+        });
 
-      $('#sidebarCollapse').on('click', function () {
-        $('#sidebar').addClass('active');
-        $('.overlay').fadeIn();
-        $('.collapse.in').toggleClass('in');
+        $("#sidebarCollapse").on("click", function() {
+          $("#sidebar").addClass("active");
+          $(".overlay").fadeIn();
+          $(".collapse.in").toggleClass("in");
+        });
       });
-    });
     </script>
   </body>
 </html>
