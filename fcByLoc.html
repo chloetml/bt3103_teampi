@@ -12,21 +12,33 @@
 	<link rel="stylesheet" href="fcByLoc.css">
 	<!-- Scrollbar Custom CSS -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css"/>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css"
+	/>
 </head>
 
 <body>
-	<script src="https://unpkg.com/vue"></script>
-    	<script src="https://gstatic.com/firebasejs/4.2.0/firebase.js"></script>
-    	<script src="https://unpkg.com/vuefire/dist/vuefire.js"></script>
-    	<script src="./fcByLoc.js" type="module"></script>
-    	<script src="https://unpkg.com/chart.js@2.7.2/dist/Chart.bundle.js"></script>
-    	<script src="https://unpkg.com/vue-chartkick@0.4.0"></script>
-	<div class="wrapper">
-		<!-- Sidebar Holder -->
-		<nav id="sidebar">
-			<div id="dismiss">
-				<i class="glyphicon glyphicon-arrow-left"></i>
+	<script src="https://unpkg.com/vue">
+
+	</script>
+	<script src="https://gstatic.com/firebasejs/4.2.0/firebase.js">
+
+	</script>
+	<script src="https://unpkg.com/vuefire/dist/vuefire.js">
+
+	</script>
+	<script src="./fcByLoc.js" type="module"></script>
+	<script src="https://unpkg.com/chart.js@2.7.2/dist/Chart.bundle.js">
+
+	</script>
+	<script src="https://unpkg.com/vue-chartkick@0.4.0">
+
+	</script>
+	<div id="app">
+		<div class="wrapper">
+			<!-- Sidebar Holder -->
+			<nav id="sidebar">
+				<div id="dismiss">
+					<i class="glyphicon glyphicon-arrow-left"></i>
       </div>
       <div class="sidebar-header">
           <h3>Menu</h3>
@@ -63,13 +75,14 @@
 
       <div class="contain row text-center">
             <h1>
+	      <img id = "mapicon" src="images/map.png" alt="Logo" width="50px" height="50px">
               <span id="hl">Where</span> would you like to go?
             </h1>
             <br />
             <div class="list-group">
             	<div v-for="allregion in allregions" 
 		     class="list-group-item list-group-item-action clickable">
-            	<h2>{{ allregion }}:</h2>
+            	<h2>{{ allregion }}</h2>
             	<!--
 		<p>
                   <span id="bk">{{allregions}}</span> rooms available
@@ -90,6 +103,7 @@
             </div>
           </div>
       </div>
+    </div>
     </div>
   
   <div class="overlay"></div>
