@@ -4,8 +4,7 @@ var db = firebase
   })
   .database();
 
-var realtimeRef = db.ref("realtime");
-var forecastRef = db.ref("forecast");
+var realtimeRef = db.ref("realtimeDiscussion");
 var user = db.ref("user");
 
 var app = new Vue({
@@ -33,6 +32,8 @@ var app = new Vue({
     this.currUserRef = cr;
     this.currLoc = cl;
     this.venueType = vt;
+    var time = this.getCurrTime();
+    this.recomDisc(cl, time);
   },
   methods: {
     goRT: function() {
@@ -54,7 +55,19 @@ var app = new Vue({
       var currRef = this.currUserRef;
       window.location.href = "/bt3103_teampi/home.html?currRef=" + currRef + "";
     },
-
+    getCurrTime: function() {
+      var d = new Date(); // for now
+      var h;
+      var time;
+      var hour = d.getHours();
+      if (hour < 10) {
+        h = "0" + hour;
+        time = h + "00";
+      } else {
+        time = hour + "00";
+      }
+      return time;
+    },
     //vacant: finds the number of vacant seats in realtime for a given region and location
     vacant: async function(region, location) {
       var temp = 0;
@@ -117,7 +130,7 @@ var app = new Vue({
 
     // takes in a region name
     // find the next nearest region that has discussion rooms available
-    nearestDiscRegion(currRegion) {
+    nearestDiscRegion: function(currRegion) {
       var text = "";
       switch (currRegion) {
         case "Arts and Social Sciences":
