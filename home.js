@@ -205,6 +205,35 @@ var app = new Vue({
       this.myBookings = arr;
       return arr;
     },
+    // cancel bookings
+    // will take in date, time, place (region + loc + room)
+    cancelBooking(bdate, btime, bplace) {
+      //var bplace = "COM COM1 DR2";
+      var result = confirm("Are you sure you want to cancel this booking?");
+      if (result) {
+        //Logic to delete the item
+        var len = bplace.length;
+        var room = bplace.slice(len - 3, len);
+        var location = bplace.slice(4, len - 4);
+        var region = this.getRegionfromBooking(bplace.slice(0, 3));
+        //console.log(region);
+        // remove booking from user bookings node
+        user
+          .child(this.currUserRef)
+          .child("bookings")
+          .child(bdate)
+          .child(btime)
+          .remove();
+        // set booking for that location, date and time under bookings node as free
+        bookingsRef
+          .child(region)
+          .child(location)
+          .child(room)
+          .child(bdate)
+          .child(btime)
+          .set("");
+      }
+    },
     formatDate: function(date) {
       // take in a string date in ddmmyyyy format
       var df;
