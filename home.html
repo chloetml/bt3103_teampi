@@ -101,6 +101,9 @@
       .clickable {
         cursor: pointer;
       }
+      #hl {
+        font-weight: bold;
+      }
     </style>
   </head>
 
@@ -173,10 +176,10 @@
                           class="list-group-item list-group-item-action"
                         >
                           <p>Date: {{booking["date"]}}</p>
-                          <p>Time: <span id="bk">{{booking["time"]}}</span></p>
+                          <p><span id="hl">Time:</span> {{booking["time"]}}</p>
                           <p>
-                            Location:
-                            <span id="bk">{{booking["location"]}}</span>
+                            <span id="hl">Location:</span>
+                            {{booking["location"]}}
                           </p>
                         </div>
                       </div>
