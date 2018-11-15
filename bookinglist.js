@@ -148,6 +148,83 @@ var app = new Vue({
       //});
       this.bookings = arr;
     },
+    //takes in the location and returns the region loc is in
+    getRegionfromLoc: function(location) {
+      //return new Promise(function(resolve, reject){
+      //var location = "Central Library";
+      var self = this;
+      //var final;
+      realtimeRef.once("value", function(snapshot) {
+        var obj = snapshot.val();
+        var reg = Object.keys(obj);
+        //console.log(reg);
+        var theOne;
+        reg.forEach(function(reg) {
+          var obj = snapshot.child(reg).val();
+          //console.log(obj);
+          //var loc = Object.keys(obj);
+          //console.log(obj.hasOwnProperty(location));
+          if (obj.hasOwnProperty(location)) {
+            //console.log("THIS IS THE ONE "+region);
+            theOne = reg;
+            //self.region = region;
+            //console.log(this.region);
+            //return region;
+          }
+        });
+        //console.log(theOne);
+        self.regionLoc = theOne;
+        //final = theOne
+        //console.log(final);
+        //console.log(self.region);
+        return theOne;
+      });
+      //console.log(final.key);
+      //})
+    },
+    // takes in the location name and returns the location code
+    // eg: takes in General and returns GEN
+    getRegionCode: function(region) {
+      //var region = "General";
+      var text = "";
+      switch (region) {
+        case "Arts and Social Sciences":
+          text = "ASS";
+          break;
+        case "Business":
+          text = "BIZ";
+          break;
+        case "Computing":
+          text = "COM";
+          break;
+        case "Dentistry":
+          text = "DEN";
+          break;
+        case "Design and Environment":
+          text = "SDE";
+          break;
+        case "Engineering":
+          text = "ENG";
+          break;
+        case "General":
+          text = "GEN";
+          break;
+        case "Medicine":
+          text = "MED";
+          break;
+        case "Music":
+          text = "MUS";
+          break;
+        case "Science":
+          text = "SCI";
+          break;
+        default:
+          text = "Faculty";
+      }
+      //this.regionBook = text;
+      //console.log(text);
+      return text;
+    },
     // to be used when user makes a booking
     // takes in the user, date, time, location of booking
     makeBooking: function(bdate, btime, bloc) {
@@ -204,82 +281,6 @@ var app = new Vue({
             .child(bdate)
             .update({ [btime]: region + " " + bloc + " " + temp["free"] });
         });
-    },
-    // takes in the location and returns the region loc is in
-    getRegionfromLoc: function(location) {
-      //return new Promise(function(resolve, reject){
-      //var location = "Central Library";
-      var self = this;
-      //var final;
-      realtimeRef.once("value", function(snapshot) {
-        var obj = snapshot.val();
-        var reg = Object.keys(obj);
-        //console.log(reg);
-        var theOne;
-        reg.forEach(function(reg) {
-          var obj = snapshot.child(reg).val();
-          //console.log(obj);
-          //var loc = Object.keys(obj);
-          //console.log(obj.hasOwnProperty(location));
-          if (obj.hasOwnProperty(location)) {
-            //console.log("THIS IS THE ONE "+region);
-            theOne = reg;
-            //self.region = region;
-            //console.log(this.region);
-            //return region;
-          }
-        });
-        //console.log(theOne);
-        self.regionLoc = theOne;
-        //final = theOne
-        //console.log(final);
-        //console.log(self.region);
-        return theOne;
-      });
-      //console.log(final.key);
-      //})
-    }, // takes in the location name and returns the location code
-    // eg: takes in General and returns GEN
-    getRegionCode: function(region) {
-      //var region = "General";
-      var text = "";
-      switch (region) {
-        case "Arts and Social Sciences":
-          text = "ASS";
-          break;
-        case "Business":
-          text = "BIZ";
-          break;
-        case "Computing":
-          text = "COM";
-          break;
-        case "Dentistry":
-          text = "DEN";
-          break;
-        case "Design and Environment":
-          text = "SDE";
-          break;
-        case "Engineering":
-          text = "ENG";
-          break;
-        case "General":
-          text = "GEN";
-          break;
-        case "Medicine":
-          text = "MED";
-          break;
-        case "Music":
-          text = "MUS";
-          break;
-        case "Science":
-          text = "SCI";
-          break;
-        default:
-          text = "Faculty";
-      }
-      //this.regionBook = text;
-      //console.log(text);
-      return text;
     },
     book: function(booking) {
       var currRef = this.currUserRef;
