@@ -207,8 +207,11 @@ var app = new Vue({
     },
     // cancel bookings
     // will take in date, time, place (region + loc + room)
-    cancelBooking(bdate, btime, bplace) {
+    cancelBooking(booking) {
       //var bplace = "COM COM1 DR2";
+      var bdate = booking["date"];
+      var btime = booking["time"];
+      var bplace = booking["location"];
       var result = confirm("Are you sure you want to cancel this booking?");
       if (result) {
         //Logic to delete the item

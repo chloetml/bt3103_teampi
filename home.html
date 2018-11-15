@@ -104,7 +104,9 @@
       #hl {
         font-weight: bold;
       }
-	    button { background-image:url('images/dagger.png'); }
+      button {
+        background-image: url("images/dagger.png");
+      }
     </style>
   </head>
 
@@ -178,24 +180,29 @@
                         >
                           <div class="row">
                             <div class="col-md-8">
-                                <p>
-                                  <span id="hl">Date:</span>
-                                  {{formatDate(booking["date"])}}
-                                </p>
-                                <p><span id="hl">Time:</span> {{booking["time"]}}</p>
-                                <p>
-                                  <span id="hl">Location:</span>
-                                  {{booking["location"].slice(4)}}
-                                </p>
+                              <p>
+                                <span id="hl">Date:</span>
+                                {{formatDate(booking["date"])}}
+                              </p>
+                              <p>
+                                <span id="hl">Time:</span> {{booking["time"]}}
+                              </p>
+                              <p>
+                                <span id="hl">Location:</span>
+                                {{booking["location"].slice(4)}}
+                              </p>
                             </div>
                             <div class="col-md-4">
-                              <div class="clickable" @click="cancelBooking(booking["date"],booking["time"],booking["location"])">
+                              <div
+                                class="clickable"
+                                @click="cancelBooking(booking)"
+                              >
                                 <img
-                                src="images/delete.png"
-                                alt="Logo"
-                                width="25px"
-                                height="25px"
-                              />
+                                  src="images/delete.png"
+                                  alt="Logo"
+                                  width="25px"
+                                  height="25px"
+                                />
                               </div>
                             </div>
                           </div>
