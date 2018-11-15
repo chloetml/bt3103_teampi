@@ -190,8 +190,10 @@ a.logout {
 
 #navbar-center span{
   top: 40px;
-  margin-left: 5px;
+  margin-left: 7px;
   padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
   background-color: #fff;
   border-radius: 25px;
 }
