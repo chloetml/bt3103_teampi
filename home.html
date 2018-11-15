@@ -175,7 +175,10 @@
                           v-for="booking in myBookings"
                           class="list-group-item list-group-item-action"
                         >
-                          <p>Date: {{formatDate(booking["date"])}}</p>
+                          <p>
+                            <span id="hl">Date:</span>
+                            {{formatDate(booking["date"])}}
+                          </p>
                           <p><span id="hl">Time:</span> {{booking["time"]}}</p>
                           <p>
                             <span id="hl">Location:</span>
