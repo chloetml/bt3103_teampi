@@ -207,7 +207,7 @@ var app = new Vue({
     // takes in the location and returns the region loc is in
     getRegionfromLoc: function(location) {
       //return new Promise(function(resolve, reject){
-      var location = "Central Library";
+      //var location = "Central Library";
       var self = this;
       //var final;
       realtimeRef.once("value", function(snapshot) {
