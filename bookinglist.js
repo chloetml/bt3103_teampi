@@ -288,7 +288,7 @@ var app = new Vue({
       var time = this.time;
       var date = this.date;
       this.makeBooking(date, time, loc);
-      /*
+
       window.location.href =
         "/bt3103_teampi/bookingConf.html?date=" +
         date +
@@ -299,7 +299,6 @@ var app = new Vue({
         "&loc=" +
         loc +
         "";
-        */
     }
   }
 });
