@@ -58,7 +58,7 @@ var app = new Vue({
 
     // adds number of available disc rooms for booking to this.bookings
     // used for showing how many rooms each location is avail to book
-    bookingsAvail(userDate, userTime) {
+    bookingsAvail: function(userDate, userTime) {
       //var userDate = "16112018";
       //var userTime = "1000";
       var arr = [];
