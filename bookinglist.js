@@ -162,7 +162,7 @@ var app = new Vue({
       var availRoom = [];
       var temp = {};
       // retrieve available room from bloc
-      bookingsRef
+      await bookingsRef
         .child(bregion)
         .child(bloc)
         .once("value", function(snapshot) {
@@ -237,6 +237,48 @@ var app = new Vue({
       });
       //console.log(final.key);
       //})
+    },// takes in the location name and returns the location code
+    // eg: takes in General and returns GEN
+    getRegionCode(region) {
+      //var region = "General";
+      var text = "";
+      switch (region) {
+        case "Arts and Social Sciences":
+          text = "ASS";
+          break;
+        case "Business":
+          text = "BIZ";
+          break;
+        case "Computing":
+          text = "COM";
+          break;
+        case "Dentistry":
+          text = "DEN";
+          break;
+        case "Design and Environment":
+          text = "SDE";
+          break;
+        case "Engineering":
+          text = "ENG";
+          break;
+        case "General":
+          text = "GEN";
+          break;
+        case "Medicine":
+          text = "MED";
+          break;
+        case "Music":
+          text = "MUS";
+          break;
+        case "Science":
+          text = "SCI";
+          break;
+        default:
+          text = "Faculty";
+      }
+      //this.regionBook = text;
+      //console.log(text);
+      return text;
     },
     book: function(booking) {
       var currRef = this.currUserRef;
