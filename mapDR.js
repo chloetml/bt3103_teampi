@@ -219,8 +219,8 @@ var app = new Vue({
         avail.push([location, temp]);
       }
 
-      //availLoc = Object.keys(avail);
-      this.allDiscAvailable = avail[0];
+      availLoc = Object.keys(avail);
+      this.allDiscAvailable = availLoc;
       console.log(this.allDiscAvailable);
       return availLoc;
     }
