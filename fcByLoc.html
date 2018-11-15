@@ -61,11 +61,13 @@
             </h1>
             <br />
             <div class="list-group">
-            	<div class="list-group-item list-group-item-action clickable">
-            	<h2>{{booking["location"]}}:</h2>
-            	<p>
-                  <span id="bk">{{booking["available"]}}</span> rooms available
-                </p>
+            	<div v-for="allregion in allregions" 
+		     class="list-group-item list-group-item-action clickable">
+            	<h2>{{ allregion }}:</h2>
+            	<!--
+		<p>
+                  <span id="bk">{{allregions}}</span> rooms available
+                </p> -->
             	</div>
             	<!--
               <div
