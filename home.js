@@ -214,6 +214,7 @@ var app = new Vue({
       var bplace = booking["location"];
       var result = confirm("Are you sure you want to cancel this booking?");
       if (result) {
+        var currRef = this.currUserRef;
         //Logic to delete the item
         var len = bplace.length;
         var room = bplace.slice(len - 3, len);
@@ -235,6 +236,9 @@ var app = new Vue({
           .child(bdate)
           .child(btime)
           .set("");
+
+        window.location.href =
+          "/bt3103_teampi/home.html?currRef=" + currRef + "";
       }
     },
     formatDate: function(date) {
