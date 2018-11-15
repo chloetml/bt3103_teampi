@@ -25,15 +25,15 @@ var app = new Vue({
     var url_string = window.location.href;
     var url = new URL(url_string);
     var cr = url.searchParams.get("currRef");
-    var startTime = url.searchParams.get("time");
-    var date = formatDate(url.searchParams.get("date"));
-    var loc = url.searchParams.get("loc");
+    var st = url.searchParams.get("time");
+    var d = this.formatDate(url.searchParams.get("date"));
+    var l = url.searchParams.get("loc");
     console.log(cr);
     this.currUserRef = cr;
-    this.date = date;
-    this.startTime = startTime;
-    this.endTime = this.calcET(startTime);
-    this.loc = loc;
+    this.date = d;
+    this.startTime = st;
+    this.endTime = this.calcET(st);
+    this.loc = l;
   },
   methods: {
     goRT: function() {
