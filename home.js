@@ -204,6 +204,12 @@ var app = new Vue({
         });
       this.myBookings = arr;
       return arr;
+    },
+    formatDate: function(date) {
+      // take in a string date in ddmmyyyy format
+      var df;
+      df = date.slice(0, 2) + "/" + date.slice(2, 4) + "/" + date.slice(4, 8);
+      return df;
     }
   }
 });
