@@ -33,7 +33,6 @@ var app = new Vue({
     this.currUserRef = cr;
     this.currLoc = cl;
     this.venueType = vt;
-    this.recommendStudy();
   },
   methods: {
     goRT: function() {
@@ -57,9 +56,9 @@ var app = new Vue({
     },
 
     //vacant: finds the number of vacant seats in realtime for a given region and location
-    vacant: async function(region, location) {
+    vacant: function(region, location) {
       var temp = 0;
-      await realtimeRef
+      realtimeRef
         .child(region)
         .child(location)
         .child("study rooms")
@@ -70,7 +69,7 @@ var app = new Vue({
           //console.log(snap.val());
         });
 
-      await realtimeRef
+      realtimeRef
         .child(region)
         .child(location)
         .child("study rooms")
@@ -88,9 +87,9 @@ var app = new Vue({
 
     // recommend study rooms
     //Finds the place with the greatest number of vacant slots in a given region
-    recommendStudy: async function(region) {
+    recommendStudy: function(region) {
       var locations = [];
-      await realtimeRef.child(region).once("value", function(snap) {
+      realtimeRef.child(region).once("value", function(snap) {
         //console.log(snap.val());
         locations = snap.val();
       });
@@ -99,7 +98,7 @@ var app = new Vue({
       var location;
       for (location in locations) {
         //console.log(location);
-        var num = await this.vacant(region, location);
+        var num = this.vacant(region, location);
         console.log(num);
         if (num > max) {
           max = num;
@@ -118,7 +117,7 @@ var app = new Vue({
 
     // takes in a region name
     // find the next nearest region that has discussion rooms available
-    nearestDiscRegion(currRegion) {
+    nearestDiscRegion: function(currRegion) {
       var text = "";
       switch (currRegion) {
         case "Arts and Social Sciences":
@@ -161,13 +160,13 @@ var app = new Vue({
     // takes in a region name, currTime
     // find the number of disc room available
     // assumes each region only has one location
-    discAvail: async function(region, location, time) {
+    discAvail: function(region, location, time) {
       //var region = "Computing";
       //var time = "1400";
       var finalNum;
       var discRooms = [];
       var available = [];
-      await rtDiscRef
+      realtimeRef
         .child(region)
         .child(location)
         .once("value", function(snap) {
@@ -175,13 +174,13 @@ var app = new Vue({
           //location = Object.keys(obj);
         });
       for (var disc in discRooms) {
-        await rtDiscRef
+        realtimeRef
           .child(region)
           .child(location)
           .child(disc)
           .child(time)
           .once("value", function(snap) {
-            if (snap.val() == "") {
+            if (snap.val() === "") {
               available.push(disc);
               console.log(available);
             }
@@ -192,17 +191,17 @@ var app = new Vue({
     },
 
     // recommendation algo for discussion rooms
-    recomDisc: async function(region, time) {
-      region = await this.nearestDiscRegion(region);
+    recomDisc: function(region, time) {
+      region = this.nearestDiscRegion(region);
       var locations;
       var avail = [];
 
-      await rtDiscRef.child(region).once("value", function(snap) {
+      rtDiscRef.child(region).once("value", function(snap) {
         locations = snap.val();
       });
 
       for (var location in locations) {
-        var temp = await this.discAvail(region, location, time);
+        var temp = this.discAvail(region, location, time);
         avail.push({ [location]: temp });
       }
       this.allDiscAvailable = avail;
