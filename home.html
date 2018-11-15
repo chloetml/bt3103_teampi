@@ -28,7 +28,10 @@
         padding: 10px;
         width: 50%;
       }
-
+      .tab-pane {
+        height: 300px;
+        overflow-y: scroll;
+      }
       .logout-btn {
         margin-top: -10px;
         width: 100px;
@@ -172,7 +175,7 @@
                           <p>Date: {{booking["date"]}}</p>
                           <p>Time: <span id="bk">{{booking["time"]}}</span></p>
                           <p>
-                            Locarion:
+                            Location:
                             <span id="bk">{{booking["location"]}}</span>
                           </p>
                         </div>
