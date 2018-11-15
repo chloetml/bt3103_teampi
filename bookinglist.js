@@ -19,7 +19,8 @@ var app = new Vue({
     venueType: "",
     time: "",
     bookings: "", // places that are available to show on html so user can choose which location they want
-    regionLoc: ""
+    regionLoc: "",
+    myBookings: ""
   },
   mounted: function() {
     var ref = this;
@@ -212,10 +213,10 @@ var app = new Vue({
     },
     // to be used when user makes a booking
     // takes in the user, date, time, location of booking
-    makeBooking: function (bdate, btime, bloc) {
-      var bdate = "15112018";
-      var btime = "1400";
-      var bloc = "Central Library";
+    makeBooking: function(bdate, btime, bloc) {
+      //var bdate = "15112018";
+      //var btime = "1400";
+      //var bloc = "Central Library";
       var bregion = this.regionLoc; // gets region from getRegionfromLoc function
       var self = this;
       //console.log(this.regionLoc);
@@ -225,10 +226,10 @@ var app = new Vue({
       bookingsRef
         .child(bregion)
         .child(bloc)
-        .once("value", function (snapshot) {
+        .once("value", function(snapshot) {
           var obj = snapshot.val();
           var rooms = Object.keys(obj);
-          rooms.forEach(function (something) {
+          rooms.forEach(function(something) {
             var user = snapshot
               .child(something)
               .child(bdate)
@@ -261,21 +262,21 @@ var app = new Vue({
             .child("0")
             .child("bookings")
             .child(bdate)
-            .update({ [btime]: region + " " + bloc + " " + temp['free'] });
+            .update({ [btime]: region + " " + bloc + " " + temp["free"] });
         });
     },
     // takes in the location and returns the region loc is in
-    getRegionfromLoc: function (location) {
+    getRegionfromLoc: function(location) {
       //return new Promise(function(resolve, reject){
-      var location = "Central Library";
+      //var location = "Central Library";
       var self = this;
       //var final;
-      realtimeRef.once("value", function (snapshot) {
+      realtimeRef.once("value", function(snapshot) {
         var obj = snapshot.val();
         var reg = Object.keys(obj);
         //console.log(reg);
         var theOne;
-        reg.forEach(function (reg) {
+        reg.forEach(function(reg) {
           var obj = snapshot.child(reg).val();
           //console.log(obj);
           //var loc = Object.keys(obj);
@@ -297,8 +298,7 @@ var app = new Vue({
       });
       //console.log(final.key);
       //})
-
-    },
+    }
   }
 });
 
