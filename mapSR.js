@@ -15,7 +15,7 @@ var app = new Vue({
     currLoc: "",
     venueType: "",
     vacancy: 0,
-    rec: 0,
+    rec: "Loading..",
     rec_vacancy: 0,
     discAvailable: [],
     allDiscAvailable: []
@@ -113,7 +113,7 @@ var app = new Vue({
       }
       console.log(most);
       console.log(max);
-      this.rec = most;
+      this.rec = most[0];
       this.rec_vacancy = max;
     },
 
