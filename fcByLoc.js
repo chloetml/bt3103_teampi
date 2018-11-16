@@ -50,8 +50,15 @@ var app = new Vue({
     },
     searchByLoc: function(locName) {
       var currRef = this.currUserRef;
+      var region = this.getRegionfromLoc(locName);
       window.location.href =
-        "/bt3103_teampi/fcLoc.html?currRef=" + currRef + "&loc=" + locName + "";
+        "/bt3103_teampi/fcLoc.html?currRef=" +
+        currRef +
+        "&loc=" +
+        locName +
+        "&region=" +
+        region +
+        "";
     },
     get_regions: async function() {
       var regions = [];
@@ -213,8 +220,8 @@ var app = new Vue({
             //return region;
           }
         });
-        //console.log(theOne);
-        self.region = theOne;
+        console.log(theOne);
+        //self.region = theOne;
         //final = theOne
         //console.log(final);
         //console.log(self.region);

@@ -25,12 +25,13 @@ var app = new Vue({
     var url = new URL(url_string);
     var cr = url.searchParams.get("currRef");
     var loc = url.searchParams.get("loc");
+    var reg = url.searchParams.get("region");
     //console.log(cr);
     this.currUserRef = cr;
     this.location = loc;
-    this.region = await this.getRegionfromLoc(loc);
+    this.region = reg;
     this.get_regions();
-    this.display(this.region, loc, new Date(2018, 11, 19, 22, 0, 30, 0));
+    this.display(reg, loc, new Date(2018, 11, 19, 22, 0, 30, 0));
   },
   methods: {
     goRT: function() {
