@@ -15,7 +15,6 @@ var app = new Vue({
   data: {
     //currUserRef: "ref here",
     currUserRef: "ref here",
-    currUserId: "",
     date: "",
     venueType: "",
     time: "",
@@ -147,41 +146,41 @@ var app = new Vue({
         });
       });
       //});
-      this.bookings = arr;
+      this.bookings = arr; 
     },
     //takes in the location and returns the region loc is in
-    getRegionfromLoc: function(location) {
+    getRegionfromLoc: async function (location) {
       //return new Promise(function(resolve, reject){
       //var location = "Central Library";
       var self = this;
-      var theOne;
       //var final;
-      realtimeRef.once("value", function(snapshot) {
+      await realtimeRef.once("value", function (snapshot) {
         var obj = snapshot.val();
         var reg = Object.keys(obj);
         //console.log(reg);
-        reg.forEach(function(regSnap) {
-          var obj2 = snapshot.child(regSnap).val();
+        var theOne;
+        reg.forEach(function (reg) {
+          var obj = snapshot.child(reg).val();
           //console.log(obj);
           //var loc = Object.keys(obj);
           //console.log(obj.hasOwnProperty(location));
-          if (obj2.hasOwnProperty(location)) {
+          if (obj.hasOwnProperty(location)) {
             //console.log("THIS IS THE ONE "+region);
-            theOne = regSnap;
-            //self.region = region;
+            theOne = reg;
+            self.regionLoc = reg;
             //console.log(this.region);
             //return region;
           }
         });
         console.log(theOne);
-        self.regionLoc = theOne;
+        //self.region = theOne;
         //final = theOne
         //console.log(final);
         //console.log(self.region);
+        return theOne;
       });
       //console.log(final.key);
       //})
-      return theOne;
     },
     // takes in the location name and returns the location code
     // eg: takes in General and returns GEN
@@ -299,7 +298,7 @@ var app = new Vue({
       var rooms = [];
       var chosen = "";
       var id = "";
-      await userRef.child(this.currUserRef).child("id").once("value", function(snap){
+      await user.child(this.currUserRef).child("id").once("value", function(snap){
         id=snap.val();
       });
       
@@ -337,7 +336,7 @@ var app = new Vue({
       var regionCode = this.getRegionCode(region);
       var temp = regionCode + " " + location + " " +  chosen
 
-      await userRef //updating users node
+      await user //updating users node
        .child(id)
        .child("bookings")
        .child(date)
@@ -347,13 +346,24 @@ var app = new Vue({
       return chosen;
       console.log(chosen);
     },
-    book: function(booking) {
+    book: async function(booking) {
       var currRef = this.currUserRef;
       var loc = booking["location"];
-      console.log(loc);
+      await this.getRegionfromLoc(loc);
+      var region = this.regionLoc;
       var time = this.time;
       var date = this.date;
-      this.makeBooking(date, time, loc);
+      await this.makeBooking(region, loc, date, time);
+      window.location.href =
+        "/bt3103_teampi/bookingConf.html?date=" +
+        date +
+        "&currRef=" +
+        currRef +
+        "&time=" +
+        time +
+        "&loc=" +
+        loc +
+        "";
     }
   }
 });
