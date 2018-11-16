@@ -15,6 +15,7 @@ var app = new Vue({
   data: {
     //currUserRef: "ref here",
     currUserRef: "ref here",
+    currUserId: "",
     date: "",
     venueType: "",
     time: "",
@@ -227,6 +228,7 @@ var app = new Vue({
     },
     // to be used when user makes a booking
     // takes in the user, date, time, location of booking
+    /*
     makeBooking: async function(bdate, btime, bloc) {
       //ar bdate = "15112018";
       //var btime = "1400";
@@ -292,6 +294,58 @@ var app = new Vue({
         "&loc=" +
         bloc +
         "";
+    }, */
+     makeBooking: async function(region, location, date, time) {
+      var rooms = [];
+      var chosen = "";
+      var id = "";
+      await userRef.child(this.currUserRef).child("id").once("value", function(snap){
+        id=snap.val();
+      });
+      
+      await bookingsRef
+        .child(region)
+        .child(location)
+        .once("value", function(snap) {
+          rooms = snap.val();
+        });
+
+      for (var room in rooms) {
+        if (chosen != "") {
+          break;
+        }
+        await bookingsRef
+          .child(region)
+          .child(location)
+          .child(room)
+          .child(date)
+          .child(time)
+          .once("value", function(snap) {
+            if (snap.val() == "") {
+              chosen = room;
+              return;
+            }
+          });
+      }
+      await bookingsRef //updating bookings node
+        .child(region)
+        .child(location)
+        .child(chosen)
+        .child(date)
+        .update({ [time]: id });
+
+      var regionCode = this.getRegionCode(region);
+      var temp = regionCode + " " + location + " " +  chosen
+
+      await userRef //updating users node
+       .child(id)
+       .child("bookings")
+       .child(date)
+       .update({[time]: temp})
+
+      this.booked = chosen;
+      return chosen;
+      console.log(chosen);
     },
     book: function(booking) {
       var currRef = this.currUserRef;
