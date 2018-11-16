@@ -13,7 +13,7 @@ var app = new Vue({
     currUserRef: "ref here",
     regionLoc: "",
     allregions: [],
-    allLocations: [],
+    allLocations: ["Loading.."],
     dailyOccupancy: 0,
     occupancy: 0,
     opening: 0,
