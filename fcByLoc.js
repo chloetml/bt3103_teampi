@@ -5,6 +5,7 @@ var db = firebase
   .database();
 
 var forecastRef = db.ref("forecast");
+var realtimeRef = db.ref("realtime");
 
 var app = new Vue({
   el: "#app",
@@ -48,9 +49,10 @@ var app = new Vue({
       var currRef = this.currUserRef;
       window.location.href = "/bt3103_teampi/home.html?currRef=" + currRef + "";
     },
-    searchByLoc: function(locName) {
+    searchByLoc: async function(locName) {
       var currRef = this.currUserRef;
-      var region = this.getRegionfromLoc(locName);
+      await this.getRegionfromLoc(locName);
+      var region = this.regionLoc;
       window.location.href =
         "/bt3103_teampi/fcLoc.html?currRef=" +
         currRef +
@@ -197,12 +199,12 @@ var app = new Vue({
     },
 
     // takes in the location and returns the region loc is in
-    getRegionfromLoc: function(location) {
+    getRegionfromLoc: async function(location) {
       //return new Promise(function(resolve, reject){
       //var location = "Central Library";
       var self = this;
       //var final;
-      forecastRef.once("value", function(snapshot) {
+      await realtimeRef.once("value", function(snapshot) {
         var obj = snapshot.val();
         var reg = Object.keys(obj);
         //console.log(reg);
@@ -215,7 +217,7 @@ var app = new Vue({
           if (obj.hasOwnProperty(location)) {
             //console.log("THIS IS THE ONE "+region);
             theOne = reg;
-            //self.region = region;
+            self.regionLoc = reg;
             //console.log(this.region);
             //return region;
           }
