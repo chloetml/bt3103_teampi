@@ -1,0 +1,367 @@
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+body {
+  /*font-family: "Poppins", sans-serif;*/
+  background: #1f4e79;
+}
+
+/*
+p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1em;
+    font-weight: 300;
+    line-height: 1.7em;
+    color: #999;
+}
+*/
+a,
+a:hover,
+a:focus {
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.navbar {
+  padding: 15px 10px;
+  background: none;
+  border: none;
+  border-radius: 0;
+  margin-bottom: -10px;
+}
+
+.navbar-btn {
+  box-shadow: none;
+  outline: none !important;
+  border: none;
+  background-color: #244164;
+}
+.navbar-btn:hover {
+  background-color: #1d344f;
+}
+.navbar-btn:active:focus {
+  background-color: #244164 !important;
+}
+
+.line {
+  width: 100%;
+  height: 1px;
+  border-bottom: 1px dashed #ddd;
+  margin: 40px 0;
+}
+
+/* ---------------------------------------------------
+    SIDEBAR STYLE
+----------------------------------------------------- */
+
+#sidebar {
+  width: 250px;
+  position: fixed;
+  top: 0;
+  left: -250px;
+  height: 100vh;
+  z-index: 999;
+  background: #244164;
+  color: #fff;
+  transition: all 0.3s;
+  overflow-y: scroll;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+}
+
+#sidebar.active {
+  left: 0;
+}
+
+#dismiss {
+  width: 35px;
+  height: 35px;
+  line-height: 35px;
+  text-align: center;
+  background: #244164;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+#dismiss:hover {
+  background: #fff;
+  color: #1d344f;
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 998;
+  opacity: 0;
+  transition: all 0.5s ease-in-out;
+}
+.overlay.active {
+  display: block;
+  opacity: 1;
+}
+
+#sidebar .sidebar-header {
+  padding: 20px;
+  background: #1d344f;
+}
+
+#sidebar ul.components {
+  padding: 20px 0;
+  border-bottom: 1px solid #1d344f;
+}
+
+#sidebar ul p {
+  color: #fff;
+  padding: 10px;
+}
+
+#sidebar ul li {
+  padding: 10px;
+  font-size: 1.1em;
+  display: block;
+}
+
+#sidebar ul li :hover {
+  color: #1d344f;
+  background: #fff;
+}
+
+#sidebar ul li.active,
+a[aria-expanded="true"] {
+  color: #fff;
+  background: #1d344f;
+}
+
+a[data-toggle="collapse"] {
+  position: relative;
+}
+
+.dropdown-toggle::after {
+  display: block;
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+}
+
+ul ul a {
+  font-size: 0.9em !important;
+  padding-left: 30px !important;
+}
+
+ul.CTAs {
+  padding: 20px;
+}
+
+ul.CTAs a {
+  text-align: center;
+  font-size: 0.9em !important;
+  display: block;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+a.logout {
+  background: #fff;
+  color: #1d344f;
+  padding: 10px;
+  font-size: 1.1em;
+  display: block;
+}
+
+/* ---------------------------------------------------
+    TOPBAR STYLE
+----------------------------------------------------- */
+
+#navbar-center{
+  /* width: 50px; */
+  position: fixed;
+  top: 43px;
+  left: 150px;
+  margin-left: 50px;
+  margin-top: 5px;
+}
+
+/*
+#line{
+  background-color: #1f4e79;
+}
+*/
+
+#navbar-center span{
+  top: 40px;
+  margin-left: 7px;
+  padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: #fff;
+  border-radius: 25px;
+}
+
+#calicon {
+  margin-top: -7px;
+}
+
+#booksicon{
+  margin-left: 50px;
+}
+
+/* for fcLoc */
+#mapicon {
+  margin-top: -5px;
+  margin-left: 50px;
+}
+
+
+
+/* ---------------------------------------------------
+    BOOKINGS PART STYLE
+----------------------------------------------------- */
+
+#hl {
+  color: #ffc107;
+  font-weight: bold;
+} 
+
+#name{
+  font-size: 50px;
+  padding: 25px;
+}
+
+
+/* ---------------------------------------------------
+    CHART STYLE
+----------------------------------------------------- */
+#chart-area {
+  background-color: #fff;
+}
+
+
+/* ---------------------------------------------------
+    BUTTON STYLE
+----------------------------------------------------- */
+.save-btn {
+  width: 130px;
+  /*display: block;
+  position: relative;
+  */
+  border-radius: 25px;
+  /* border: 1px solid #3079ed; */
+  border: 0px;
+  /* color: #fff; */
+  text-shadow: 0 1px rgba(0, 0, 0, 0.1);
+  background-color: #D8EDF9;
+  padding: 10px 0px;
+  font-family: arial;
+  font-size: 16px;
+  /* background-image: -webkit-gradient(linear, 0 0, 0 100%,
+      from(#4d90fe), to(#4787ed)); */
+}
+.letsgo {
+  text-align: center;
+}
+
+/* ---------------------------------------------------
+    TIMEPICKER STYLE
+----------------------------------------------------- */
+#timepicker {
+  display: inline-block;
+  text-align: center;
+  width: 350px;
+  margin-left: 30px;
+}
+#timepicker span {
+  display: none;
+}
+
+/* ---------------------------------------------------
+    CONTENT STYLE
+----------------------------------------------------- */
+
+#content {
+  width: 100%;
+  padding: 20px;
+  min-height: 100vh;
+  transition: all 0.3s;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+#btn-text {
+  color: white;
+  font-size: 20px;
+}
+
+h1,
+h2 {
+  color: white;
+}
+.ddl1 {
+  padding-bottom: 10px;
+}
+.ddl1 img {
+  display: inline-block;
+  text-align: center;
+}
+.ddl2 img {
+  display: inline-block;
+  text-align: center;
+}
+#datepicker {
+  display: inline-block;
+  text-align: center;
+  width: 350px;
+  margin-left: 30px;
+}
+#datepicker span {
+  display: none;
+}
+
+
+#sel2 {
+  display: inline-block;
+  text-align: center;
+  margin-left: 30px;
+  width: 350px;
+}
+.goto-btn {
+  width: 200px;
+  /*display: block;
+  position: relative;
+  */
+  border-radius: 25px;
+  /* border: 1px solid #3079ed; */
+  border: 0px;
+  color: #1f4e79;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.1);
+  background-color: #ffd966;
+  padding: 10px 0px;
+  font-family: arial;
+  font-size: 16px;
+  /* background-image: -webkit-gradient(linear, 0 0, 0 100%,
+			from(#4d90fe), to(#4787ed)); */
+}
+.location {
+  display: inline-block;
+  text-align: center;
+  padding-right: 20px;
+}
+.time {
+  display: inline-block;
+  text-align: center;
+  padding-left: 20px;
+}
+#or {
+  display: inline-block;
+  text-align: center;
+}
+.clickable {
+  cursor: pointer;
+}
