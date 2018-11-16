@@ -33,6 +33,25 @@
 	</script>
 	<div id="app">
 		<div class="wrapper">
+			<!-- Sidebar Holder -->
+			<nav id="sidebar">
+				<div id="dismiss">
+					<i class="glyphicon glyphicon-arrow-left"></i>
+      				</div>
+      				<div class="sidebar-header">
+      		    			<h3>Menu</h3>
+      				</div>
+      				<ul class="list-unstyled components">
+        				<li class="clickable" @click="goHome">Home</li>
+        				<li class="clickable" @click="goRT">Real Time Mode</li>
+        				<li class="clickable active" @click="goFC">Forecast Mode</li>
+        				<li class="clickable" @click="goBK">Booking</li>
+      				</ul>
+
+      				<ul class="list-unstyled CTAs">
+        				<li><a href="/bt3103_teampi/index.html" class="logout">Sign Out</a></li>
+      				</ul>
+    			</nav>
         <!-- Page Content Holder -->
         <div id="content">
           <nav class="navbar navbar-default">
