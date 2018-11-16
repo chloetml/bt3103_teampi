@@ -4,6 +4,7 @@ var db = firebase
   })
   .database();
 
+var realtimeRef = db.ref("realtime");
 var forecastRef = db.ref("forecast");
 
 Vue.component('location-bubble', {
@@ -12,37 +13,42 @@ Vue.component('location-bubble', {
       count: 0
     }
   },
+  props: ['location', 'occ', 'cap'],
   template: `<div id="location-bubble">
-              <p id="loc-header">Location</p>
+              <p id="loc-header">{{ location }}</p>
               <div class="values" id="occ">
                 <p>Estimated Occupancy</p>
-                <p id="occ-val">Value</p>
+                <p id="occ-val">{{ occ }}</p>
               </div>
               <div class="values" id="cap">
                 <p>Total Capacity</p>
-                <p id="occ-val">Value</p>
+                <p id="occ-val">{{ cap }}</p>
               </div>
             </div>`
-})
+});
 
 var app = new Vue({
   el: "#app",
-  data: {
-    currUserRef: "ref here",
-    allregions: [],
-    dailyOccupancy: 0,
-    occupancy: 0,
-    opening: 0,
-    closing: 0,
+  data() {
+    return {
+      currUserRef: "ref here",
+      allregions: [],
+      dailyOccupancy: 0,
+      occupancy: 0,
+      opening: 0,
+      closing: 0,
+      regionLoc: ""
+    }
   },
   mounted: function () {
     var ref = this;
     var url_string = window.location.href;
     var url = new URL(url_string);
     var cr = url.searchParams.get("currRef");
-    console.log(cr);
+    //console.log(cr);
     this.currUserRef = cr;
     this.get_regions();
+    this.forecastByLoc('Central Library', new Date(2018, 11, 12, 22, 0, 30, 0), 2200);
   },
   methods: {
     goRT: function () {
@@ -64,7 +70,6 @@ var app = new Vue({
       var currRef = this.currUserRef;
       window.location.href = "/bt3103_teampi/home.html?currRef=" + currRef + "";
     },
-
     get_regions: async function () {
       var regions = [];
       var temp;
@@ -79,7 +84,7 @@ var app = new Vue({
       //console.log(this.allregions);
       return regions;
     },
-
+    
     //find the general occupancy rate for a given day
     forecast_day: async function (region, location, date) {
       var open = await this.operatingHours(region, location, "open");
@@ -97,20 +102,25 @@ var app = new Vue({
       //return this.dailyOccupancy;
     },
 
-    //forecasting model: the model takes in a string location and region,
+    //forecasting model: the model takes in a string location,
     //and a date object
-    forecast: async function (region, location, date, time) {
+    forecastByLoc: async function (location, date, time) {
+      //var location = 'Central Library';
+      //var date = new Date(2018, 11, 12, 22, 0, 30, 0);
+      //var time = 2200;
       var i;
       var total = 0;
       //var time = await this.formatTime(date); //time derived from date object
+      await this.getRegionfromLoc(location);
+      console.log("this: " + this.regionLoc);
       for (i = 0; i < 4; i = i + 1) {
         var tempDate = new Date();
         await tempDate.setDate((await date.getDate()) - 7 * i);
-        console.log("tempDate: " + tempDate);
+        //console.log("tempDate: " + tempDate);
         var formatedDate = await this.formatDate(tempDate);
-        console.log(formatedDate);
-        var num = await this.occupied(region, location, formatedDate, time);
-        console.log(num[0]);
+        //console.log(formatedDate);
+        var num = await this.occupied(this.regionLoc, location, formatedDate, time);
+        //console.log(num[0]);
         total = total + num[0];
         //console.log(total)
       }
@@ -119,7 +129,6 @@ var app = new Vue({
       this.occupancy = total; //occupancy is used for displaying the return value on
       return total; //html, since the function return a promise object
     },
-
     // takes in a string location and
     // a string region and
     // a string parameter called end (accepted values: open/close)
@@ -182,5 +191,40 @@ var app = new Vue({
       //console.log(temp);
       return temp;
     },
+
+    // takes in the location and returns the region loc is in
+    getRegionfromLoc: async function (location) {
+      //return new Promise(function(resolve, reject){
+      var location = "Central Library";
+      var self = this;
+      //var final;
+      await realtimeRef.once("value", function (snapshot) {
+        var obj = snapshot.val();
+        var reg = Object.keys(obj);
+        //console.log(reg);
+        var theOne;
+        reg.forEach(function (reg) {
+          var obj = snapshot.child(reg).val();
+          //console.log(obj);
+          //var loc = Object.keys(obj);
+          //console.log(obj.hasOwnProperty(location));
+          if (obj.hasOwnProperty(location)) {
+            //console.log("THIS IS THE ONE "+region);
+            theOne = reg;
+            //self.region = region;
+            //console.log(this.region);
+            //return region;
+          }
+        });
+        //console.log(theOne);
+        self.regionLoc = theOne;
+        //final = theOne
+        console.log(this.regionLoc);
+        //console.log(self.region);
+        return theOne;
+      });
+      //console.log(final.key);
+      //})
+    }, 
   }
 });
