@@ -2,7 +2,7 @@ var db = firebase
   .initializeApp({
     databaseURL: "https://space-czar.firebaseio.com/"
   })
-  .database();
+  .database(); 
 
 var realtimeRef = db.ref("realtime");
 var forecastRef = db.ref("forecast");
