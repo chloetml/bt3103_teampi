@@ -28,7 +28,7 @@ var app = new Vue({
     //console.log(cr);
     this.currUserRef = cr;
     this.location = loc;
-    this.getRegionfromLoc(loc);
+    this.region = await this.getRegionfromLoc(loc);
     this.get_regions();
     this.display(this.region, loc, new Date(2018, 11, 19, 22, 0, 30, 0));
   },
@@ -170,16 +170,17 @@ var app = new Vue({
       return temp;
     },
     // takes in the location and returns the region loc is in
-    getRegionfromLoc: function(location) {
+    getRegionfromLoc: async function(location) {
       //return new Promise(function(resolve, reject){
       //var location = "Central Library";
       var self = this;
+      var theOne;
       //var final;
       forecastRef.once("value", function(snapshot) {
         var obj = snapshot.val();
         var reg = Object.keys(obj);
         //console.log(reg);
-        var theOne;
+
         reg.forEach(function(reg) {
           var obj = snapshot.child(reg).val();
           //console.log(obj);
@@ -194,12 +195,13 @@ var app = new Vue({
           }
         });
         //console.log(theOne);
-        self.region = theOne;
+        //self.region = theOne;
         //final = theOne
         //console.log(final);
         //console.log(self.region);
-        return theOne;
       });
+      console.log(theOne);
+      return theOne;
       //console.log(final.key);
       //})
     },
