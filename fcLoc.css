@@ -184,6 +184,7 @@ a.logout {
   position: fixed;
   top: 43px;
   left: 150px;
+  right: 0px;
   margin-left: 50px;
   margin-top: 5px;
 }
@@ -218,6 +219,15 @@ a.logout {
   margin-left: 50px;
 }
 
+#clockicon {
+  margin-left: 50px;
+}
+
+#save-btn-nav {
+  margin-top: -35px;
+  position: absolute;
+  right: 60px;
+}
 
 
 /* ---------------------------------------------------
@@ -234,6 +244,53 @@ a.logout {
   padding: 25px;
 }
 
+#subcontainer {
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+#subcontainer p {
+  font-size: 32px;
+  color: #fff;
+  font-weight: bold;
+  margin-right: 10px;
+  display: inline-block;
+}
+
+#location-bubble {
+  background-color: #D8EDF9;
+  border-radius: 25px;
+  width: 30%;
+  margin-left: 10%;
+  padding-top: 10px;
+  padding-bottom: 5px;
+}
+
+#loc-header {
+  font-size: 40px;
+  text-align: left;
+  margin-left: 30px;
+}
+
+.values { 
+  display: inline-block;
+  text-align: left;
+}
+
+
+#occ {
+  margin-left: 0px;
+  border-right-color: #000000;
+}
+
+#occ-val {
+  font-size: 60px;
+}
+
+#cap {
+  margin-left: 70px;
+  border-left-color: #000000;
+}
 
 /* ---------------------------------------------------
     CHART STYLE
@@ -260,17 +317,21 @@ a.logout {
   padding: 10px 0px;
   font-family: arial;
   font-size: 16px;
+  margin-top: -10px;
+  margin-left: 0px;
   /* background-image: -webkit-gradient(linear, 0 0, 0 100%,
       from(#4d90fe), to(#4787ed)); */
 }
+
 .letsgo {
   text-align: center;
 }
 
+
 /* ---------------------------------------------------
     TIMEPICKER STYLE
 ----------------------------------------------------- */
-#timepicker {
+/* #timepicker {
   display: inline-block;
   text-align: center;
   width: 350px;
@@ -278,7 +339,7 @@ a.logout {
 }
 #timepicker span {
   display: none;
-}
+} */
 
 /* ---------------------------------------------------
     CONTENT STYLE
@@ -314,6 +375,7 @@ h2 {
   display: inline-block;
   text-align: center;
 }
+/*
 #datepicker {
   display: inline-block;
   text-align: center;
@@ -323,6 +385,7 @@ h2 {
 #datepicker span {
   display: none;
 }
+*/
 
 
 #sel2 {
