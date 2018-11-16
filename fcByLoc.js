@@ -10,7 +10,9 @@ var app = new Vue({
   el: "#app",
   data: {
     currUserRef: "ref here",
+    regionLoc: ",
     allregions: [],
+    allLocations: [],
     dailyOccupancy: 0,
     occupancy: 0,
     opening: 0,
@@ -24,6 +26,7 @@ var app = new Vue({
     console.log(cr);
     this.currUserRef = cr;
     this.get_regions();
+    this.get_locations();
   },
   methods: {
     goRT: function() {
@@ -59,6 +62,26 @@ var app = new Vue({
       this.allregions = regions;
       console.log(this.allregions);
       return regions;
+    },
+    
+    get_locations: async function () {
+      var locations = [];
+      var temp;
+      await this.get_regions();
+      var size = this.allregions.length;
+      for (var i = 0; i < size; i++) {
+        var region = this.allregions[i];
+        await forecastRef.child(region)
+          .once("value", function (snap) {
+            temp = snap.val();
+          })
+        for (var reg in temp) {
+          locations.push(reg);
+        }
+      }
+      this.allLocations = locations;
+      console.log(this.allLocations);
+      return locations;
     },
     
     //find the general occupancy rate for a given day
@@ -163,5 +186,42 @@ var app = new Vue({
       //console.log(temp);
       return temp;
     },
+    
+    // takes in the location and returns the region loc is in
+    getRegionfromLoc: function (location) {
+      //return new Promise(function(resolve, reject){
+      //var location = "Central Library";
+      var self = this;
+      //var final;
+      realtimeRef.once("value", function (snapshot) {
+        var obj = snapshot.val();
+        var reg = Object.keys(obj);
+        //console.log(reg);
+        var theOne;
+        reg.forEach(function (reg) {
+          var obj = snapshot.child(reg).val();
+          //console.log(obj);
+          //var loc = Object.keys(obj);
+          //console.log(obj.hasOwnProperty(location));
+          if (obj.hasOwnProperty(location)) {
+            //console.log("THIS IS THE ONE "+region);
+            theOne = reg;
+            //self.region = region;
+            //console.log(this.region);
+            //return region;
+          }
+        });
+        //console.log(theOne);
+        self.regionLoc = theOne;
+        //final = theOne
+        //console.log(final);
+        //console.log(self.region);
+        return theOne;
+      });
+      //console.log(final.key);
+      //})
+
+    },
+
   }
 });
