@@ -188,6 +188,12 @@ a.logout {
   margin-top: 5px;
 }
 
+/*
+#line{
+  background-color: #1f4e79;
+}
+*/
+
 #navbar-center span{
   top: 40px;
   margin-left: 7px;
@@ -202,6 +208,18 @@ a.logout {
   margin-top: -7px;
 }
 
+#booksicon{
+  margin-left: 50px;
+}
+
+/* for fcLoc
+#mapicon {
+  margin-top: -5px;
+  margin-left: 50px;
+}
+*/
+
+
 /* ---------------------------------------------------
     BOOKINGS PART STYLE
 ----------------------------------------------------- */
@@ -212,17 +230,19 @@ a.logout {
 } 
 
 #name{
-  font-size: 50px;
+  font-size: 30px;
   padding: 25px;
 }
 
+/* for fcByLoc */
 #mapicon {
-  margin-top: -25px;
+  margin-top: -20px;
+  margin-right: 5px;
 }
 
 .list-group {
-  padding-left: 100px;
-  padding-right: 100px;
+  padding-left: 300px;
+  padding-right: 300px;
 } 
 
 /*
@@ -274,7 +294,7 @@ p {
 .letsgo {
   text-align: center;
 }
- 
+
 /* ---------------------------------------------------
     TIMEPICKER STYLE
 ----------------------------------------------------- */
