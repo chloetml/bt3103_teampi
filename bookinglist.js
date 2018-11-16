@@ -242,7 +242,7 @@ var app = new Vue({
       var temp = {};
       // retrieve available room from bloc
       bookingsRef
-        .child(bregion)
+        .child(this.regionLoc)
         .child(bloc)
         .once("value", function(snapshot) {
           var obj = snapshot.val();
@@ -260,7 +260,7 @@ var app = new Vue({
               temp.free = something;
               //console.log(availRoom);
               bookingsRef
-                .child(bregion)
+                .child(this.regionLoc)
                 .child(bloc)
                 .child(something)
                 .child(bdate)
@@ -274,7 +274,7 @@ var app = new Vue({
           self.myBookings = availRoom; //{ "free": "DR1" }
           //console.log(self.myBookings); // [Object]
           // get region for booking
-          var region = self.getRegionCode(bregion);
+          var region = self.getRegionCode(this.regionLoc);
           // post to user node
           user
             .child("0")

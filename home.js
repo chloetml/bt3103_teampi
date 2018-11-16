@@ -283,6 +283,9 @@ var app = new Vue({
         case "SCI":
           text = "Science";
           break;
+        case "Faculty":
+          text = "Faculty";
+          break;
         //default:
         //  text = "Faculty";
       }
