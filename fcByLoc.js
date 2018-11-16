@@ -10,6 +10,7 @@ var app = new Vue({
   el: "#app",
   data: {
     currUserRef: "ref here",
+    regionLoc: ",
     allregions: [],
     allLocations: [],
     dailyOccupancy: 0,
