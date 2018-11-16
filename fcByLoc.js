@@ -11,6 +11,7 @@ var app = new Vue({
   data: {
     currUserRef: "ref here",
     allregions: [],
+    allLocations: [],
     dailyOccupancy: 0,
     occupancy: 0,
     opening: 0,
@@ -24,6 +25,7 @@ var app = new Vue({
     console.log(cr);
     this.currUserRef = cr;
     this.get_regions();
+    this.get_locations();
   },
   methods: {
     goRT: function() {
@@ -59,6 +61,26 @@ var app = new Vue({
       this.allregions = regions;
       console.log(this.allregions);
       return regions;
+    },
+    
+    get_locations: async function () {
+      var locations = [];
+      var temp;
+      await this.get_regions();
+      var size = this.allregions.length;
+      for (var i = 0; i < size; i++) {
+        var region = this.allregions[i];
+        await forecastRef.child(region)
+          .once("value", function (snap) {
+            temp = snap.val();
+          })
+        for (var reg in temp) {
+          locations.push(reg);
+        }
+      }
+      this.allLocations = locations;
+      console.log(this.allLocations);
+      return locations;
     },
     
     //find the general occupancy rate for a given day
