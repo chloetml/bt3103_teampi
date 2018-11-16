@@ -227,13 +227,14 @@ var app = new Vue({
     },
     // to be used when user makes a booking
     // takes in the user, date, time, location of booking
-    makeBooking: function(bdate, btime, bloc) {
+    makeBooking: async function(bdate, btime, bloc) {
       //ar bdate = "15112018";
       //var btime = "1400";
       //var bloc = "Central Library";
       var self = this;
-      //await self.getRegionfromLoc(bloc);
-      var bregion = self.getRegionfromLoc(bloc);
+      var currRef = this.currUserRef;
+      let bregion = await self.getRegionfromLoc(bloc);
+      //var bregion = self.getRegionfromLoc(bloc);
       //var bregion = this.regionLoc; // gets region from getRegionfromLoc function
       console.log(bregion);
       console.log(this.regionLoc);
@@ -241,7 +242,7 @@ var app = new Vue({
       var temp = {};
       // retrieve available room from bloc
       bookingsRef
-        .child(this.regionLoc)
+        .child(bregion)
         .child(bloc)
         .once("value", function(snapshot) {
           var obj = snapshot.val();
@@ -281,6 +282,16 @@ var app = new Vue({
             .child(bdate)
             .update({ [btime]: region + " " + bloc + " " + temp["free"] });
         });
+      window.location.href =
+        "/bt3103_teampi/bookingConf.html?date=" +
+        bdate +
+        "&currRef=" +
+        currRef +
+        "&time=" +
+        btime +
+        "&loc=" +
+        bloc +
+        "";
     },
     book: function(booking) {
       var currRef = this.currUserRef;
@@ -289,17 +300,6 @@ var app = new Vue({
       var time = this.time;
       var date = this.date;
       this.makeBooking(date, time, loc);
-
-      window.location.href =
-        "/bt3103_teampi/bookingConf.html?date=" +
-        date +
-        "&currRef=" +
-        currRef +
-        "&time=" +
-        time +
-        "&loc=" +
-        loc +
-        "";
     }
   }
 });
