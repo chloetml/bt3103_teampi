@@ -10,13 +10,13 @@ var app = new Vue({
   el: "#app",
   data: {
     currUserRef: "ref here",
-    regionLoc: ",
+    regionLoc: "",
     allregions: [],
     allLocations: [],
     dailyOccupancy: 0,
     occupancy: 0,
     opening: 0,
-    closing: 0,
+    closing: 0
   },
   mounted: function() {
     var ref = this;
@@ -48,14 +48,13 @@ var app = new Vue({
       var currRef = this.currUserRef;
       window.location.href = "/bt3103_teampi/home.html?currRef=" + currRef + "";
     },
-    
+
     get_regions: async function() {
       var regions = [];
       var temp;
-      await forecastRef
-       .once("value", function(snap){
-         temp = snap.val();
-        })
+      await forecastRef.once("value", function(snap) {
+        temp = snap.val();
+      });
       for (var region in temp) {
         regions.push(region);
       }
@@ -63,18 +62,17 @@ var app = new Vue({
       console.log(this.allregions);
       return regions;
     },
-    
-    get_locations: async function () {
+
+    get_locations: async function() {
       var locations = [];
       var temp;
       await this.get_regions();
       var size = this.allregions.length;
       for (var i = 0; i < size; i++) {
         var region = this.allregions[i];
-        await forecastRef.child(region)
-          .once("value", function (snap) {
-            temp = snap.val();
-          })
+        await forecastRef.child(region).once("value", function(snap) {
+          temp = snap.val();
+        });
         for (var reg in temp) {
           locations.push(reg);
         }
@@ -83,24 +81,24 @@ var app = new Vue({
       console.log(this.allLocations);
       return locations;
     },
-    
+
     //find the general occupancy rate for a given day
-    forecast_day: async function(region, location, date){
+    forecast_day: async function(region, location, date) {
       var open = await this.operatingHours(region, location, "open");
       var close = await this.operatingHours(region, location, "close");
       var total = 0;
       var formatedDate = await this.formatDate(date);
-      for (var t = open; t <= close; t = t + 100){
+      for (var t = open; t <= close; t = t + 100) {
         //console.log(t);
         var num = await this.forecast(region, location, date, t);
         total = total + num;
       }
       //console.log(total);
       //console.log(total/(close - open)*100);
-      this.dailyOccupancy = Math.floor(total / (close - open) * 100)
+      this.dailyOccupancy = Math.floor((total / (close - open)) * 100);
       //return this.dailyOccupancy;
     },
-    
+
     //forecasting model: the model takes in a string location and region,
     //and a date object
     forecast: async function(region, location, date, time) {
@@ -123,7 +121,7 @@ var app = new Vue({
       this.occupancy = total; //occupancy is used for displaying the return value on
       return total; //html, since the function return a promise object
     },
-    
+
     // takes in a string location and
     // a string region and
     // a string parameter called end (accepted values: open/close)
@@ -147,10 +145,10 @@ var app = new Vue({
       console.log(temp[0]);
       return temp[0];
     },
-    
+
     //formatDate: takes in date objects and converts them into required
     //string format for storing into firebase
-    formatDate: function (date) {
+    formatDate: function(date) {
       //date = new Date();
       //date.setDate(date.getDate() - 7);
       var format_date =
@@ -159,7 +157,7 @@ var app = new Vue({
         date.getFullYear().toString();
       return format_date;
     },
-    
+
     //occupied: finds the no. of occupants in a given location, time and date
     //formatDate: the date has been formated in the required form. Pass a date
     //object through formatDate before using this
@@ -186,19 +184,19 @@ var app = new Vue({
       //console.log(temp);
       return temp;
     },
-    
+
     // takes in the location and returns the region loc is in
-    getRegionfromLoc: function (location) {
+    getRegionfromLoc: function(location) {
       //return new Promise(function(resolve, reject){
       //var location = "Central Library";
       var self = this;
       //var final;
-      realtimeRef.once("value", function (snapshot) {
+      realtimeRef.once("value", function(snapshot) {
         var obj = snapshot.val();
         var reg = Object.keys(obj);
         //console.log(reg);
         var theOne;
-        reg.forEach(function (reg) {
+        reg.forEach(function(reg) {
           var obj = snapshot.child(reg).val();
           //console.log(obj);
           //var loc = Object.keys(obj);
@@ -220,8 +218,6 @@ var app = new Vue({
       });
       //console.log(final.key);
       //})
-
-    },
-
+    }
   }
 });
