@@ -153,12 +153,12 @@ var app = new Vue({
       //return new Promise(function(resolve, reject){
       //var location = "Central Library";
       var self = this;
+      var theOne;
       //var final;
       realtimeRef.once("value", function(snapshot) {
         var obj = snapshot.val();
         var reg = Object.keys(obj);
         //console.log(reg);
-        var theOne;
         reg.forEach(function(regSnap) {
           var obj2 = snapshot.child(regSnap).val();
           //console.log(obj);
@@ -177,10 +177,10 @@ var app = new Vue({
         //final = theOne
         //console.log(final);
         //console.log(self.region);
-        return theOne;
       });
       //console.log(final.key);
       //})
+      return theOne;
     },
     // takes in the location name and returns the location code
     // eg: takes in General and returns GEN
@@ -241,7 +241,7 @@ var app = new Vue({
       var temp = {};
       // retrieve available room from bloc
       bookingsRef
-        .child(bregion)
+        .child(this.regionLoc)
         .child(bloc)
         .once("value", function(snapshot) {
           var obj = snapshot.val();
