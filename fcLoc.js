@@ -26,7 +26,7 @@ var app = new Vue({
     var cr = url.searchParams.get("currRef");
     var loc = url.searchParams.get("loc");
     var reg = url.searchParams.get("region");
-    //console.log(cr);
+    console.log(reg);
     this.currUserRef = cr;
     this.location = loc;
     this.region = reg;
@@ -169,42 +169,6 @@ var app = new Vue({
       //console.log("temp");
       //console.log(temp);
       return temp;
-    },
-    // takes in the location and returns the region loc is in
-    getRegionfromLoc: async function(location) {
-      //return new Promise(function(resolve, reject){
-      //var location = "Central Library";
-      var self = this;
-      var theOne;
-      //var final;
-      forecastRef.once("value", function(snapshot) {
-        var obj = snapshot.val();
-        var reg = Object.keys(obj);
-        //console.log(reg);
-
-        reg.forEach(function(reg) {
-          var obj = snapshot.child(reg).val();
-          //console.log(obj);
-          //var loc = Object.keys(obj);
-          //console.log(obj.hasOwnProperty(location));
-          if (obj.hasOwnProperty(location)) {
-            //console.log("THIS IS THE ONE "+region);
-            theOne = reg;
-            //self.region = region;
-            //console.log(this.region);
-            //return region;
-          }
-        });
-        //console.log(theOne);
-        //self.region = theOne;
-        //final = theOne
-        //console.log(final);
-        //console.log(self.region);
-      });
-      console.log(theOne);
-      return theOne;
-      //console.log(final.key);
-      //})
     },
     display: async function(region, location, date) {
       var open = await this.operatingHours(region, location, "open");
