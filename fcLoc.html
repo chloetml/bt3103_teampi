@@ -68,6 +68,20 @@
 
         <img id = "mapicon" src="images/map.png" alt="Logo" width="40px" height="40px">
         <span>Central Library</span>
+	      
+	<div id="save-btn-nav">
+            <button type="button"
+                  class="save-btn text-center">Save Results</button>
+              <img
+                id="tooltip1"
+                src="images/question.png"
+                alt="Logo"
+                width="30px"
+                height="30px"
+                data-toggle="tooltip"
+                title="Save results to your bookmarks (not available yet)"
+              />
+        <div>
       </nav>
 
       <div class="contain row text-center">
@@ -80,20 +94,6 @@
             <div id="chart-area">
               <column-chart :data="forecastchart"></column-chart>
             </div>
-
-            <br>
-            
-            	<button type="button"
-                  class="save-btn text-center">Save Results</button>
-              <img
-                id="tooltip1"
-                src="images/question.png"
-                alt="Logo"
-                width="30px"
-                height="30px"
-                data-toggle="tooltip"
-                title="Save results to your bookmarks (not available yet)"
-              />
             </div>
           </div>
       </div>
