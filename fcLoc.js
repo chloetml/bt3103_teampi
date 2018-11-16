@@ -9,52 +9,56 @@ var forecastRef = db.ref("forecast");
 var app = new Vue({
   el: "#app",
   data: {
+    location: "",
+    region: "",
     currUserRef: "ref here",
     allregions: [],
     dailyOccupancy: 0,
     occupancy: 0,
     opening: 0,
     closing: 0,
-    forecastchart: [],
+    forecastchart: []
   },
-  mounted: async function () {
+  mounted: async function() {
     var ref = this;
     var url_string = window.location.href;
     var url = new URL(url_string);
     var cr = url.searchParams.get("currRef");
+    var loc = url.searchParams.get("loc");
     //console.log(cr);
     this.currUserRef = cr;
+    this.location = loc;
+    this.getRegionfromLoc(loc);
     this.get_regions();
-    this.display('General', 'Central Library', new Date(2018, 11, 19, 22, 0, 30, 0));
+    this.display(this.region, loc, new Date(2018, 11, 19, 22, 0, 30, 0));
   },
   methods: {
-    goRT: function () {
+    goRT: function() {
       var currRef = this.currUserRef;
       window.location.href =
         "/bt3103_teampi/realtime.html?currRef=" + currRef + "";
     },
-    goFC: function () {
+    goFC: function() {
       var currRef = this.currUserRef;
       window.location.href =
         "/bt3103_teampi/forecast.html?currRef=" + currRef + "";
     },
-    goBK: function () {
+    goBK: function() {
       var currRef = this.currUserRef;
       window.location.href =
         "/bt3103_teampi/booking.html?currRef=" + currRef + "";
     },
-    goHome: function () {
+    goHome: function() {
       var currRef = this.currUserRef;
       window.location.href = "/bt3103_teampi/home.html?currRef=" + currRef + "";
     },
 
-    get_regions: async function () {
+    get_regions: async function() {
       var regions = [];
       var temp;
-      await forecastRef
-        .once("value", function (snap) {
-          temp = snap.val();
-        })
+      await forecastRef.once("value", function(snap) {
+        temp = snap.val();
+      });
       for (var region in temp) {
         regions.push(region);
       }
@@ -64,7 +68,7 @@ var app = new Vue({
     },
 
     //find the general occupancy rate for a given day
-    forecast_day: async function (region, location, date) {
+    forecast_day: async function(region, location, date) {
       var open = await this.operatingHours(region, location, "open");
       var close = await this.operatingHours(region, location, "close");
       var total = 0;
@@ -76,13 +80,13 @@ var app = new Vue({
       }
       //console.log(total);
       //console.log(total/(close - open)*100);
-      this.dailyOccupancy = Math.floor(total / (close - open) * 100)
+      this.dailyOccupancy = Math.floor((total / (close - open)) * 100);
       //return this.dailyOccupancy;
     },
 
     //forecasting model: the model takes in a string location and region,
     //and a date object
-    forecast: async function (region, location, date, time) {
+    forecast: async function(region, location, date, time) {
       var i;
       var total = 0;
       //var time = await this.formatTime(date); //time derived from date object
@@ -107,13 +111,13 @@ var app = new Vue({
     // a string region and
     // a string parameter called end (accepted values: open/close)
     // for retrieval of opening/closing hours
-    operatingHours: async function (region, location, end) {
+    operatingHours: async function(region, location, end) {
       var temp = [];
       await forecastRef
         .child(region)
         .child(location)
         .child(end)
-        .once("value", function (snap) {
+        .once("value", function(snap) {
           temp.push(snap.val());
           //console.log(snap.val());
           //console.log(temp);
@@ -129,7 +133,7 @@ var app = new Vue({
 
     //formatDate: takes in date objects and converts them into required
     //string format for storing into firebase
-    formatDate: function (date) {
+    formatDate: function(date) {
       //date = new Date();
       //date.setDate(date.getDate() - 7);
       var format_date =
@@ -142,7 +146,7 @@ var app = new Vue({
     //occupied: finds the no. of occupants in a given location, time and date
     //formatDate: the date has been formated in the required form. Pass a date
     //object through formatDate before using this
-    occupied: async function (region, location, formatDate, time) {
+    occupied: async function(region, location, formatDate, time) {
       //uncommment below when testing
       //location = "Central Library";
       //formatDate = 13112018;
@@ -156,7 +160,7 @@ var app = new Vue({
         .child("Data")
         .child(formatDate)
         .child(time)
-        .once("value", function (snap) {
+        .once("value", function(snap) {
           temp.push(snap.val());
           //console.log(snap.val());
           console.log(temp);
@@ -165,8 +169,41 @@ var app = new Vue({
       //console.log(temp);
       return temp;
     },
-
-    display: async function (region, location, date) {
+    // takes in the location and returns the region loc is in
+    getRegionfromLoc: function(location) {
+      //return new Promise(function(resolve, reject){
+      //var location = "Central Library";
+      var self = this;
+      //var final;
+      forecastRef.once("value", function(snapshot) {
+        var obj = snapshot.val();
+        var reg = Object.keys(obj);
+        //console.log(reg);
+        var theOne;
+        reg.forEach(function(reg) {
+          var obj = snapshot.child(reg).val();
+          //console.log(obj);
+          //var loc = Object.keys(obj);
+          //console.log(obj.hasOwnProperty(location));
+          if (obj.hasOwnProperty(location)) {
+            //console.log("THIS IS THE ONE "+region);
+            theOne = reg;
+            //self.region = region;
+            //console.log(this.region);
+            //return region;
+          }
+        });
+        //console.log(theOne);
+        self.region = theOne;
+        //final = theOne
+        //console.log(final);
+        //console.log(self.region);
+        return theOne;
+      });
+      //console.log(final.key);
+      //})
+    },
+    display: async function(region, location, date) {
       var open = await this.operatingHours(region, location, "open");
       var close = await this.operatingHours(region, location, "close");
       var list = [];
@@ -178,6 +215,6 @@ var app = new Vue({
       }
       console.log(list);
       this.forecastchart = list;
-    },
+    }
   }
 });

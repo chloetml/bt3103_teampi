@@ -48,7 +48,11 @@ var app = new Vue({
       var currRef = this.currUserRef;
       window.location.href = "/bt3103_teampi/home.html?currRef=" + currRef + "";
     },
-
+    searchByLoc: function(locName) {
+      var currRef = this.currUserRef;
+      window.location.href =
+        "/bt3103_teampi/fcLoc.html?currRef=" + currRef + "&loc=" + locName + "";
+    },
     get_regions: async function() {
       var regions = [];
       var temp;
@@ -191,7 +195,7 @@ var app = new Vue({
       //var location = "Central Library";
       var self = this;
       //var final;
-      realtimeRef.once("value", function(snapshot) {
+      forecastRef.once("value", function(snapshot) {
         var obj = snapshot.val();
         var reg = Object.keys(obj);
         //console.log(reg);
@@ -210,7 +214,7 @@ var app = new Vue({
           }
         });
         //console.log(theOne);
-        self.regionLoc = theOne;
+        self.region = theOne;
         //final = theOne
         //console.log(final);
         //console.log(self.region);

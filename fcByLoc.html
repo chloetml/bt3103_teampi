@@ -104,9 +104,10 @@
               <div
                 v-for="allLocation in allLocations"
                 class="list-group-item list-group-item-action clickable"
-                @click=""
+                @click="searchByLoc(allLocation)"
               >
-                <div id="name">{{ allLocation }}</div>
+                {{ allLocation }}
+                <!-- <div id="name">{{ allLocation }}</div> -->
                 <!--
                   <p>
                                   <span id="bk">{{allregions}}</span> rooms available
